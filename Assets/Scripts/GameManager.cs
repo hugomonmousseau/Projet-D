@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
             if(_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && !_allPoints[_loop]._connecte)
             {
                 GameObject _newLine = Instantiate(_diceLineConnexion);
-                _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop]._coordonnees;
+                _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
+                _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
             }
         }
     }

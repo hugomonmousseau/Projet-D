@@ -5,12 +5,18 @@ using UnityEngine;
 public class Line : MonoBehaviour
 {
     LineRenderer _lineRenderer;
-    [HideInInspector] public Vector2 _startPoint;
+    [HideInInspector] public Vector2 _startPosition;
     public bool _isEnd;
+
+    [Space]
+    [Header("Points")]
+    public Point _startPoint;
+    public Point _endPoint;
+
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.SetPosition(0, new Vector3(_startPoint.x,.3f,_startPoint.y));
+        _lineRenderer.SetPosition(0, new Vector3(_startPosition.x,.3f,_startPosition.y));
     }
 
     void Update()
@@ -26,6 +32,11 @@ public class Line : MonoBehaviour
             {
                 _isEnd = true;
                 _lineRenderer.SetPosition(1,new Vector3(GameManager._instance._allPoints[_idPoint]._coordonnees.x, .3f, GameManager._instance._allPoints[_idPoint]._coordonnees.y));
+                _endPoint = GameManager._instance._allPoints[_idPoint];
+
+                _startPoint._connecte = true;
+                _endPoint._connecte = true;
+
             }
             else
                 Destroy(gameObject);
