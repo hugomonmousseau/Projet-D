@@ -6,19 +6,21 @@ public class CameraClick : MonoBehaviour
 {
     //private
     Camera _mainCam;
-    Plane _plane;
-
+    Plane _planeLD;
+    Plane _planeConnexion;
     public Vector3 _worldPosition;
+    public Vector3 _connexionPosition;
 
     void Start()
     {
         _mainCam = GetComponent<Camera>();
 
         //coordonné Y de la map
-        _plane = new Plane(Vector3.down, 0f);
+        _planeLD = new Plane(Vector3.down, 0f);
+        _planeConnexion = new Plane(Vector3.down, 0.3f);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Vector3 _position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
@@ -29,14 +31,26 @@ public class CameraClick : MonoBehaviour
         //debug
         Debug.DrawRay(_ray.origin, _ray.direction * 100, Color.yellow);
 
-        if (_plane.Raycast(_ray, out float _distance))
+        if (_planeLD.Raycast(_ray, out float _worldDistance))
         {
-            _worldPosition = _ray.GetPoint(_distance);
+            _worldPosition = _ray.GetPoint(_worldDistance);
+        }
+
+        if (_planeConnexion.Raycast(_ray, out float _connexionDistance))
+        {
+            _connexionPosition = _ray.GetPoint(_connexionDistance);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log(_worldPosition);
+            Debug.Log(_connexionPosition);
+            GameManager._instance._startSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x,_connexionPosition.z);
+            GameManager._instance.NewConnexion();
+        }
+        if (Input.GetMouseButton(0))
+        {
+            GameManager._instance._selectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
         }
 
     }

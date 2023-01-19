@@ -11,6 +11,8 @@ public class PointID : MonoBehaviour
     Point _point = new Point();
     void Start()
     {
+        _coordonnees = new Vector2(transform.position.x, transform.position.z);
+        //init point
         _point._coordonnees = _coordonnees;
         _point._type = _type;
 
