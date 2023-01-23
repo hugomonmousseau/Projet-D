@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     //connexion
     public Vector2 _selectionConnexionCoordonnees;
     public Vector2 _startSelectionConnexionCoordonnees;
+    public Vector2 _actualSelectionConnexionCoordonnees;
     [Space]
     [Header("World")]
     //world
@@ -57,13 +58,25 @@ public class GameManager : MonoBehaviour
         {
             if (_allPoints[_loop]._coordonnees.x > _selectionConnexionCoordonnees.x - _taillePoint.x && _allPoints[_loop]._coordonnees.x < _selectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _selectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _selectionConnexionCoordonnees.y + _taillePoint.y && !_allPoints[_loop]._connecte)
             {
-                Debug.Log(_loop);
+                //Debug.Log(_loop);
                 return _loop;
             }
         }
         return -1;
     }
 
+    public int IdPointMousePosition()
+    {
+        for (int _loop = 0; _loop < _allPoints.Count; _loop++)
+        {
+            if (_allPoints[_loop]._coordonnees.x > _actualSelectionConnexionCoordonnees.x - _taillePoint.x && _allPoints[_loop]._coordonnees.x < _actualSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _actualSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _actualSelectionConnexionCoordonnees.y + _taillePoint.y)
+            {
+                return _loop;
+            }
+
+        }
+        return -1;
+    }
 
 }
 
