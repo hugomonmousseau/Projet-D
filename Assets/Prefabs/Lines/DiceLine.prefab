@@ -191,6 +191,8 @@ MonoBehaviour:
   _connextionCutPoint: {fileID: 1743878436677413421}
   _connextionCutEndPoint: {fileID: 5885854745370331330}
   _cutSpeed: 0.25
+  _diceMat: {fileID: 2100000, guid: 73232fe4e10968a4aaed3fe69466ee40, type: 2}
+  _batMat: {fileID: 2100000, guid: 23194a54d31d0764584bb322dc4ee490, type: 2}
 --- !u!1 &8454225928089382330
 GameObject:
   m_ObjectHideFlags: 0

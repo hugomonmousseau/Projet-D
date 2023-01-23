@@ -17,3 +17,11 @@ public enum Type
     Batiment,
 }
 
+public enum State
+{
+    Hide,
+    Visible,
+    Appear,
+    Disappear,
+}
+

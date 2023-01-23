@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [Space]
     [Header("Prefabs")]
     [SerializeField] GameObject _diceLineConnexion;
-    Vector2 _taillePoint = new Vector2(.25f,.25f);
+    [SerializeField] Vector2 _taillePoint = new Vector2(.25f,.25f);
     private void Awake()
     {
         _instance = this;
@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
                 GameObject _newLine = Instantiate(_diceLineConnexion);
                 _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
                 _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
+                if (_allPoints[_loop]._type == Type.Batiment)
+                    _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._batMat;
+                else
+                    _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._diceMat;
+
             }
         }
     }

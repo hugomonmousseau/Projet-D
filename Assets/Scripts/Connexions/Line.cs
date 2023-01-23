@@ -24,11 +24,15 @@ public class Line : MonoBehaviour
     Vector3 _velocity = Vector3.zero;
     [SerializeField] float _cutSpeed;
 
-
+    [Space]
+    [Header("Materials")]
+    public Material _diceMat;
+    public Material _batMat;
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.SetPosition(0, new Vector3(_startPosition.x,.3f,_startPosition.y));
+        _lineRenderer.SetPosition(1, new Vector3(_startPosition.x, .3f, _startPosition.y));
     }
 
     void Update()
@@ -78,7 +82,7 @@ public class Line : MonoBehaviour
             Debug.Log(_idPoint);
 
             //Debug.Log(_idPoint);
-            if (_idPoint >= 0)
+            if (_idPoint >= 0 &&(GameManager._instance._allPoints[_idPoint]._type == _startPoint._type))
             {
                 _isEnd = true;
                 _lineRenderer.SetPosition(1,new Vector3(GameManager._instance._allPoints[_idPoint]._coordonnees.x, .3f, GameManager._instance._allPoints[_idPoint]._coordonnees.y));

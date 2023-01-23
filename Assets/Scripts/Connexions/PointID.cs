@@ -8,7 +8,7 @@ public class PointID : MonoBehaviour
     [SerializeField] Vector2 _coordonnees;
     [SerializeField] Type _type;
 
-    Point _point = new Point();
+    [SerializeField] Point _point = new Point();
     void Start()
     {
         _coordonnees = new Vector2(transform.position.x, transform.position.z);
@@ -26,4 +26,6 @@ public class PointID : MonoBehaviour
         
     }
 }
+
+
 
