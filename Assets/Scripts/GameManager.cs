@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] GameObject _diceLineConnexion;
     [SerializeField] Vector2 _taillePoint = new Vector2(.25f,.25f);
+
+    [Space]
+    [Header("Ressources")]
+    public int _or;
+    public int _magie;
+    public int _sciences;
     private void Awake()
     {
         _instance = this;
