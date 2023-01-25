@@ -79,7 +79,6 @@ public class Line : MonoBehaviour
         {
             //renvoie l'id (int) du point séléctionné. Si aucun point , renvoie -1
             int _idPoint = GameManager._instance.IdPointLocalisation();
-            Debug.Log(_idPoint);
 
             //Debug.Log(_idPoint);
             if (_idPoint >= 0 &&(GameManager._instance._allPoints[_idPoint]._type == _startPoint._type))

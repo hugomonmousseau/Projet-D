@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,6 +7,7 @@ public class Point
     public Vector2 _coordonnees;
     public Type _type;
     public bool _connecte;
+    public PointState _state;
 }
 
 public enum Type
@@ -17,7 +16,7 @@ public enum Type
     Batiment,
 }
 
-public enum State
+public enum PointState
 {
     Hide,
     Visible,

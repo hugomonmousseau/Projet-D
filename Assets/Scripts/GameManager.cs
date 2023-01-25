@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager _instance;
+    public GameState _gameState;
     public List<Point> _allPoints;
     [Space]
     [Header("Connexion")]
@@ -89,6 +90,13 @@ public class GameManager : MonoBehaviour
         return -1;
     }
 
+}
+
+public enum GameState
+{
+    InGame,
+    Pause,
+    IsBuying,
 }
 
 
