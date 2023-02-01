@@ -7,11 +7,10 @@ public class ScrollViewShop : MonoBehaviour
 {
 	// Start is called before the first frame update
 	static ScrollRect _scrollRect;
-
 	void Start()
 	{
 		_scrollRect = GetComponent<ScrollRect>();
-		//
+
 	}
 
 	public void StopScroll()
@@ -22,4 +21,13 @@ public class ScrollViewShop : MonoBehaviour
 	{
 		_scrollRect.vertical = true;
 	}
+}
+
+public enum ButtonState
+{
+	Normal,
+	Highlighted,
+	Pressed,
+	Selected,
+	Disabled,
 }

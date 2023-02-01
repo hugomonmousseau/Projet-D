@@ -51,6 +51,7 @@ public class CameraClick : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             GameManager._instance._selectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
+            GameManager._instance._selectionWorldCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
         }
         GameManager._instance._actualSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
     }

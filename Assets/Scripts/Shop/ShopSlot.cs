@@ -5,23 +5,20 @@ using UnityEngine;
 public class ShopSlot : MonoBehaviour
 {
     public ShopBatiment _slot;
+    public GameObject _buttonManager;
 
     void Update()
     {
-        if (Input.GetMouseButtonUp(0) && GameManager._instance._gameState == GameState.IsBuying)
+        if (GameManager._instance._or >= _slot._prixEnOr && GameManager._instance._magie >= _slot._prixEnMagie && GameManager._instance._sciences >= _slot._prixEnSciences && GetComponent<SelectableStateReader>()._state == ButtonState.Pressed)
         {
-            GameManager._instance._gameState = GameState.InGame;
+            GameManager._instance._gameState = GameState.IsBuying;
+            GameManager._instance._inHand = _slot._batimentGO;
+            _buttonManager.GetComponent<BuyingManager>().PrevisualisationAchat();
         }
+
+
     }
-    public void Achat()
-    {
-        if(GameManager._instance._or >= _slot._prixEnOr && GameManager._instance._magie >= _slot._prixEnMagie && GameManager._instance._sciences >= _slot._prixEnSciences)
-        {
-            Debug.Log("Oui");
-        }
-        else
-        {
-            Debug.Log("Non");
-        }
-    }
+
+    //if(GameManager._instance._or >= _slot._prixEnOr && GameManager._instance._magie >= _slot._prixEnMagie && GameManager._instance._sciences >= _slot._prixEnSciences && GameManager._instance._gameState == GameState.InGame)
+
 }

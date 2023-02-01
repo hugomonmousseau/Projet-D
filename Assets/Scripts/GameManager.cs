@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     public int _or;
     public int _magie;
     public int _sciences;
+
+    [Space]
+    [Header("Inventory")]
+    public List<Inventaire> _inventaire;
+    public GameObject _inHand;
     private void Awake()
     {
         _instance = this;
