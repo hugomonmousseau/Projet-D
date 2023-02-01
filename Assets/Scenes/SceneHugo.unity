@@ -2558,6 +2558,7 @@ MonoBehaviour:
   _sciences: 0
   _inventaire: []
   _inHand: {fileID: 0}
+  _lastSelection: {fileID: 0}
 --- !u!4 &1099012211
 Transform:
   m_ObjectHideFlags: 0
@@ -2777,7 +2778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8094ad4b41fc641a8c836b360ad6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
+  _type: 5
 --- !u!114 &1544770470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2805,6 +2806,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dicePoint: {fileID: 1618392024}
   _batimentPoint: {fileID: 2999128433072931646}
+  _listPoints:
+  - {fileID: 1618392024}
+  - {fileID: 2999128433072931646}
   _centre: {fileID: 513977956}
   _diceCote: {fileID: 870826629}
   _batCote: {fileID: 459898}
@@ -3493,7 +3497,7 @@ GameObject:
   - component: {fileID: 1808490352}
   - component: {fileID: 1808490355}
   m_Layer: 0
-  m_Name: DicePoint
+  m_Name: BatPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3527,7 +3531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coordonnees: {x: 0, y: 0}
-  _type: 0
+  _type: 1
   _point:
     _coordonnees: {x: 0, y: 0}
     _type: 0
@@ -4304,6 +4308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dicePoint: {fileID: 0}
   _batimentPoint: {fileID: 0}
+  _listPoints: []
   _centre: {fileID: 0}
   _diceCote: {fileID: 0}
   _batCote: {fileID: 0}

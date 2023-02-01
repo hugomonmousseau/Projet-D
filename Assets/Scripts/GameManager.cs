@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [Header("Inventory")]
     public List<Inventaire> _inventaire;
     public GameObject _inHand;
+    public GameObject _lastSelection;
     private void Awake()
     {
         _instance = this;
@@ -95,6 +96,13 @@ public class GameManager : MonoBehaviour
         return -1;
     }
 
+    public void NewBatimentSelection(GameObject _batiment)
+    {
+        if(_lastSelection != null)
+            _lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
+        _lastSelection = _batiment;
+        _lastSelection.GetComponent<OnSelectedBatiment>().ImSelected();
+    }
 }
 
 public enum GameState

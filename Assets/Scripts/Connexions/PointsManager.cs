@@ -7,6 +7,7 @@ public class PointsManager : MonoBehaviour
     [Header("Points")]
     [SerializeField] GameObject _dicePoint;
     [SerializeField] GameObject _batimentPoint;
+    [SerializeField] List<GameObject> _listPoints;
 
     [Space]
     [Header("Transforms")]

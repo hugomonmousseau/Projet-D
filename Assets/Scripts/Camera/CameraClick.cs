@@ -54,5 +54,22 @@ public class CameraClick : MonoBehaviour
             GameManager._instance._selectionWorldCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
         }
         GameManager._instance._actualSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
+
+
+        RaycastHit[] _results = new RaycastHit[1];
+        int _hits = Physics.RaycastNonAlloc(_ray, _results);
+        //Debug.Log(_results[0].collider.tag);
+        if (_results[0].collider != null && Input.GetMouseButtonDown(0))
+        {
+            //Debug.Log(_results[0].collider.tag);
+            if (_results[0].collider.tag == "Batiment")
+            {
+                //on clic sur un batiment
+                //_results[0].collider.GetComponent<OnSelectedBatiment>()._selected = true;
+                GameManager._instance.NewBatimentSelection(_results[0].collider.gameObject);
+                //on s assure des scripts présents dans le batiment
+            }
+
+        }
     }
 }
