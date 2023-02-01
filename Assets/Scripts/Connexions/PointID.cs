@@ -9,6 +9,9 @@ public class PointID : MonoBehaviour
     [SerializeField] Type _type;
 
     [SerializeField] Point _point = new Point();
+
+    [Header("IntID")]
+    public int _intID;
     void Start()
     {
         _coordonnees = new Vector2(transform.position.x, transform.position.z);
@@ -17,6 +20,7 @@ public class PointID : MonoBehaviour
         _point._type = _type;
 
         _gameManager = GameObject.FindGameObjectWithTag("GameController");
+        _intID = GameManager._instance._allPoints.Count;
         _gameManager.GetComponent<GameManager>()._allPoints.Add(_point);
     }
 
