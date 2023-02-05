@@ -8,6 +8,7 @@ public class Point
     public Type _type;
     public bool _connecte;
     public PointState _state;
+    public int _intID;
 }
 
 public enum Type

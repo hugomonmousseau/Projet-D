@@ -33,6 +33,7 @@ public class Line : MonoBehaviour
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.SetPosition(0, new Vector3(_startPosition.x,.3f,_startPosition.y));
         _lineRenderer.SetPosition(1, new Vector3(_startPosition.x, .3f, _startPosition.y));
+        GameManager._instance.PrevisualisationPointDuringLine(_startPoint);
     }
 
     void Update()
@@ -74,14 +75,14 @@ public class Line : MonoBehaviour
         }
 
 
-
+        //ici on instance
         if (Input.GetMouseButtonUp(0) && !_isEnd)
         {
             //renvoie l'id (int) du point séléctionné. Si aucun point , renvoie -1
             int _idPoint = GameManager._instance.IdPointLocalisation();
 
             //Debug.Log(_idPoint);
-            if (_idPoint >= 0 &&(GameManager._instance._allPoints[_idPoint]._type == _startPoint._type))
+            if (_idPoint >= 0 &&(GameManager._instance._allPoints[_idPoint]._type == _startPoint._type) && (GameManager._instance._allPoints[_idPoint]._intID != _startPoint._intID))
             {
                 _isEnd = true;
                 _lineRenderer.SetPosition(1,new Vector3(GameManager._instance._allPoints[_idPoint]._coordonnees.x, .3f, GameManager._instance._allPoints[_idPoint]._coordonnees.y));
@@ -92,7 +93,10 @@ public class Line : MonoBehaviour
 
             }
             else
+            {
+                GameManager._instance.PrevisualisationPointsHideDuringLine();
                 Destroy(gameObject);
+            }
         }
 
 
@@ -124,4 +128,5 @@ public class Line : MonoBehaviour
         Destroy(gameObject);
     }
 
+    
 }

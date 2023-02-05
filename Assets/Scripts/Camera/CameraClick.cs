@@ -55,21 +55,31 @@ public class CameraClick : MonoBehaviour
         }
         GameManager._instance._actualSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
 
-
+        //selection de batiments
         RaycastHit[] _results = new RaycastHit[1];
         int _hits = Physics.RaycastNonAlloc(_ray, _results);
         //Debug.Log(_results[0].collider.tag);
         if (_results[0].collider != null && Input.GetMouseButtonDown(0))
         {
-            //Debug.Log(_results[0].collider.tag);
+            Debug.Log(_results[0].collider.tag);
             if (_results[0].collider.tag == "Batiment")
             {
                 //on clic sur un batiment
                 //_results[0].collider.GetComponent<OnSelectedBatiment>()._selected = true;
+                if (GameManager._instance._lastSelection != null)
+                    GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
                 GameManager._instance.NewBatimentSelection(_results[0].collider.gameObject);
                 //on s assure des scripts présents dans le batiment
             }
 
+        }
+        else if (_results[0].collider == null && Input.GetMouseButtonDown(0))
+        {
+            if (GameManager._instance._lastSelection != null)
+                GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
+
+            //qd on clic le vide
+            GameManager._instance._lastSelection = null;
         }
     }
 }
