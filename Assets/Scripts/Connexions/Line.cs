@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
+    public LigneCo _line;
     LineRenderer _lineRenderer;
     [HideInInspector] public Vector2 _startPosition;
     public bool _isEnd;
@@ -34,6 +35,8 @@ public class Line : MonoBehaviour
         _lineRenderer.SetPosition(0, new Vector3(_startPosition.x,.3f,_startPosition.y));
         _lineRenderer.SetPosition(1, new Vector3(_startPosition.x, .3f, _startPosition.y));
         GameManager._instance.PrevisualisationPointDuringLine(_startPoint);
+
+        
     }
 
     void Update()
@@ -81,6 +84,11 @@ public class Line : MonoBehaviour
             //renvoie l'id (int) du point séléctionné. Si aucun point , renvoie -1
             int _idPoint = GameManager._instance.IdPointLocalisation();
 
+
+
+
+
+
             //Debug.Log(_idPoint);
             if (_idPoint >= 0 &&(GameManager._instance._allPoints[_idPoint]._type == _startPoint._type) && (GameManager._instance._allPoints[_idPoint]._intID != _startPoint._intID))
             {
@@ -91,10 +99,33 @@ public class Line : MonoBehaviour
                 _startPoint._connecte = true;
                 _endPoint._connecte = true;
 
+                //ajout dans le gamemanager
+                
+                _line._pointA = _startPoint;
+                _line._pointB = _endPoint;
+                _line._intID = GameManager._instance._allLines.Count;
+                _line._isActive = true;
+                GameManager._instance._allLines.Add(_line);
+
+
+                //on rajoute les nouveaux points a la previsualisation
+                GameManager._instance._visiblesPointsSelected.Add(_endPoint._intID);
+
+
+
+                //on fini par ca !!
+
+                GameManager._instance.HideAllPointsExceptSelected();
+                //GameManager._instance.PrevisualisationPointAfterLine();
+
             }
             else
             {
-                GameManager._instance.PrevisualisationPointsHideDuringLine();
+
+                //Si on fini pas la ligne
+                GameManager._instance.HideAllPointsExceptSelected();
+
+                //GameManager._instance.PrevisualisationPointAfterLine();
                 Destroy(gameObject);
             }
         }
@@ -125,6 +156,19 @@ public class Line : MonoBehaviour
         yield return new WaitForSeconds(_delay * 2.5f);
         _startPoint._connecte = false;
         _endPoint._connecte = false;
+
+        GameManager._instance._allLines[_line._intID]._isActive = false;
+
+        //on retire le point qui s'isole
+
+        //pour cela, on refait une liste
+        GameManager._instance._visiblesPointsSelected = new List<int>();
+
+        //on rajoute tt points liés
+        GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImSelected();
+
+        //on cache le reste
+        GameManager._instance.HideAllPointsExceptSelected();
         Destroy(gameObject);
     }
 

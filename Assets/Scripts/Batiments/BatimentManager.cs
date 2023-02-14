@@ -5,5 +5,9 @@ using UnityEngine;
 public class BatimentManager : MonoBehaviour
 {
     public Batiment _type;
+
+
+
+
     
 }

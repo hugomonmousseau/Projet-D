@@ -61,14 +61,20 @@ public class CameraClick : MonoBehaviour
         //Debug.Log(_results[0].collider.tag);
         if (_results[0].collider != null && Input.GetMouseButtonDown(0))
         {
-            Debug.Log(_results[0].collider.tag);
+            //Debug.Log(_results[0].collider.tag);
             if (_results[0].collider.tag == "Batiment")
             {
                 //on clic sur un batiment
                 //_results[0].collider.GetComponent<OnSelectedBatiment>()._selected = true;
-                if (GameManager._instance._lastSelection != null)
-                    GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
-                GameManager._instance.NewBatimentSelection(_results[0].collider.gameObject);
+
+                //on vérifie aussi que le batiment séléctionné ne l est pas deja
+                if(GameManager._instance._lastSelection != _results[0].collider.gameObject)
+                {
+                    if (GameManager._instance._lastSelection != null)
+                        GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
+                    GameManager._instance.NewBatimentSelection(_results[0].collider.gameObject);
+                }
+
                 //on s assure des scripts présents dans le batiment
             }
 

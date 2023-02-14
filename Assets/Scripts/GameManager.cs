@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameState _gameState;
     public List<Point> _allPoints;
     public List<GameObject> _allPointsGO;
+    public List<LigneCo> _allLines;
     [Space]
     [Header("Connexion")]
     //connexion
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
     [Space]
     [Header("Prévisualtisations")]
     public List<int> _visiblesPointsDuringLine;
-    public List<int> _batVisiblesPoints;
+    public List<int> _visiblesPointsSelected;
     private void Awake()
     {
         _instance = this;
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
         _lastSelection.GetComponent<OnSelectedBatiment>().ImSelected();
     }
 
+    //void appelée pour afficher les points pendant qu on trace une ligne
     public void PrevisualisationPointDuringLine(Point _point)
     {
         _visiblesPointsDuringLine = new List<int>();
@@ -122,32 +124,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PrevisualisationPointsHideDuringLine()
+    //void appelée apres avoir tiré la ligne
+    public void PrevisualisationPointAfterLine()
     {
-        //remettons invisibles les autres points
-        for (int _loop = 0; _loop < _visiblesPointsDuringLine.Count; _loop++)
+        for(int _loop = 0; _loop < _visiblesPointsDuringLine.Count; _loop++)
         {
-            switch (_batVisiblesPoints.Count)
+            //si le point n°x N est PAS présent dans la liste des points visibles par séléction
+            if (! _visiblesPointsSelected.Contains(_visiblesPointsDuringLine[_loop]))
             {
-                case 0:
-                    //aucun point
-                    break;
-                case 1:
-                    //un seul point
-                    break;
-                case 2:
-                    // 2 points
-                    if (_allPointsGO[_visiblesPointsDuringLine[_loop]].GetComponent<PointID>()._intID != _batVisiblesPoints[0] && _allPointsGO[_visiblesPointsDuringLine[_loop]].GetComponent<PointID>()._intID != _batVisiblesPoints[1])
-                    {
-                        _allPointsGO[_visiblesPointsDuringLine[_loop]].GetComponent<PointID>().OnePointDisappear();
-
-                        Debug.Log(_allPointsGO[_loop].GetComponent<PointID>()._intID);
-                    }
-                    break;
+                //Debug.Log("je dois faire disparaitre le point : " + _visiblesPointsDuringLine[_loop]);
+                _allPointsGO[_visiblesPointsDuringLine[_loop]].GetComponent<PointID>().OnePointDisappear();
             }
+        }
+    }
 
 
-            //_visiblesPointsDuringLine = new List<int>();
+    public void HideAllPointsExceptSelected()
+    {
+        for(int _loop = 0; _loop < _allPoints.Count; _loop++)
+        {
+            if (!_visiblesPointsSelected.Contains(_allPoints[_loop]._intID))
+            {
+                _allPointsGO[_loop].GetComponent<PointID>().OnePointDisappear();
+            }
+            //_allPointsGO[_visiblesPointsSelected[_loop]].GetComponent<PointID>().OnePointDisappear();
         }
     }
 }
