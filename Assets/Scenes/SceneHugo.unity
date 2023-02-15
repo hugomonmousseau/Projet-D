@@ -2537,21 +2537,9 @@ MonoBehaviour:
   _gameState: 0
   _allPoints: []
   _allPointsGO: []
-  _allLines:
-  - _pointA:
-      _coordonnees: {x: 0, y: 0}
-      _type: 0
-      _connecte: 0
-      _state: 0
-      _intID: 0
-    _pointB:
-      _coordonnees: {x: 0, y: 0}
-      _type: 0
-      _connecte: 0
-      _state: 0
-      _intID: 0
-    _intID: 0
-    _isActive: 0
+  _numberOfLine: 0
+  _allLines: []
+  _allLinesGO: []
   _selectionConnexionCoordonnees: {x: 0, y: 0}
   _startSelectionConnexionCoordonnees: {x: 0, y: 0}
   _actualSelectionConnexionCoordonnees: {x: 0, y: 0}

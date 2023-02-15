@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 472704896031005648}
   - component: {fileID: 2359206501651765980}
   - component: {fileID: 2365859770387528917}
+  - component: {fileID: 5067112322798083188}
   m_Layer: 0
   m_Name: DiceLine
   m_TagString: Untagged
@@ -177,6 +178,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b502e827876ebbe418731a80e0f6a860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _line:
+    _pointA:
+      _coordonnees: {x: 0, y: 0}
+      _type: 0
+      _connecte: 0
+      _state: 0
+      _intID: 0
+    _pointB:
+      _coordonnees: {x: 0, y: 0}
+      _type: 0
+      _connecte: 0
+      _state: 0
+      _intID: 0
+    _intID: 0
+    _isActive: 0
   _startPosition: {x: 0, y: 0}
   _isEnd: 0
   _delayBeforeReset: 1
@@ -197,6 +213,22 @@ MonoBehaviour:
   _cutSpeed: 0.25
   _diceMat: {fileID: 2100000, guid: 23194a54d31d0764584bb322dc4ee490, type: 2}
   _batMat: {fileID: 2100000, guid: 73232fe4e10968a4aaed3fe69466ee40, type: 2}
+--- !u!114 &5067112322798083188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267538896376097337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de05552b1beba73459cb510f36887763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultWidth: 0
+  _duration: 1
+  _appear: 0
+  _disappear: 0
 --- !u!1 &8454225928089382330
 GameObject:
   m_ObjectHideFlags: 0

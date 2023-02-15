@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     public GameState _gameState;
     public List<Point> _allPoints;
     public List<GameObject> _allPointsGO;
+    public int _numberOfLine;
     public List<LigneCo> _allLines;
+    public List<GameObject> _allLinesGO;
     [Space]
     [Header("Connexion")]
     //connexion
@@ -148,6 +150,14 @@ public class GameManager : MonoBehaviour
                 _allPointsGO[_loop].GetComponent<PointID>().OnePointDisappear();
             }
             //_allPointsGO[_visiblesPointsSelected[_loop]].GetComponent<PointID>().OnePointDisappear();
+        }
+    }
+
+    public void HideAllLinesExceptSelected()
+    {
+        for(int _loop = 0; _loop < _allLines.Count; _loop++)
+        {
+
         }
     }
 }
