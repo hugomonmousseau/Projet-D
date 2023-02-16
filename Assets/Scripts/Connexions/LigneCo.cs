@@ -8,7 +8,7 @@ public class LigneCo
     public Point _pointB;
     public int _intID;
 
-    public bool _isActive;
+    public bool _visible;
 }
 
 

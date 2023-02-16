@@ -104,7 +104,7 @@ public class Line : MonoBehaviour
                 _line._pointA = _startPoint;
                 _line._pointB = _endPoint;
                 _line._intID = GameManager._instance._numberOfLine++;
-                _line._isActive = true;
+                _line._visible = true;
 
                 //on rajoute les lignes au GM
                 GameManager._instance._allLines.Add(_line);
@@ -118,6 +118,8 @@ public class Line : MonoBehaviour
                 //on fini par ca !!
 
                 GameManager._instance.HideAllPointsExceptSelected();
+
+                GameManager._instance.ShowLinesNeeded();
                 //GameManager._instance.PrevisualisationPointAfterLine();
 
             }
@@ -127,6 +129,7 @@ public class Line : MonoBehaviour
                 //Si on fini pas la ligne
                 GameManager._instance.HideAllPointsExceptSelected();
 
+                GameManager._instance.ShowLinesNeeded();
                 //GameManager._instance.PrevisualisationPointAfterLine();
                 Destroy(gameObject);
             }

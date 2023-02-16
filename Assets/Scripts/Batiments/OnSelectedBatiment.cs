@@ -25,25 +25,29 @@ public class OnSelectedBatiment : MonoBehaviour
         {
             // les lignes sont composées de 2 points :
             // on vérifie si le batiment séléctionné à un point en commun avec une ligne active
-            if (GameManager._instance._allLines[_loop]._isActive)
-            {
-                //on commence par le point A 
-                if(GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointA._intID))
-                {
-                    //et on verifie que le point b n y est pas deja
-                    if(!GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointB._intID))
-                    {
-                        //on ajoute le point B
-                        GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._allLines[_loop]._pointB._intID);
-                    }
-                }
 
-                // et on fait la meme avec le B
-                if (GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointB._intID) && !GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointA._intID))
-                {
-                    GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._allLines[_loop]._pointA._intID);
+            //on commence par le point A 
+                
+            if(GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointA._intID))                
+            {
+                    //et on verifie que le point b n y est pas deja
+                    
+                if(!GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointB._intID))                    
+                {                        
+                    //on ajoute le point B                        
+                    GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._allLines[_loop]._pointB._intID);
+                    
                 }                
             }
+                
+            // et on fait la meme avec le B                
+            if (GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointB._intID) && !GameManager._instance._visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointA._intID))
+                
+            {                    
+                GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._allLines[_loop]._pointA._intID);
+                
+            }                
+            
         }
 
         //on fait apparaitre les points en fonction de la liste
@@ -51,6 +55,10 @@ public class OnSelectedBatiment : MonoBehaviour
         {
             GameManager._instance._allPointsGO[GameManager._instance._visiblesPointsSelected[_loop]].GetComponent<PointID>().OnePointAppear();
         }
+
+        //et les lignes
+
+        GameManager._instance.ShowLinesNeeded();
     }
     public void ImNotSelected()
     {
@@ -62,6 +70,7 @@ public class OnSelectedBatiment : MonoBehaviour
 
         Debug.Log("Liste visible reset");
         GameManager._instance.HideAllPointsExceptSelected();
+        GameManager._instance.ShowLinesNeeded();
     }
 
 

@@ -153,11 +153,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void HideAllLinesExceptSelected()
+
+    public void ShowLinesNeeded()
     {
         for(int _loop = 0; _loop < _allLines.Count; _loop++)
         {
+            //si la ligne n a pas de point visible
+            if(!_visiblesPointsSelected.Contains( GameManager._instance._allLines[_loop]._pointA._intID) && !_visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointB._intID))
+            {
+                //si elle n est pas deja cachée
+                if (_allLines[_loop]._visible)
+                {
+                    _allLinesGO[_loop].GetComponent<LineAnim>().LineDisappear();
+                    _allLines[_loop]._visible = false;
+                    Debug.Log("hello");
+                }
+            }
+            else if (!_allLines[_loop]._visible)
+            {
+                _allLinesGO[_loop].GetComponent<LineAnim>().LineAppear();
+                _allLines[_loop]._visible = true;
+                Debug.Log("good bye");
 
+            }
+            Debug.Log("loop numero " + _loop + " visibility : " + _allLines[_loop]._visible);
         }
     }
 }

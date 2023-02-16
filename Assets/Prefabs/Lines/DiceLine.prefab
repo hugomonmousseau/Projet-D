@@ -192,7 +192,7 @@ MonoBehaviour:
       _state: 0
       _intID: 0
     _intID: 0
-    _isActive: 0
+    _visible: 0
   _startPosition: {x: 0, y: 0}
   _isEnd: 0
   _delayBeforeReset: 1
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultWidth: 0
-  _duration: 1
+  _duration: 0.33333334
   _appear: 0
   _disappear: 0
 --- !u!1 &8454225928089382330
