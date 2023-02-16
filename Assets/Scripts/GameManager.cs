@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         _visiblesPointsDuringLine = new List<int>();
         for (int _loop = 0; _loop < _allPoints.Count; _loop++)
         {
-            if(_point._type == _allPoints[_loop]._type)
+            if(_point._type == _allPoints[_loop]._type && !_allPoints[_loop]._connecte)
             {
                 _visiblesPointsDuringLine.Add(_allPoints[_loop]._intID);
                 _allPointsGO[_loop].GetComponent<PointID>().OnePointAppear();
