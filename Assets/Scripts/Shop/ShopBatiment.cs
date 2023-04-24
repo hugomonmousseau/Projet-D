@@ -15,6 +15,7 @@ public class ShopBatiment
 public enum Batiment
 {
     None,
+    Dé,
     Marché,
     Laboratoire,
     Autel,

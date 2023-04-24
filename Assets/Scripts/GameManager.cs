@@ -72,7 +72,9 @@ public class GameManager : MonoBehaviour
                 _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
                 if (_allPoints[_loop]._type == Type.Batiment)
                     _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._batMat;
-                else
+                else if(_allPoints[_loop]._type == Type.De)
+                    _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._diceMat;
+                else if(_allPoints[_loop]._type == Type.BatimentsPourTourelle)
                     _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._diceMat;
 
             }

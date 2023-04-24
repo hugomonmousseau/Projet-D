@@ -15,6 +15,7 @@ public enum Type
 {
     De,
     Batiment,
+    BatimentsPourTourelle,
 }
 
 public enum PointState
