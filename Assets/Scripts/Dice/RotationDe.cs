@@ -8,18 +8,17 @@ public class RotationDe : MonoBehaviour
     [SerializeField] float _force;
     Rigidbody _rb;
     Animator _anim;
-    int _actualNumber = 1;
+    [SerializeField] GameObject _base;
+
+    [Header("vfx")]
+    [SerializeField] GameObject _endJumpParticles;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("DiceBase"))
@@ -33,11 +32,16 @@ public class RotationDe : MonoBehaviour
             _anim.SetBool("face4", false);
             _anim.SetBool("face5", false);
             _anim.SetBool("face6", false);
+
+            Instantiate(_endJumpParticles, transform.position, Quaternion.Euler(0, 0, 0));
+            _base.GetComponent<DiceManager>().NumberAppear();
+            gameObject.SetActive(false);
         }
     }
     public void StartAnimDice(int _face)
     {
-        _actualNumber = _face;
+
+        _base.GetComponent<DiceManager>().NumberDisappear();
         _rb.AddForce(Vector3.up * _force);
 
         //si le dé tombe sur 1

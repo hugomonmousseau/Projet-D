@@ -5,7 +5,7 @@ using UnityEngine;
 public class BillboardsSpriteWithCamera : MonoBehaviour
 {
     Camera _mainCamera;
-
+    [SerializeField] float _addRotation;
     void Start()
     {
         _mainCamera = Camera.main;
@@ -16,6 +16,6 @@ public class BillboardsSpriteWithCamera : MonoBehaviour
     void Update()
     {
         transform.LookAt(_mainCamera.transform);
-        transform.Rotate(0, 180, 0);
+        transform.Rotate(0, 180 + _addRotation, 0);
     }
 }
