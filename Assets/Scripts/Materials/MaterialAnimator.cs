@@ -37,7 +37,8 @@ public class MaterialAnimator : MonoBehaviour
         _material = renderer.material;
 
         // Appliquez la texture 1 au matériau au démarrage
-        _material.mainTexture = _idle[0];
+        if(_idle.Count != 0)
+            _material.mainTexture = _idle[0];
         _actualList = _idle;
 
         StartCoroutine(AnimateMaterial());

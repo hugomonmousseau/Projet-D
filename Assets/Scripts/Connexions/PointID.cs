@@ -25,7 +25,7 @@ public class PointID : MonoBehaviour
     public void PointUpdate()
     {
         _point._coordonnees = new Vector2(transform.position.x, transform.position.z);
-        GameManager._instance._allPoints[_intID] = _point;
+        //GameManager._instance._allPoints[_point._intID] = _point;
     }
 
     public void OnePointAppear()

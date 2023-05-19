@@ -6,8 +6,10 @@ public class DiceManager : MonoBehaviour
 {
 
     public int _number;
+    int _face;
     public List<int> _listFaces = new List<int>();
     public float _delay = 4f;
+    [SerializeField] GameObject _dice;
 
     void Start()
     {
@@ -17,7 +19,8 @@ public class DiceManager : MonoBehaviour
 
     public int NewNumber(List<int> _list)
     {
-        return _list[Random.Range(0, _list.Count - 1)];
+        _face = Random.Range(0, _list.Count - 1);
+        return _list[_face];
     }
     
     IEnumerator NumberActualisation()
@@ -32,5 +35,8 @@ public class DiceManager : MonoBehaviour
 
         //on transmet
         GetComponent<BatimentDiceConnexion>().DiceNumberTransmission(_number);
+
+        //également au dé
+        _dice.GetComponent<RotationDe>().StartAnimDice(_face);
     }
 }

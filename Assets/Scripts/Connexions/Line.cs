@@ -28,7 +28,7 @@ public class Line : MonoBehaviour
     [Space]
     [Header("Materials")]
     public Material _diceMat;
-    public Material _batMat;
+    //public Material _batMat;
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
@@ -90,7 +90,10 @@ public class Line : MonoBehaviour
 
 
             //Debug.Log(_idPoint);
-            if (_idPoint >= 0 &&(GameManager._instance._allPoints[_idPoint]._type == _startPoint._type) && (GameManager._instance._allPoints[_idPoint]._intID != _startPoint._intID))
+            //if (_idPoint >= 0 &&(GameManager._instance._allPoints[_idPoint]._type == _startPoint._type) && (GameManager._instance._allPoints[_idPoint]._intID != _startPoint._intID))
+
+            //on test si on peut connecter les bons points
+            if(_idPoint != -1 && GameManager._instance.BonneCombinaison(GameManager._instance._allPoints[_idPoint], _startPoint) && (GameManager._instance._allPoints[_idPoint]._intID != _startPoint._intID))
             {
                 _isEnd = true;
                 _lineRenderer.SetPosition(1,new Vector3(GameManager._instance._allPoints[_idPoint]._coordonnees.x, .3f, GameManager._instance._allPoints[_idPoint]._coordonnees.y));

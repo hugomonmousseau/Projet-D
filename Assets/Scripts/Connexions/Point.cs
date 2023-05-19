@@ -14,8 +14,10 @@ public class Point
 public enum Type
 {
     De,
-    Batiment,
+    Tourelle,
     BatimentsPourTourelle,
+    DePourBatiment,
+    DePourTourelle,
 }
 
 public enum PointState

@@ -26,7 +26,11 @@ public class GameManager : MonoBehaviour
 
     [Space]
     [Header("Prefabs")]
-    [SerializeField] GameObject _diceLineConnexion;
+    [SerializeField] GameObject _lineConnexionFromDice;
+    [SerializeField] GameObject _lineConnexionFromBat;
+    [SerializeField] GameObject _lineConnexionFromTower;
+    [SerializeField] GameObject _lineConnexionForTower;
+    List<GameObject> _connexionList = new List<GameObject>();
     [SerializeField] Vector2 _taillePoint = new Vector2(.25f,.25f);
 
     [Space]
@@ -52,6 +56,10 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        _connexionList.Add(_lineConnexionFromDice);
+        _connexionList.Add(_lineConnexionFromBat);
+        _connexionList.Add(_lineConnexionFromTower);
+        _connexionList.Add(_lineConnexionForTower);
     }
 
     void Update()
@@ -67,16 +75,30 @@ public class GameManager : MonoBehaviour
             //si tu touches un point pas connecté
             if(_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && !_allPoints[_loop]._connecte)
             {
-                GameObject _newLine = Instantiate(_diceLineConnexion);
+
+                int _connexionID = 0;
+                if (_allPoints[_loop]._type == Type.De)
+                    _connexionID = 1;
+                else if (_allPoints[_loop]._type == Type.DePourBatiment || _allPoints[_loop]._type == Type.DePourTourelle)
+                    _connexionID = 2;
+                else if (_allPoints[_loop]._type == Type.Tourelle)
+                    _connexionID = 3;
+                else if (_allPoints[_loop]._type == Type.BatimentsPourTourelle)
+                    _connexionID = 4;
+
+
+
+                GameObject _newLine = Instantiate(_connexionList[_connexionID - 1]);
                 _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
                 _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
-                if (_allPoints[_loop]._type == Type.Batiment)
+                /*
+                if (_allPoints[_loop]._type == Type.Tourelle)
                     _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._batMat;
                 else if(_allPoints[_loop]._type == Type.De)
                     _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._diceMat;
                 else if(_allPoints[_loop]._type == Type.BatimentsPourTourelle)
                     _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._diceMat;
-
+                */
             }
         }
     }
@@ -120,7 +142,7 @@ public class GameManager : MonoBehaviour
         _visiblesPointsDuringLine = new List<int>();
         for (int _loop = 0; _loop < _allPoints.Count; _loop++)
         {
-            if(_point._type == _allPoints[_loop]._type && !_allPoints[_loop]._connecte)
+            if(BonneCombinaison( _point, _allPoints[_loop]) && !_allPoints[_loop]._connecte)
             {
                 _visiblesPointsDuringLine.Add(_allPoints[_loop]._intID);
                 _allPointsGO[_loop].GetComponent<PointID>().OnePointAppear();
@@ -180,6 +202,22 @@ public class GameManager : MonoBehaviour
             }
             Debug.Log("loop numero " + _loop + " visibility : " + _allLines[_loop]._visible);
         }
+    }
+    public bool BonneCombinaison(Point _pointA, Point _pointB)
+    {
+        //dé et dé pour bat
+        if ((_pointA._type == Type.De || _pointB._type == Type.De) && (_pointA._type == Type.DePourBatiment || _pointB._type == Type.DePourBatiment))
+            return true;
+
+        //dé et tourelle
+        if ((_pointA._type == Type.De || _pointB._type == Type.De) && (_pointA._type == Type.DePourTourelle || _pointB._type == Type.DePourTourelle))
+            return true;
+
+        //bat et tourelle
+        if ((_pointA._type == Type.Tourelle || _pointB._type == Type.Tourelle) && (_pointA._type == Type.BatimentsPourTourelle || _pointB._type == Type.BatimentsPourTourelle))
+            return true;
+        return false;
+
     }
 }
 

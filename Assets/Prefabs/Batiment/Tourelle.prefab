@@ -273,7 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _point:
     _coordonnees: {x: 0, y: 0}
-    _type: 0
+    _type: 3
     _connecte: 0
     _state: 0
     _intID: 0
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _point:
     _coordonnees: {x: 0, y: 0}
-    _type: 1
+    _type: 2
     _connecte: 0
     _state: 0
     _intID: 0
