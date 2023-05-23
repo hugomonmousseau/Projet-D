@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     [Header("Prévisualtisations")]
     public List<int> _visiblesPointsDuringLine;
     public List<int> _visiblesPointsSelected;
+
+    
     private void Awake()
     {
         _instance = this;
