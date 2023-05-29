@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxX: 70
-  _minX: 12.5
+  _minX: 20
   _roationSpeed: 70
-  _maxZoom: 75
+  _maxZoom: 25
   _minZoom: 10
   _camera: {fileID: 3052314566844897901}
   _zoomSpeed: 0.1
