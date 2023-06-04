@@ -11,7 +11,7 @@ public class ColorBat
 }
 public enum Colors
 {
-    Alizarin,
+    None,
     Amethyst,
     Asbestos,
     BelizeHole,
@@ -31,4 +31,5 @@ public enum Colors
     Turquoise,
     WetAsphalt,
     Wisteria,
+    Alizarin,
 }

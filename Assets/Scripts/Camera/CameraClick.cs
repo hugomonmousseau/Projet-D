@@ -17,7 +17,7 @@ public class CameraClick : MonoBehaviour
 
         //coordonné Y de la map
         _planeLD = new Plane(Vector3.down, 0f);
-        _planeConnexion = new Plane(Vector3.down, 0.3f);
+        _planeConnexion = new Plane(Vector3.down, GameManager._instance._pointHeight);
     }
 
 
@@ -58,6 +58,8 @@ public class CameraClick : MonoBehaviour
         //selection de batiments
         RaycastHit[] _results = new RaycastHit[1];
         int _hits = Physics.RaycastNonAlloc(_ray, _results);
+        if (_results[0].collider != null && GameManager._instance._userState == UserState.Default)
+            GameManager._instance.HexagoneSelection(_results[0]);
         //Debug.Log(_results[0].collider.tag);
         if (_results[0].collider != null && Input.GetMouseButtonDown(0))
         {
@@ -79,6 +81,7 @@ public class CameraClick : MonoBehaviour
             }
 
         }
+        
         else if (_results[0].collider == null && Input.GetMouseButtonDown(0))
         {
             if (GameManager._instance._lastSelection != null)

@@ -12,21 +12,4 @@ public class ShopBatiment
     public int _prixEnMagie;
     public int _prixEnSciences;
 }
-public enum Batiment
-{
-    None,
-    Dé,
-    Marché,
-    Laboratoire,
-    Autel,
-    Fabrique,
-    PierreTaillee,
-    TailleurDePierre,
-    Observatoire,
-    Maison,
-    CarriereDoree,
-    Forum,
-    Theatre,
-    EcoleDePhilosophie,
-    Puis,
-}
+

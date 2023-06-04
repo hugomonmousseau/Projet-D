@@ -8,7 +8,7 @@ public class NumberBat : MonoBehaviour
     // ce script gere les chiffres des batiments != des dés et != des tourelles
     public int _number;
 
-    [SerializeField] TextMeshPro _txt;
+    //[SerializeField] TextMeshPro _txt;
     void Start()
     {
         
@@ -21,6 +21,6 @@ public class NumberBat : MonoBehaviour
     }
     public void NumberActualisation()
     {
-        _txt.text = _number.ToString();
+        //_txt.text = _number.ToString();
     }
 }

@@ -25,7 +25,7 @@ public class BatimentDiceConnexion : MonoBehaviour
             {
                 if(GameManager._instance._allLines[_loop]._pointB._intID == GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
                 {
-                    GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<DicePointToBat>().NewNumber(_nb);
+                    GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>().NewNumber(_nb);
                 }
             }
 
@@ -34,7 +34,7 @@ public class BatimentDiceConnexion : MonoBehaviour
             {
                 if (GameManager._instance._allLines[_loop]._pointA._intID == GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
                 {
-                    GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<DicePointToBat>().NewNumber(_nb);
+                    GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>().NewNumber(_nb);
                 }
             }
             //GameManager._instance._allPointsGO[GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID].GetComponent<NumberBat>().NumberActualisation();

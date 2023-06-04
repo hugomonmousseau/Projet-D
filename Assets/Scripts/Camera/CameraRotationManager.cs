@@ -43,8 +43,13 @@ public class CameraRotationManager : MonoBehaviour
         {
             //on recup la position de la souris qd clic droit
             _lastMousePosition = _mousePosition;
+            GameManager._instance._userState = UserState.MovingTheCamera;
         }
-
+        //au relachement
+        if (Input.GetMouseButtonUp(1))
+        {
+            GameManager._instance._userState = UserState.Default;
+        }
         //tant qu on relache pas
         if (Input.GetMouseButton(1))
         {

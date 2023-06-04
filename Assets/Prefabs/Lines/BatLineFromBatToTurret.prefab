@@ -131,8 +131,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9339623, g: 0.8416333, b: 0.5242524, a: 1}
-      key1: {r: 0.4321378, g: 0.7830189, b: 0.63150203, a: 1}
+      key0: {r: 0, g: 0, b: 0, a: 1}
+      key1: {r: 0, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -212,7 +212,8 @@ MonoBehaviour:
   _connextionCutEndPoint: {fileID: 5885854745370331330}
   _cutSpeed: 0.25
   _diceMat: {fileID: 2100000, guid: 23194a54d31d0764584bb322dc4ee490, type: 2}
-  _batMat: {fileID: 2100000, guid: 73232fe4e10968a4aaed3fe69466ee40, type: 2}
+  _GOPointA: {fileID: 0}
+  _GOPointB: {fileID: 0}
 --- !u!114 &5067112322798083188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +228,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultWidth: 0
   _duration: 0.33333334
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.8190901
+      outSlope: 2.8190901
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.24999997
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _appear: 0
   _disappear: 0
 --- !u!1 &8454225928089382330

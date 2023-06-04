@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public int _numberOfLine;
     public List<LigneCo> _allLines;
     public List<GameObject> _allLinesGO;
+    [HideInInspector] public bool _alreadyALine;
+    [HideInInspector] public UserState _userState = UserState.Default;
     [Space]
     [Header("Connexion")]
     //connexion
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     //world
     public Vector2 _selectionWorldCoordonnees;
     public Vector2 _startSelectionWorldCoordonnees;
+    public float _pointHeight;
 
     [Space]
     [Header("Prefabs")]
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
     [Header("Prévisualtisations")]
     public List<int> _visiblesPointsDuringLine;
     public List<int> _visiblesPointsSelected;
+    public GameObject _hexagonSelection;
 
     
     private void Awake()
@@ -62,6 +66,8 @@ public class GameManager : MonoBehaviour
         _connexionList.Add(_lineConnexionFromBat);
         _connexionList.Add(_lineConnexionFromTower);
         _connexionList.Add(_lineConnexionForTower);
+
+        _hexagonSelection = Instantiate(_hexagonSelection);
     }
 
     void Update()
@@ -75,7 +81,7 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log(_loop);
             //si tu touches un point pas connecté
-            if(_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && !_allPoints[_loop]._connecte)
+            if(!_alreadyALine && _allPoints[_loop]._state == PointState.Visible && (_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && !_allPoints[_loop]._connecte))
             {
 
                 int _connexionID = 0;
@@ -93,14 +99,10 @@ public class GameManager : MonoBehaviour
                 GameObject _newLine = Instantiate(_connexionList[_connexionID - 1]);
                 _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
                 _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
-                /*
-                if (_allPoints[_loop]._type == Type.Tourelle)
-                    _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._batMat;
-                else if(_allPoints[_loop]._type == Type.De)
-                    _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._diceMat;
-                else if(_allPoints[_loop]._type == Type.BatimentsPourTourelle)
-                    _newLine.GetComponent<LineRenderer>().material = _newLine.GetComponent<Line>()._diceMat;
-                */
+
+                _newLine.GetComponent<Line>()._GOPointA = _allPointsGO[_loop].GetComponent<PointToBat>()._bat;
+
+                _alreadyALine = true;
             }
         }
     }
@@ -192,17 +194,17 @@ public class GameManager : MonoBehaviour
                 {
                     _allLinesGO[_loop].GetComponent<LineAnim>().LineDisappear();
                     _allLines[_loop]._visible = false;
-                    Debug.Log("hello");
+                    //Debug.Log("hello");
                 }
             }
             else if (!_allLines[_loop]._visible)
             {
                 _allLinesGO[_loop].GetComponent<LineAnim>().LineAppear();
                 _allLines[_loop]._visible = true;
-                Debug.Log("good bye");
+                //Debug.Log("good bye");
 
             }
-            Debug.Log("loop numero " + _loop + " visibility : " + _allLines[_loop]._visible);
+            //Debug.Log("loop numero " + _loop + " visibility : " + _allLines[_loop]._visible);
         }
     }
     public bool BonneCombinaison(Point _pointA, Point _pointB)
@@ -221,13 +223,25 @@ public class GameManager : MonoBehaviour
         return false;
 
     }
-}
+
+    public void HexagoneSelection(RaycastHit _raycast)
+    {
+        //_hexagonSelection.transform.position = _raycast.collider.transform.position;
+        _hexagonSelection.GetComponent<HexagoneManager>().MoveTo(_raycast.collider.transform.position);
+        //Debug.Log("transmission : " + _raycast.collider.transform.position);
+    }
+    }
 
 public enum GameState
 {
     InGame,
     Pause,
     IsBuying,
+}
+public enum UserState
+{
+    Default,
+    MovingTheCamera,
 }
 
 

@@ -91,7 +91,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "55649a8d5e4c489c90834564469f5d99"
+                    "m_Id": "27993c00fca04f91a4a31c97db61c333"
                 },
                 "m_SlotId": 1
             }
@@ -189,7 +189,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "27993c00fca04f91a4a31c97db61c333"
+                    "m_Id": "55649a8d5e4c489c90834564469f5d99"
                 },
                 "m_SlotId": 1
             }
@@ -337,10 +337,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -740.60009765625,
-            "y": 234.6000213623047,
-            "width": 0.0,
-            "height": 0.0
+            "x": -740.9999389648438,
+            "y": 639.0,
+            "width": 101.99993896484375,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -722,11 +722,11 @@
     "m_Guid": {
         "m_GuidSerialized": "52d3c7b7-9d8a-41f0-af8a-250f06c75846"
     },
-    "m_Name": "Texture2",
+    "m_Name": "ColoredTexture",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Texture2",
-    "m_DefaultReferenceName": "_Texture2",
-    "m_OverrideReferenceName": "",
+    "m_RefNameGeneratedByDisplayName": "ColoredTexture",
+    "m_DefaultReferenceName": "_ColoredTexture",
+    "m_OverrideReferenceName": "_coloredTexture",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -735,7 +735,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"8a1fb37c453e65b429101d15b520d717\",\"type\":3}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"056569461a520d74dab654a8a3dee706\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -925,11 +925,11 @@
     "m_Guid": {
         "m_GuidSerialized": "598ad0fc-4973-4f87-b2bd-0b084514771f"
     },
-    "m_Name": "Texture1",
+    "m_Name": "DefaultTexture",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Texture1",
-    "m_DefaultReferenceName": "_Texture1",
-    "m_OverrideReferenceName": "",
+    "m_RefNameGeneratedByDisplayName": "DefaultTexture",
+    "m_DefaultReferenceName": "_DefaultTexture",
+    "m_OverrideReferenceName": "_defaultTexture",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -991,7 +991,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "70536119fee74b6d97f0f9c018078706",
     "m_Id": 0,
-    "m_DisplayName": "Texture1",
+    "m_DisplayName": "DefaultTexture",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1088,7 +1088,7 @@
     "m_DefaultRefNameVersion": 1,
     "m_RefNameGeneratedByDisplayName": "Ratio",
     "m_DefaultReferenceName": "_Ratio",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_ratio",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
@@ -1109,7 +1109,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "801ecf85ba6142d79c28fd49eb6b6061",
     "m_Id": 0,
-    "m_DisplayName": "Texture2",
+    "m_DisplayName": "ColoredTexture",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1824,10 +1824,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -778.0,
-            "y": 764.0,
-            "width": 102.0,
-            "height": 34.00006103515625
+            "x": -791.9999389648438,
+            "y": 418.0,
+            "width": 101.99993896484375,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1916,9 +1916,9 @@
         "m_Position": {
             "serializedVersion": "2",
             "x": -639.0,
-            "y": 676.0,
-            "width": 208.00003051757813,
-            "height": 302.00006103515627
+            "y": 200.0,
+            "width": 208.0,
+            "height": 302.0
         }
     },
     "m_Slots": [

@@ -83,14 +83,14 @@ public class PointsManager : MonoBehaviour
             //dice 
 
             if (_dicePoint.GetComponent<PointID>()._point._connecte)
-                _freeDice = new Vector3(GameManager._instance._allPoints[_dicePoint.GetComponent<PointID>()._point._intID]._coordonnees.x, .3f, GameManager._instance._allPoints[_dicePoint.GetComponent<PointID>()._point._intID]._coordonnees.y);
+                _freeDice = new Vector3(GameManager._instance._allPoints[_dicePoint.GetComponent<PointID>()._point._intID]._coordonnees.x, GameManager._instance._pointHeight, GameManager._instance._allPoints[_dicePoint.GetComponent<PointID>()._point._intID]._coordonnees.y);
             else
                 _freeDice = new Vector3(_dicePoint.transform.position.x, transform.position.y, transform.position.z);
 
             //bat
 
             if (_batimentPoint.GetComponent<PointID>()._point._connecte)
-                _freeBat = new Vector3(GameManager._instance._allPoints[_batimentPoint.GetComponent<PointID>()._point._intID]._coordonnees.x, .3f, GameManager._instance._allPoints[_batimentPoint.GetComponent<PointID>()._point._intID]._coordonnees.y);
+                _freeBat = new Vector3(GameManager._instance._allPoints[_batimentPoint.GetComponent<PointID>()._point._intID]._coordonnees.x, GameManager._instance._pointHeight, GameManager._instance._allPoints[_batimentPoint.GetComponent<PointID>()._point._intID]._coordonnees.y);
             else
                 _freeBat = new Vector3(_batimentPoint.transform.position.x, transform.position.y, transform.position.z);
 

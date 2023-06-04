@@ -36,6 +36,15 @@ public class PointID : MonoBehaviour
     {
         GetComponent<Animator>().SetBool("IsHere", false);
     }
+
+    public void PointVisible()
+    {
+        _point._state = PointState.Visible;
+    }
+    public void PointInvisible()
+    {
+        _point._state = PointState.Hide;
+    }
 }
 
 

@@ -6,6 +6,7 @@ public class LineAnim : MonoBehaviour
 {
     [SerializeField] float _defaultWidth;
     [SerializeField] float _duration;
+    [SerializeField] AnimationCurve _curve;
     LineRenderer _line;
 
     public bool _appear;
@@ -44,7 +45,7 @@ public class LineAnim : MonoBehaviour
         while(_ratio < _duration)
         {
             _ratio += Time.deltaTime;
-            _line.startWidth = _defaultWidth * (_ratio / _duration);
+            _line.startWidth = _defaultWidth * _curve.Evaluate(_ratio / _duration);
             yield return null;
         }
     }
@@ -60,8 +61,12 @@ public class LineAnim : MonoBehaviour
         float _ratio = 0;
         while (_ratio < _duration)
         {
+            
             _ratio += Time.deltaTime;
-            _line.startWidth = _defaultWidth * (1 -_ratio / _duration);
+            _line.startWidth = _defaultWidth * _curve.Evaluate(1 - _ratio / _duration);
+            if ( _ratio>= _duration)
+                _line.startWidth = 0;
+            
             yield return null;
         }
     }

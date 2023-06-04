@@ -68,7 +68,7 @@ public class OnSelectedBatiment : MonoBehaviour
         //on refait la liste de séléction
         GameManager._instance._visiblesPointsSelected = new List<int>();
 
-        Debug.Log("Liste visible reset");
+        //Debug.Log("Liste visible reset");
         GameManager._instance.HideAllPointsExceptSelected();
         GameManager._instance.ShowLinesNeeded();
     }
