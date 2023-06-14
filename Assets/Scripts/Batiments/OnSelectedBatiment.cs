@@ -6,13 +6,12 @@ public class OnSelectedBatiment : MonoBehaviour
 {
     public bool _selected;
 
-
+    //ici on a la selection
     public void ImSelected()
     {
         //qd je séléctionne un batiment
         _selected = true;
         //GetComponent<PointsManager>().PointsAppear();
-
         //on ajoute les 2 points du batiment
         for (int _loop = 0; _loop < GetComponent<PointsManager>()._listPoints.Count; _loop++)
         {
@@ -49,12 +48,16 @@ public class OnSelectedBatiment : MonoBehaviour
             }                
             
         }
-
-        //on fait apparaitre les points en fonction de la liste
-        for (int _loop = 0; _loop < GameManager._instance._visiblesPointsSelected.Count; _loop++)
+        if(GameManager._instance._allPointsGO.Count > 0)
         {
-            GameManager._instance._allPointsGO[GameManager._instance._visiblesPointsSelected[_loop]].GetComponent<PointID>().OnePointAppear();
+            //on fait apparaitre les points en fonction de la liste
+            for (int _loop = 0; _loop < GameManager._instance._visiblesPointsSelected.Count; _loop++)
+            {
+                //Debug.Log("pts visible : " + GameManager._instance._visiblesPointsSelected.Count + " loop : " + _loop + " allPts : " + GameManager._instance._allPointsGO.Count);
+                GameManager._instance._allPointsGO[GameManager._instance._visiblesPointsSelected[_loop]].GetComponent<PointID>().OnePointAppear();
+            }
         }
+
 
         //et les lignes
 

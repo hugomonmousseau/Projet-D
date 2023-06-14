@@ -6,20 +6,20 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager _instance;
-    public GameState _gameState;
+    public GameState _gameState = GameState.Default;
     public List<Point> _allPoints;
     public List<GameObject> _allPointsGO;
     public int _numberOfLine;
     public List<LigneCo> _allLines;
     public List<GameObject> _allLinesGO;
     [HideInInspector] public bool _alreadyALine;
-    [HideInInspector] public UserState _userState = UserState.Default;
     [Space]
     [Header("Connexion")]
     //connexion
     public Vector2 _selectionConnexionCoordonnees;
     public Vector2 _startSelectionConnexionCoordonnees;
     public Vector2 _actualSelectionConnexionCoordonnees;
+    //public List<BatimentsGOList> _connexionList;
     [Space]
     [Header("World")]
     //world
@@ -27,13 +27,14 @@ public class GameManager : MonoBehaviour
     public Vector2 _startSelectionWorldCoordonnees;
     public float _pointHeight;
 
+
     [Space]
     [Header("Prefabs")]
     [SerializeField] GameObject _lineConnexionFromDice;
     [SerializeField] GameObject _lineConnexionFromBat;
     [SerializeField] GameObject _lineConnexionFromTower;
     [SerializeField] GameObject _lineConnexionForTower;
-    List<GameObject> _connexionList = new List<GameObject>();
+    List<GameObject> _lineList = new List<GameObject>();
     [SerializeField] Vector2 _taillePoint = new Vector2(.25f,.25f);
 
     [Space]
@@ -53,7 +54,8 @@ public class GameManager : MonoBehaviour
     public List<int> _visiblesPointsDuringLine;
     public List<int> _visiblesPointsSelected;
     public GameObject _hexagonSelection;
-
+    [HideInInspector] public Tile _tileWeAreLooking;
+    public Vector3 _previsualisationPosition = new Vector3(-100,0,-100);
     
     private void Awake()
     {
@@ -62,10 +64,10 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        _connexionList.Add(_lineConnexionFromDice);
-        _connexionList.Add(_lineConnexionFromBat);
-        _connexionList.Add(_lineConnexionFromTower);
-        _connexionList.Add(_lineConnexionForTower);
+        _lineList.Add(_lineConnexionFromDice);
+        _lineList.Add(_lineConnexionFromBat);
+        _lineList.Add(_lineConnexionFromTower);
+        _lineList.Add(_lineConnexionForTower);
 
         _hexagonSelection = Instantiate(_hexagonSelection);
     }
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour
 
 
 
-                GameObject _newLine = Instantiate(_connexionList[_connexionID - 1]);
+                GameObject _newLine = Instantiate(_lineList[_connexionID - 1]);
                 _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
                 _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
 
@@ -234,14 +236,12 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
+    Default,
     InGame,
     Pause,
     IsBuying,
-}
-public enum UserState
-{
-    Default,
     MovingTheCamera,
 }
+
 
 

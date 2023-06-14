@@ -45,7 +45,7 @@ public class CameraClick : MonoBehaviour
         {
             //Debug.Log(_worldPosition);
             //Debug.Log(_connexionPosition);
-            GameManager._instance._startSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x,_connexionPosition.z);
+            GameManager._instance._startSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
             GameManager._instance.NewConnexion();
         }
         if (Input.GetMouseButton(0))
@@ -58,10 +58,11 @@ public class CameraClick : MonoBehaviour
         //selection de batiments
         RaycastHit[] _results = new RaycastHit[1];
         int _hits = Physics.RaycastNonAlloc(_ray, _results);
-        if (_results[0].collider != null && GameManager._instance._userState == UserState.Default)
+        if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default)
             GameManager._instance.HexagoneSelection(_results[0]);
         //Debug.Log(_results[0].collider.tag);
-        if (_results[0].collider != null && Input.GetMouseButtonDown(0))
+        //if (_results[0].collider != null && Input.GetMouseButtonDown(0))
+        if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default && !GameManager._instance._alreadyALine)
         {
             //Debug.Log(_results[0].collider.tag);
             if (_results[0].collider.tag == "Batiment")
@@ -70,25 +71,51 @@ public class CameraClick : MonoBehaviour
                 //_results[0].collider.GetComponent<OnSelectedBatiment>()._selected = true;
 
                 //on vérifie aussi que le batiment séléctionné ne l est pas deja
-                if(GameManager._instance._lastSelection != _results[0].collider.gameObject)
+                if (GameManager._instance._lastSelection != _results[0].collider.gameObject)
                 {
                     if (GameManager._instance._lastSelection != null)
                         GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
+                    //Debug.Log(_results[0].collider.gameObject.name);
                     GameManager._instance.NewBatimentSelection(_results[0].collider.gameObject);
                 }
 
                 //on s assure des scripts présents dans le batiment
             }
 
-        }
-        
-        else if (_results[0].collider == null && Input.GetMouseButtonDown(0))
-        {
-            if (GameManager._instance._lastSelection != null)
-                GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
 
-            //qd on clic le vide
-            GameManager._instance._lastSelection = null;
+        }
+
+        //pour less tuiles
+
+        else if (_results[0].collider != null && GameManager._instance._gameState == GameState.IsBuying)
+        {
+            if (_results[0].collider.tag == "Tile")
+            {
+                GameManager._instance._tileWeAreLooking._coordonnees = _results[0].collider.transform.position;
+                GameManager._instance._tileWeAreLooking._isEmpty = _results[0].collider.GetComponent<TileID>()._tile._isEmpty;
+                
+
+
+                float _height = _results[0].collider.transform.position.y;
+                Plane _planePrevisualisation = new Plane(Vector3.down, _height);
+                Vector3 _exactPrevPos = new Vector3();
+                if (_planePrevisualisation.Raycast(_ray, out float _previsualisationPosition))
+                {
+                     _exactPrevPos = _ray.GetPoint(_previsualisationPosition);
+                }
+                GameManager._instance._previsualisationPosition = _exactPrevPos;
+            }
+            //ca n arrive jamais
+
+            else if (_results[0].collider == null && Input.GetMouseButtonDown(0))
+            {
+                if (GameManager._instance._lastSelection != null)
+                    GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
+
+                //qd on clic le vide
+                GameManager._instance._lastSelection = null;
+                Debug.Log("Urgent venir corrigé");
+            }
         }
     }
 }

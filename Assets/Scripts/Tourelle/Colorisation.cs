@@ -5,12 +5,13 @@ using UnityEngine;
 public class Colorisation : MonoBehaviour
 {
     public Colors _color;
-    [SerializeField] GameObject _colorManager;
+    GameObject _colorManager;
     List<Colors> _choiceList = new List<Colors>();
 
     [SerializeField] float _colorationDuration = 1;
     void Start()
     {
+        _colorManager = GameObject.FindGameObjectWithTag("ColorManager");
         if(GetComponent<BatimentManager>()._type == Batiment.Tourelle || GetComponent<BatimentManager>()._type == Batiment.Campement)
             RandomColor();
 

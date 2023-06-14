@@ -30,6 +30,7 @@ public class PointID : MonoBehaviour
 
     public void OnePointAppear()
     {
+        //Debug.Log("here");
         GetComponent<Animator>().SetBool("IsHere", true);
     }
     public void OnePointDisappear()

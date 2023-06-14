@@ -39,19 +39,19 @@ public class CameraRotationManager : MonoBehaviour
         Vector2 _mousePosition = Input.mousePosition;
 
         //au clic
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && GameManager._instance._gameState == GameState.Default)
         {
             //on recup la position de la souris qd clic droit
             _lastMousePosition = _mousePosition;
-            GameManager._instance._userState = UserState.MovingTheCamera;
+            GameManager._instance._gameState = GameState.MovingTheCamera;
         }
         //au relachement
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1) && GameManager._instance._gameState == GameState.MovingTheCamera)
         {
-            GameManager._instance._userState = UserState.Default;
+            GameManager._instance._gameState = GameState.Default;
         }
         //tant qu on relache pas
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && GameManager._instance._gameState == GameState.MovingTheCamera)
         {
             Vector2 _difference = _lastMousePosition - _mousePosition;
             _rotationX -= _difference.y * Time.deltaTime * _roationSpeed;
