@@ -5,6 +5,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class BatimentsGOList
 {
-    public List<GameObject> _batiments;
+    public GameObject _batiment;
+    public GameObject _coDice;
+
 }
 

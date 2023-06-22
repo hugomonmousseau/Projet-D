@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ColorManager : MonoBehaviour
 {
-    public List<BatimentsGOList> _colorList;
     public List<ColorBat> _batColorList;
     public List<TierList> _tierList;
     void Start()

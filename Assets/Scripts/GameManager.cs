@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
     public Vector2 _selectionConnexionCoordonnees;
     public Vector2 _startSelectionConnexionCoordonnees;
     public Vector2 _actualSelectionConnexionCoordonnees;
-    //public List<BatimentsGOList> _connexionList;
+    public List<MainBatimentsGOList> _connexionList;
+    public List<BatimentsGOList> _waitingCoBatiments;
+    public BatimentsGOList _tempSimpleBat;
+    public MainBatimentsGOList _tempMainBat;
     [Space]
     [Header("World")]
     //world
@@ -30,11 +33,12 @@ public class GameManager : MonoBehaviour
 
     [Space]
     [Header("Prefabs")]
-    [SerializeField] GameObject _lineConnexionFromDice;
-    [SerializeField] GameObject _lineConnexionFromBat;
-    [SerializeField] GameObject _lineConnexionFromTower;
-    [SerializeField] GameObject _lineConnexionForTower;
-    List<GameObject> _lineList = new List<GameObject>();
+    //[SerializeField] GameObject _lineConnexionFromDice;
+    //[SerializeField] GameObject _lineConnexionFromBat;
+    //[SerializeField] GameObject _lineConnexionFromTower;
+    //[SerializeField] GameObject _lineConnexionForTower;
+    //List<GameObject> _lineList = new List<GameObject>();
+    [SerializeField] GameObject _line;
     [SerializeField] Vector2 _taillePoint = new Vector2(.25f,.25f);
 
     [Space]
@@ -64,10 +68,12 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        /*
         _lineList.Add(_lineConnexionFromDice);
         _lineList.Add(_lineConnexionFromBat);
         _lineList.Add(_lineConnexionFromTower);
         _lineList.Add(_lineConnexionForTower);
+        */
 
         _hexagonSelection = Instantiate(_hexagonSelection);
     }
@@ -83,9 +89,9 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log(_loop);
             //si tu touches un point pas connecté
-            if(!_alreadyALine && _allPoints[_loop]._state == PointState.Visible && (_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && !_allPoints[_loop]._connecte))
+            if(!_alreadyALine && _allPoints[_loop]._state == PointState.Visible && (_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && (!_allPoints[_loop]._connecte || _allPoints[_loop]._type == Type.Tourelle)))
             {
-
+                /*
                 int _connexionID = 0;
                 if (_allPoints[_loop]._type == Type.De)
                     _connexionID = 1;
@@ -99,6 +105,9 @@ public class GameManager : MonoBehaviour
 
 
                 GameObject _newLine = Instantiate(_lineList[_connexionID - 1]);
+                */
+
+                GameObject _newLine = Instantiate(_line);
                 _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
                 _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
 
@@ -137,9 +146,12 @@ public class GameManager : MonoBehaviour
 
     public void NewBatimentSelection(GameObject _batiment)
     {
-
-        _lastSelection = _batiment;
-        _lastSelection.GetComponent<OnSelectedBatiment>().ImSelected();
+        if(_batiment != _lastSelection)
+        {
+            _lastSelection = _batiment;
+            _lastSelection.GetComponent<OnSelectedBatiment>().ImSelected();
+            ShowLinesNeeded();
+        }
     }
 
     //void appelée pour afficher les points pendant qu on trace une ligne
@@ -156,19 +168,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //void appelée apres avoir tiré la ligne
-    public void PrevisualisationPointAfterLine()
-    {
-        for(int _loop = 0; _loop < _visiblesPointsDuringLine.Count; _loop++)
-        {
-            //si le point n°x N est PAS présent dans la liste des points visibles par séléction
-            if (! _visiblesPointsSelected.Contains(_visiblesPointsDuringLine[_loop]))
-            {
-                //Debug.Log("je dois faire disparaitre le point : " + _visiblesPointsDuringLine[_loop]);
-                _allPointsGO[_visiblesPointsDuringLine[_loop]].GetComponent<PointID>().OnePointDisappear();
-            }
-        }
-    }
+    
 
 
     public void HideAllPointsExceptSelected()
@@ -186,10 +186,12 @@ public class GameManager : MonoBehaviour
 
     public void ShowLinesNeeded()
     {
+
+        
         for(int _loop = 0; _loop < _allLines.Count; _loop++)
         {
             //si la ligne n a pas de point visible
-            if(!_visiblesPointsSelected.Contains( GameManager._instance._allLines[_loop]._pointA._intID) && !_visiblesPointsSelected.Contains(GameManager._instance._allLines[_loop]._pointB._intID))
+            if(!_visiblesPointsSelected.Contains(_allLines[_loop]._pointA._intID) && !_visiblesPointsSelected.Contains(_allLines[_loop]._pointB._intID))
             {
                 //si elle n est pas deja cachée
                 if (_allLines[_loop]._visible)
@@ -207,7 +209,9 @@ public class GameManager : MonoBehaviour
 
             }
             //Debug.Log("loop numero " + _loop + " visibility : " + _allLines[_loop]._visible);
+            
         }
+        
     }
     public bool BonneCombinaison(Point _pointA, Point _pointB)
     {
@@ -215,9 +219,6 @@ public class GameManager : MonoBehaviour
         if ((_pointA._type == Type.De || _pointB._type == Type.De) && (_pointA._type == Type.DePourBatiment || _pointB._type == Type.DePourBatiment))
             return true;
 
-        //dé et tourelle
-        if ((_pointA._type == Type.De || _pointB._type == Type.De) && (_pointA._type == Type.DePourTourelle || _pointB._type == Type.DePourTourelle))
-            return true;
 
         //bat et tourelle
         if ((_pointA._type == Type.Tourelle || _pointB._type == Type.Tourelle) && (_pointA._type == Type.BatimentsPourTourelle || _pointB._type == Type.BatimentsPourTourelle))
@@ -232,7 +233,83 @@ public class GameManager : MonoBehaviour
         _hexagonSelection.GetComponent<HexagoneManager>().MoveTo(_raycast.collider.transform.position);
         //Debug.Log("transmission : " + _raycast.collider.transform.position);
     }
+
+
+
+    public void WhoIsConnectedTry1(GameObject _mainBat, GameObject _diceBat)
+    {
+
+        //tant que on est pas            
+        //le dé ne peut pas etre deja connecté
+
+        for (int _loop = 0; _loop < _connexionList.Count; _loop++)
+        {
+
+            //si il est deja dans la liste                
+            if (_connexionList[_loop]._mainBatiment == _mainBat)
+            {
+                _connexionList[_loop]._coDice = _diceBat;
+            }
+        }
     }
+    public void WhoIsConnectedTry2(GameObject _mainBat, GameObject _simpleBat)
+    {
+        //1) soit le bat est dans la waiting list
+        //2) soit il ne l est pas
+        _tempSimpleBat = new BatimentsGOList();
+        _tempSimpleBat._batiment = _simpleBat;
+        for (int _loop = 0; _loop < _waitingCoBatiments.Count; _loop++)
+        {
+            if (_waitingCoBatiments[_loop]._batiment == _simpleBat)
+            {
+                _tempSimpleBat._coDice = _waitingCoBatiments[_loop]._coDice;
+
+                _waitingCoBatiments.RemoveAt(_loop);
+            }
+        }
+
+        for (int _loop = 0; _loop < _connexionList.Count; _loop++)
+        {
+            if (_connexionList[_loop]._mainBatiment == _mainBat)
+            {
+                if(_connexionList[_loop]._coBatiments == null)
+                    _connexionList[_loop]._coBatiments = new List<BatimentsGOList>();
+                _connexionList[_loop]._coBatiments.Add(_tempSimpleBat);
+            }
+        }
+
+    }
+    public void WhoIsConnectedTry3(GameObject _dice, GameObject _simpleBat)
+    {
+        //1) soit le bat est lié à un main bat            
+        //2) soit il l est pas
+        bool _newCoBat = true;
+
+        _tempSimpleBat = new BatimentsGOList();
+        for (int _loop = 0; _loop < _connexionList.Count; _loop++)
+        {
+            if (_connexionList[_loop]._coBatiments != null)
+            {
+                for (int _group = 0; _group < _connexionList[_loop]._coBatiments.Count; _group++)
+                {
+                    if (_connexionList[_loop]._coBatiments[_group]._batiment == _simpleBat && _newCoBat)
+                    {
+                        _newCoBat = !_newCoBat;
+                        _connexionList[_loop]._coBatiments[_group]._coDice = _dice;
+                    }
+                }
+            }
+
+        }
+
+        //si il n est pas deja présent
+        _tempSimpleBat._batiment = _simpleBat;
+        _tempSimpleBat._coDice = _dice;
+        _waitingCoBatiments.Add(_tempSimpleBat);
+
+    }
+}
+
 
 public enum GameState
 {

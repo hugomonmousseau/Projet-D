@@ -724,8 +724,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 5
+    _batimentGO: {fileID: 8062830233313287560, guid: 8d62ecef2cb3b61448925ad47edc701e,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -1069,8 +1069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 4
+    _batimentGO: {fileID: 3950613630377339622, guid: b074d5dc18232b14ba580374d4aae7b8,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -2084,8 +2084,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 3
+    _batimentGO: {fileID: 1873332466274713143, guid: 200be5ff1bc614e4ebe01b049a190a68,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -4984,8 +4984,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 7
+    _batimentGO: {fileID: 327993070364229887, guid: 484143975e94e2245a3d22a40a605d21,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -5141,8 +5141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 13
+    _batimentGO: {fileID: 9005662578157730479, guid: 574e37c15654f8a47a4e6b8577e69ac5,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -5863,8 +5863,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 9
+    _batimentGO: {fileID: 8052168150907200450, guid: 2ab7261fda804834a8c14b8bdd8893ca,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -7171,8 +7171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 14
+    _batimentGO: {fileID: 1465735578810926561, guid: e32442b5a594d2c46a4b90bfadcc561f,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -7328,8 +7328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 17
+    _batimentGO: {fileID: 7249597257107646436, guid: c68021e84293001488759bce191b13dc,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -8147,8 +8147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 10
+    _batimentGO: {fileID: 3388148886645500552, guid: 46e4374936f239648b252f4a2942e7a9,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}
@@ -8911,8 +8911,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slot:
-    _batiment: 18
-    _batimentGO: {fileID: 2916728193621449557, guid: a2b7059b9b7cd934e86a926550397cc6,
+    _batiment: 8
+    _batimentGO: {fileID: 7031699336117220604, guid: 35bdf34b096a18844b884b6acddab8a5,
       type: 3}
     _prixEnOr: 10
   _buttonManager: {fileID: 8799436575999471620}

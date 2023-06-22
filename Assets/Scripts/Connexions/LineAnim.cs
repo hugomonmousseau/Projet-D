@@ -9,28 +9,10 @@ public class LineAnim : MonoBehaviour
     [SerializeField] AnimationCurve _curve;
     LineRenderer _line;
 
-    public bool _appear;
-    public bool _disappear;
-
     void Start()
     {
         _line = GetComponent<LineRenderer>();
         _defaultWidth = _line.startWidth;
-    }
-
-    private void Update()
-    {
-        if (_appear)
-        {
-            _appear = false;
-            LineAppear();
-        }
-
-        if (_disappear)
-        {
-            _disappear = false;
-            LineDisappear();
-        }
     }
 
     public void LineAppear()

@@ -17,7 +17,6 @@ public enum Type
     Tourelle,
     BatimentsPourTourelle,
     DePourBatiment,
-    DePourTourelle,
 }
 
 public enum PointState

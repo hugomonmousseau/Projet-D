@@ -5,12 +5,22 @@ using UnityEngine;
 public class BatimentManager : MonoBehaviour
 {
     public Batiment _type;
+    public BatHierarchie _hierarchy;
 
+    MainBatimentsGOList _tempMainBat = new MainBatimentsGOList();
 
+    private void Start()
+    {
+        if(_hierarchy == BatHierarchie.MainBat)
+        {
+            _tempMainBat._mainBatiment = gameObject;
+            GameManager._instance._connexionList.Add(_tempMainBat);
 
+        }
+    }
 
-    
 }
+
 public enum Batiment
 {
     None,
@@ -34,4 +44,11 @@ public enum Batiment
     Pierre,
     Temple,
     Tourelle,
+}
+
+public enum BatHierarchie
+{
+    SimpleBat,
+    MainBat,
+    Dice,
 }

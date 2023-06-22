@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5493607371402979625}
   - component: {fileID: 6165420719018421705}
   m_Layer: 0
-  m_Name: DicePoint
+  m_Name: DicePointB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e52862e24207ebc4cb5eabe5a7ce0785, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a915c52c4bba6a642874f0ea62783dc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _point:
     _coordonnees: {x: 0, y: 0}
-    _type: 0
+    _type: 3
     _connecte: 0
     _state: 0
     _intID: 0

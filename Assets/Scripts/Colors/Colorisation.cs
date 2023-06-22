@@ -8,11 +8,14 @@ public class Colorisation : MonoBehaviour
     GameObject _colorManager;
     List<Colors> _choiceList = new List<Colors>();
 
+    //entre 0 et 1 avec 1 = 100%
+    float _ratioMax = 1;
+
     [SerializeField] float _colorationDuration = 1;
     void Start()
     {
         _colorManager = GameObject.FindGameObjectWithTag("ColorManager");
-        if(GetComponent<BatimentManager>()._type == Batiment.Tourelle || GetComponent<BatimentManager>()._type == Batiment.Campement)
+        if(GetComponent<BatimentManager>()._hierarchy == BatHierarchie.MainBat)
             RandomColor();
 
     }
@@ -72,12 +75,37 @@ public class Colorisation : MonoBehaviour
             {
                 for (int _loop = 0; _loop < GetComponent<MaterialSwitcherColor>()._listRenderer.Count; _loop++)
                 {
-                    if(GetComponent<BatimentManager>()._type == Batiment.Tourelle || GetComponent<BatimentManager>()._type == Batiment.Campement)
-                        GetComponent<MaterialSwitcherColor>()._listRenderer[_loop].material.mainTexture = _colorManager.GetComponent<ColorManager>()._batColorList[_loopMat]._texture;
-                    else
+                    GetComponent<MaterialSwitcherColor>()._listRenderer[_loop].material.SetTexture("_coloredTexture", _colorManager.GetComponent<ColorManager>()._batColorList[_loopMat]._texture);
+                    StartCoroutine(ColorTransition(_loop));
+                }
+
+                //on change aussi les points
+                //on cherche la couleur des points
+                for (int _tier = 0; _tier < _colorManager.GetComponent<ColorManager>()._tierList.Count; _tier++)
+                {
+                    for(int _color = 0; _color < _colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier.Count; _color++)
                     {
-                        GetComponent<MaterialSwitcherColor>()._listRenderer[_loop].material.SetTexture("_coloredTexture", _colorManager.GetComponent<ColorManager>()._batColorList[_loopMat]._texture);
-                        StartCoroutine(ColorTransition(_loop));
+                        if(_colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._color == _colorManager.GetComponent<ColorManager>()._batColorList[_loopMat]._color)
+                        {
+                            //Debug.Log(_colorManager.GetComponent<ColorManager>()._batColorList[_loopMat]._color);
+                            //Debug.Log(_colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._PointColor);
+                            if (GetComponent<PointsManager>()._dicePoint != null)
+                                if(GetComponent<Colorisation>()._color != GetComponent<PointsManager>()._dicePoint.GetComponent<ColorPointChanger>()._colorName)
+                                {
+                                    GetComponent<PointsManager>()._dicePoint.GetComponent<ColorPointChanger>().Colorisation(_colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._PointColor);
+                                    GetComponent<PointsManager>()._dicePoint.GetComponent<ColorPointChanger>()._colorName = _colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._color;
+
+                                }
+                            if (GetComponent<PointsManager>()._batimentPoint != null)
+                                if (GetComponent<Colorisation>()._color != GetComponent<PointsManager>()._batimentPoint.GetComponent<ColorPointChanger>()._colorName)
+                                {
+                                    {
+                                        GetComponent<PointsManager>()._batimentPoint.GetComponent<ColorPointChanger>().Colorisation(_colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._PointColor);
+                                        GetComponent<PointsManager>()._batimentPoint.GetComponent<ColorPointChanger>()._colorName = _colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._color;
+
+                                    }
+                                }
+                        }
                     }
                 }
             }
@@ -85,7 +113,7 @@ public class Colorisation : MonoBehaviour
     }
     public void Decolor()
     {
-        if (!(GetComponent<BatimentManager>()._type == Batiment.Tourelle) || !(GetComponent<BatimentManager>()._type == Batiment.Campement))
+        if (!(GetComponent<BatimentManager>()._hierarchy == BatHierarchie.MainBat))
         {
             for (int _loop = 0; _loop < GetComponent<MaterialSwitcherColor>()._listRenderer.Count; _loop++)
             {
@@ -101,7 +129,7 @@ public class Colorisation : MonoBehaviour
         {
             _time += Time.deltaTime;
 
-            GetComponent<MaterialSwitcherColor>()._listRenderer[_id].material.SetFloat("_ratio", _time / _colorationDuration);
+            GetComponent<MaterialSwitcherColor>()._listRenderer[_id].material.SetFloat("_ratio", _ratioMax * _time / _colorationDuration);
             yield return null;
 
         }
@@ -113,7 +141,7 @@ public class Colorisation : MonoBehaviour
         {
             _time += Time.deltaTime;
 
-            GetComponent<MaterialSwitcherColor>()._listRenderer[_id].material.SetFloat("_ratio",1 -( _time / _colorationDuration));
+            GetComponent<MaterialSwitcherColor>()._listRenderer[_id].material.SetFloat("_ratio",1 -(_ratioMax * _time / _colorationDuration));
 
             if (_time >= _colorationDuration)
             {
