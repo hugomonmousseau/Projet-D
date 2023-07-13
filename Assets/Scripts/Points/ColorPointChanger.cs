@@ -40,5 +40,6 @@ public class ColorPointChanger : MonoBehaviour
 
             yield return null;
         }
+        _color = _newColor;
     }
 }

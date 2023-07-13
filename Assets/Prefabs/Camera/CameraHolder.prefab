@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314eea4d48fdaf34999cc6cc18f4cc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxX: 85
+  _maxX: 65
   _minX: 10
   _roationSpeed: 70
   _maxZoom: 25

@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    public LigneCo _line;
-    LineRenderer _lineRenderer;
-    [HideInInspector] public Vector2 _startPosition;
-    public bool _isEnd;
-    bool _destruction;
-    bool _destrucionBeginAtStart;
-    float _duration;
-    [SerializeField] float _delayBeforeReset;
 
     [Space]
     [Header("Points")]
@@ -24,6 +16,7 @@ public class Line : MonoBehaviour
     [SerializeField] Transform _connextionCutEndPoint;
     Vector3 _velocity = Vector3.zero;
     [SerializeField] float _cutSpeed;
+    [SerializeField] GameObject _loadingGO;
 
     [Space]
     [Header("Materials")]
@@ -39,6 +32,21 @@ public class Line : MonoBehaviour
     public BatimentsGOList _tempSimpleBat;
     public MainBatimentsGOList _tempMainBat;
     //public Material _batMat;
+
+    [Header("local Variables")]
+
+    public LigneCo _line;
+    LineRenderer _lineRenderer;
+    [HideInInspector] public Vector2 _startPosition;
+    public bool _isEnd;
+    bool _destruction;
+    bool _destrucionBeginAtStart;
+    float _duration;
+    [SerializeField] float _delayBeforeReset;
+    bool _isConnected;
+    GameObject _tempLoadingGO;
+
+
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
@@ -51,7 +59,6 @@ public class Line : MonoBehaviour
 
     void Update()
     {
-
 
         if (!_isEnd && !_destruction)
             _lineRenderer.SetPosition(1, new Vector3(GameManager._instance._selectionConnexionCoordonnees.x, GameManager._instance._pointHeight, GameManager._instance._selectionConnexionCoordonnees.y));
@@ -72,12 +79,34 @@ public class Line : MonoBehaviour
                 }
             }
 
-
-            if (Input.GetMouseButton(0) && _idPoint >= 0)
-                _duration += Time.deltaTime;
-
-            if (Input.GetMouseButtonUp(0) || _idPoint == -1)
+            if (Input.GetMouseButtonDown(0) && _idPoint >= 0 && _duration < 0)
+            {
                 _duration = 0;
+            }
+
+                
+            if (Input.GetMouseButton(0) && !GameManager._instance._alreadyALine && (_idPoint == _startPoint._intID || _idPoint == _endPoint._intID))
+            {
+                _duration += Time.deltaTime;
+                if (_tempLoadingGO == null && GameManager._instance._allPointsGO[_idPoint].GetComponent<PointID>()._point._connecte)
+                {
+                    _tempLoadingGO = Instantiate(_loadingGO, GameManager._instance._allPointsGO[_idPoint].transform.position, Quaternion.identity);
+                    _tempLoadingGO.GetComponent<SpriteRenderer>().color = GameManager._instance._allPointsGO[_idPoint].GetComponent<SpriteRenderer>().color;
+                }
+                else if (_tempLoadingGO != null)
+                    _tempLoadingGO.GetComponent<LoadingScript>()._time += Time.deltaTime;
+
+            }
+
+            else if (!Input.GetMouseButton(0))
+            {
+
+                _duration -= Time.deltaTime * 2 / 3;
+                if (_tempLoadingGO != null)
+                    _tempLoadingGO.GetComponent<LoadingScript>()._time -= Time.deltaTime * 2 / 3;
+            }
+
+            
         }
         else if (_destruction)
         {
@@ -149,7 +178,7 @@ public class Line : MonoBehaviour
                 NewConnexion();
 
                 //on doit trouver sa couleur
-                Debug.Log(_GOPointA.GetComponent<Colorisation>()._color);
+                //Debug.Log(_GOPointA.GetComponent<Colorisation>()._color);
                 //aller la chercher dans le manager
                 GameObject _ColorManager = GameObject.FindGameObjectWithTag("ColorManager");
                 for(int _tier = 0; _tier < _ColorManager.GetComponent<ColorManager>()._tierList.Count; _tier++)
@@ -157,7 +186,9 @@ public class Line : MonoBehaviour
                     for(int _color = 0; _color < _ColorManager.GetComponent<ColorManager>()._tierList[_tier]._tier.Count; _color++)
                     {
                         if (_ColorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._color == _GOPointA.GetComponent<Colorisation>()._color)
-                            GetComponent<LineColorisation>().LineNewColor(_ColorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._appearance);
+                        {
+                            GetComponent<LineColorisation>().LineNewColor(_ColorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._color);
+                        }
                     }
                 }
             }
@@ -197,6 +228,7 @@ public class Line : MonoBehaviour
     IEnumerator LastActionBeforeDestruction(float _delay)
     {
         DeleteConnexion();
+        Destroy(_tempLoadingGO);
         yield return new WaitForSeconds(_delay * 2.5f);
         _startPoint._connecte = false;
         _endPoint._connecte = false;
@@ -222,49 +254,52 @@ public class Line : MonoBehaviour
     public void ColorNewConnexion()
     {
         //test point a puis b
-        if (_GOPointA.GetComponent<BatimentManager>()._type == Batiment.Tourelle || _GOPointA.GetComponent<BatimentManager>()._type == Batiment.Campement)
+        if (_GOPointA.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.MainBat)
         {
             //si c est bon on transmet l info au b
             _GOPointB.GetComponent<Colorisation>()._color = _GOPointA.GetComponent<Colorisation>()._color;
             _GOPointB.GetComponent<Colorisation>().NewColor();
 
 
-
-            if (_GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._connecte)
+            if(_GOPointB.GetComponent<PointsManager>()._dicePoint != null)
             {
-                for (int _loop = 0; _loop < GameManager._instance._allLines.Count; _loop++)
+
+                if (_GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._connecte)
                 {
-                    if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                    for (int _loop = 0; _loop < GameManager._instance._allLines.Count; _loop++)
                     {
-                        GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>()._color = _GOPointA.GetComponent<Colorisation>()._color;
-                        GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().NewColor();
-                    }
-                    if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
-                    {
-                        GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>()._color = _GOPointA.GetComponent<Colorisation>()._color;
-                        GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().NewColor();
+                        if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                        {
+                            GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>()._color = _GOPointA.GetComponent<Colorisation>()._color;
+                            GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().NewColor();
+                        }
+                        if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                        {
+                            GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>()._color = _GOPointA.GetComponent<Colorisation>()._color;
+                            GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().NewColor();
+                        }
                     }
                 }
             }
 
         }
 
-        else if (_GOPointB.GetComponent<BatimentManager>()._type == Batiment.Tourelle || _GOPointB.GetComponent<BatimentManager>()._type == Batiment.Campement)
+        else if (_GOPointB.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.MainBat)
         {
             //si c est bon on transmet l info au b
             _GOPointA.GetComponent<Colorisation>()._color = _GOPointB.GetComponent<Colorisation>()._color;
             _GOPointA.GetComponent<Colorisation>().NewColor();
 
-            if (_GOPointA.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._connecte)
+            if (_GOPointA.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._connecte)
             {
                 for (int _loop = 0; _loop < GameManager._instance._allLines.Count; _loop++)
                 {
-                    if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointA.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                    if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointA.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._intID)
                     {
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>()._color = _GOPointB.GetComponent<Colorisation>()._color;
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().NewColor();
                     }
-                    if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointA.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                    if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointA.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._intID)
                     {
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>()._color = _GOPointB.GetComponent<Colorisation>()._color;
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().NewColor();
@@ -293,7 +328,7 @@ public class Line : MonoBehaviour
     public void ColorDeconnexion()
     {
         //test point a puis b
-        if (_GOPointA.GetComponent<BatimentManager>()._type == Batiment.Tourelle || _GOPointA.GetComponent<BatimentManager>()._type == Batiment.Campement)
+        if (_GOPointA.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.MainBat)
         {
             //si c est bon on transmet l info au b
             _GOPointB.GetComponent<Colorisation>().Decolor();
@@ -318,7 +353,7 @@ public class Line : MonoBehaviour
 
         }
 
-        else if (_GOPointB.GetComponent<BatimentManager>()._type == Batiment.Tourelle || _GOPointB.GetComponent<BatimentManager>()._type == Batiment.Campement)
+        else if (_GOPointB.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.MainBat)
         {
             //si c est bon on transmet l info au b
             _GOPointA.GetComponent<Colorisation>().Decolor();
@@ -405,39 +440,6 @@ public class Line : MonoBehaviour
         } 
     
     }
-        /*
-        public void NewConnexion()
-        {
-
-            bool _newColor = true;
-            //on tests tous les groupes
-            for(int _loop = 0; _loop < GameManager._instance._connexionList.Count; _loop++)
-            {
-                //on test chaque element du groupe
-                for(int _group = 0; _group < GameManager._instance._connexionList[_loop]._batiments.Count; _group ++)
-                {
-                    if (GameManager._instance._connexionList[_loop]._batiments.Contains(_GOPointA) && _newColor)
-                    {
-                        GameManager._instance._connexionList[_loop]._batiments.Add(_GOPointB);
-                        _newColor = false;
-                    }
-                    else if(GameManager._instance._connexionList[_loop]._batiments.Contains(_GOPointB) && _newColor)
-                    {
-                        GameManager._instance._connexionList[_loop]._batiments.Add(_GOPointA);
-                        _newColor = false;
-                    }
-                }
-            }
-
-            if (_newColor)
-            {
-                _bat._batiments = new List<GameObject>();
-                _bat._batiments.Add(_GOPointA);
-                _bat._batiments.Add(_GOPointB);
-                GameManager._instance._connexionList.Add(_bat);
-            }       
-
-        }*/
 
         
     public void DeleteConnexion()
@@ -469,20 +471,25 @@ public class Line : MonoBehaviour
         //3) ici on vire les 2 de la waiting liste si ils y sont sinon on vire le dé de la liste
         if (_GOPointA.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.Dice && _GOPointB.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.SimpleBat)
         {
-
+            DeleteConnexionCas3(_GOPointB, _GOPointA);
         }
         else if (_GOPointB.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.Dice && _GOPointA.GetComponent<BatimentManager>()._hierarchy == BatHierarchie.SimpleBat)
         {
+            DeleteConnexionCas3(_GOPointA, _GOPointB);
 
         }
     }
-
+    //public void Colorisation(Color _newColor)
     void DeleteConnexionCas1(GameObject _mainBat)
     {
         for(int _loop = 0; _loop < GameManager._instance._connexionList.Count; _loop++)
         {
             if (_mainBat == GameManager._instance._connexionList[_loop]._mainBatiment)
+            {
+                //on decolor les points concernés
+                DecolorationPoints(GameManager._instance._connexionList[_loop]._coDice);
                 GameManager._instance._connexionList[_loop]._coDice = null;
+            }
         }
     }
     void DeleteConnexionCas2(GameObject _mainBat, GameObject _simpleBat)
@@ -501,18 +508,60 @@ public class Line : MonoBehaviour
                             //ici c est si il est co a un dé
                             //et on les rajoute a la waiting list
                             GameManager._instance._waitingCoBatiments.Add(GameManager._instance._connexionList[_loop]._coBatiments[_group]);
+
+                            //il a un dé
+                            DecolorationPoints(GameManager._instance._connexionList[_loop]._coBatiments[_group]._coDice);
+                            //il faut décoloré leur ligne commune
+                            for(int _line = 0; _line < GameManager._instance._allLinesGO.Count; _line++)
+                            {
+                                if(GameManager._instance._allLinesGO[_line].GetComponent<Line>()._GOPointA == _simpleBat || GameManager._instance._allLinesGO[_line].GetComponent<Line>()._GOPointB == _simpleBat)
+                                {
+                                    GameManager._instance._allLinesGO[_line].GetComponent<LineColorisation>().LineNewColor(Colors.None);
+                                }
+                            }
                         }
 
+                        DecolorationPoints(GameManager._instance._connexionList[_loop]._coBatiments[_group]._batiment);
                         GameManager._instance._connexionList[_loop]._coBatiments.Remove(GameManager._instance._connexionList[_loop]._coBatiments[_group]);
                     }
                 }
             }
         }
     }
-    void DeleteConnexionCas3(GameObject _mainBat, GameObject _dice)
+    void DeleteConnexionCas3(GameObject _simpleBat, GameObject _dice)
     {
+        //soit il le simple bat est co à un main bat
+        for(int _loop = 0; _loop < GameManager._instance._connexionList.Count; _loop++)
+        {
+            for(int _group = 0; _group < GameManager._instance._connexionList[_loop]._coBatiments.Count; _group++)
+            {
+                if(_simpleBat == GameManager._instance._connexionList[_loop]._coBatiments[_group]._batiment)
+                {
+                    _isConnected = true;
+                    DecolorationPoints(GameManager._instance._connexionList[_loop]._coBatiments[_group]._coDice);
+                    GameManager._instance._connexionList[_loop]._coBatiments[_group]._coDice = null ;
 
+                }
+            }
+        }
+        if (!_isConnected)
+        {
+            for(int _tier = 0; _tier < GameManager._instance._waitingCoBatiments.Count; _tier++)
+            {
+                if(_simpleBat == GameManager._instance._waitingCoBatiments[_tier]._batiment)
+                {
+                    GameManager._instance._waitingCoBatiments.Remove(GameManager._instance._waitingCoBatiments[_tier]);
+                }
+            }
+        }
     }
 
-
+    void DecolorationPoints(GameObject _bat)
+    {
+        for(int _loop = 0; _loop < _bat.GetComponent<PointsManager>()._listPoints.Count; _loop++)
+        {
+            _bat.GetComponent<PointsManager>()._listPoints[_loop].GetComponent<ColorPointChanger>().Colorisation(Color.white);
+            _bat.GetComponent<PointsManager>()._listPoints[_loop].GetComponent<ColorPointChanger>()._colorName = Colors.None;
+        }
+    }
 }

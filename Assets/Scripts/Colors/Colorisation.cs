@@ -124,8 +124,11 @@ public class Colorisation : MonoBehaviour
 
     IEnumerator ColorTransition(int _id)
     {
+
         float _time = 0;
-        while (_time < _colorationDuration)
+        if (GetComponent<BatimentManager>()._hierarchy == BatHierarchie.MainBat)
+            _time = _colorationDuration;
+        while (_time <= _colorationDuration)
         {
             _time += Time.deltaTime;
 

@@ -6,7 +6,11 @@ public class TilePrevisualisation : MonoBehaviour
 {
     [SerializeField] float _range;
     [SerializeField] Vector3 _position;
-
+    float _maxScale;
+    private void Start()
+    {
+        _maxScale = transform.localScale.x;
+    }
     void Update()
     {
         //entre 0 et 1
@@ -16,7 +20,7 @@ public class TilePrevisualisation : MonoBehaviour
         float _scale = (1 - Mathf.Pow(_distance / _range,2));
         if (_scale < 0)
             _scale = 0;
-        transform.localScale = new Vector3(_scale, _scale, _scale);
+        transform.localScale = new Vector3(_scale * _maxScale, _scale * _maxScale, _scale * _maxScale);
 
         _position = GameManager._instance._previsualisationPosition;
     }

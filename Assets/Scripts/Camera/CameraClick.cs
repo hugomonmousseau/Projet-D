@@ -91,19 +91,20 @@ public class CameraClick : MonoBehaviour
         {
             if (_results[0].collider.tag == "Tile")
             {
-                GameManager._instance._tileWeAreLooking._coordonnees = _results[0].collider.transform.position;
-                GameManager._instance._tileWeAreLooking._isEmpty = _results[0].collider.GetComponent<TileID>()._tile._isEmpty;
-                
+                GameManager._instance._tileWeAreLooking = _results[0].collider.GetComponent<TileID>()._tile;
 
 
+                /*
                 float _height = _results[0].collider.transform.position.y;
                 Plane _planePrevisualisation = new Plane(Vector3.down, _height);
+                
                 Vector3 _exactPrevPos = new Vector3();
                 if (_planePrevisualisation.Raycast(_ray, out float _previsualisationPosition))
                 {
                      _exactPrevPos = _ray.GetPoint(_previsualisationPosition);
                 }
                 GameManager._instance._previsualisationPosition = _exactPrevPos;
+                */
             }
             //ca n arrive jamais
 
@@ -117,5 +118,16 @@ public class CameraClick : MonoBehaviour
                 Debug.Log("Urgent venir corrigé");
             }
         }
+
+
+        //test
+        Plane _planePrevisualisation = new Plane(Vector3.down, GameManager._instance._pointHeight);
+
+        Vector3 _exactPrevPos = new Vector3();
+        if (_planePrevisualisation.Raycast(_ray, out float _previsualisationPosition))
+        {
+            _exactPrevPos = _ray.GetPoint(_previsualisationPosition);
+        }
+        GameManager._instance._previsualisationPosition = _exactPrevPos;
     }
 }

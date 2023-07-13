@@ -12,7 +12,18 @@ public class Previsualisations : MonoBehaviour
     public void DeathRattle()
     {
         if(_type == PrevisualisationType.Good)
-            Instantiate(_batimentAfterPrevisualisation,GameManager._instance._tileWeAreLooking._coordonnees, transform.rotation);
+        {
+            Instantiate(_batimentAfterPrevisualisation, GameManager._instance._tileWeAreLooking._coordonnees, transform.rotation);
+
+            for (int _loop = 0; _loop < GameObject.FindGameObjectWithTag("LevelManager").GetComponent<TileManager>()._tilesList.Count; _loop++)
+            {
+                if (GameObject.FindGameObjectWithTag("LevelManager").GetComponent<TileManager>()._tilesList[_loop].GetComponent<TileID>()._id == GameManager._instance._tileWeAreLooking._id)
+                {
+                    //Debug.Log("tile : " + GameManager._instance._tileWeAreLooking._id + " loop : " + _loop);
+                    GameObject.FindGameObjectWithTag("LevelManager").GetComponent<TileManager>()._tilesList[_loop].GetComponent<TileID>()._tile._isEmpty = false;
+                }
+            }
+        }
         Destroy(gameObject);
     }
 

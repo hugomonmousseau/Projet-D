@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class Wave
 {
     public int _maxDelay;
+    public GameObject _boat;
     public List<Units> _wave;
 
 }

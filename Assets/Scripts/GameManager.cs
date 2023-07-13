@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        ShowLinesNeeded();
     }
 
     public void NewConnexion()
@@ -91,21 +91,6 @@ public class GameManager : MonoBehaviour
             //si tu touches un point pas connecté
             if(!_alreadyALine && _allPoints[_loop]._state == PointState.Visible && (_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && (!_allPoints[_loop]._connecte || _allPoints[_loop]._type == Type.Tourelle)))
             {
-                /*
-                int _connexionID = 0;
-                if (_allPoints[_loop]._type == Type.De)
-                    _connexionID = 1;
-                else if (_allPoints[_loop]._type == Type.DePourBatiment || _allPoints[_loop]._type == Type.DePourTourelle)
-                    _connexionID = 2;
-                else if (_allPoints[_loop]._type == Type.Tourelle)
-                    _connexionID = 3;
-                else if (_allPoints[_loop]._type == Type.BatimentsPourTourelle)
-                    _connexionID = 4;
-
-
-
-                GameObject _newLine = Instantiate(_lineList[_connexionID - 1]);
-                */
 
                 GameObject _newLine = Instantiate(_line);
                 _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
@@ -114,6 +99,8 @@ public class GameManager : MonoBehaviour
                 _newLine.GetComponent<Line>()._GOPointA = _allPointsGO[_loop].GetComponent<PointToBat>()._bat;
 
                 _alreadyALine = true;
+                //Debug.Log(_allPointsGO[_loop].GetComponent<ColorPointChanger>()._colorName);
+                _newLine.GetComponent<LineColorisation>().StartColor(_allPointsGO[_loop].GetComponent<ColorPointChanger>()._colorName);
             }
         }
     }
@@ -150,7 +137,6 @@ public class GameManager : MonoBehaviour
         {
             _lastSelection = _batiment;
             _lastSelection.GetComponent<OnSelectedBatiment>().ImSelected();
-            ShowLinesNeeded();
         }
     }
 
@@ -265,6 +251,15 @@ public class GameManager : MonoBehaviour
                 _tempSimpleBat._coDice = _waitingCoBatiments[_loop]._coDice;
 
                 _waitingCoBatiments.RemoveAt(_loop);
+
+                //on coleur leur ligne aussi
+                for(int _line = 0; _line < _allLinesGO.Count; _line++)
+                {
+                    if(_allLinesGO[_line].GetComponent<Line>()._GOPointA == _simpleBat || _allLinesGO[_line].GetComponent<Line>()._GOPointB == _simpleBat)
+                    {
+                        _allLinesGO[_line].GetComponent<LineColorisation>().LineNewColor(_simpleBat.GetComponent<Colorisation>()._color);
+                    }
+                }
             }
         }
 
@@ -301,13 +296,17 @@ public class GameManager : MonoBehaviour
             }
 
         }
+        if (_newCoBat)
+        {
 
-        //si il n est pas deja présent
-        _tempSimpleBat._batiment = _simpleBat;
-        _tempSimpleBat._coDice = _dice;
-        _waitingCoBatiments.Add(_tempSimpleBat);
+            //si il n est pas deja présent
+            _tempSimpleBat._batiment = _simpleBat;
+            _tempSimpleBat._coDice = _dice;
+            _waitingCoBatiments.Add(_tempSimpleBat);
+        }
 
     }
+
 }
 
 

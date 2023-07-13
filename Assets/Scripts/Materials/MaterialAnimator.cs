@@ -126,6 +126,16 @@ public class MaterialAnimator : MonoBehaviour
     private void Update()
     {
         NewState();
+        SpriteRotation();
+    }
+
+    void SpriteRotation()
+    {
+        transform.LookAt(new Vector3( Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z));
+        if (transform.localRotation.y > 0)
+            transform.localScale = new Vector3(-1, 1, 1);
+        else
+            transform.localScale = new Vector3(1, 1, 1);
     }
 
 }

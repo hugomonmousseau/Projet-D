@@ -114,7 +114,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.045
+    widthMultiplier: 0.0225
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -179,6 +179,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b502e827876ebbe418731a80e0f6a860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPoint:
+    _coordonnees: {x: 0, y: 0}
+    _type: 0
+    _connecte: 0
+    _state: 0
+    _intID: 0
+  _endPoint:
+    _coordonnees: {x: 0, y: 0}
+    _type: 0
+    _connecte: 0
+    _state: 0
+    _intID: 0
+  _connextionCutPoint: {fileID: 1743878436677413421}
+  _connextionCutEndPoint: {fileID: 5885854745370331330}
+  _cutSpeed: 0.25
+  _loadingGO: {fileID: 3352481093850016489, guid: 8b80784f4752e7941b8320e01a5f73c3,
+    type: 3}
+  _diceMat: {fileID: 2100000, guid: 23194a54d31d0764584bb322dc4ee490, type: 2}
+  _GOPointA: {fileID: 0}
+  _GOPointB: {fileID: 0}
+  _tempSimpleBat:
+    _batiment: {fileID: 0}
+    _coDice: {fileID: 0}
+  _tempMainBat:
+    _mainBatiment: {fileID: 0}
+    _coDice: {fileID: 0}
+    _coBatiments: []
   _line:
     _pointA:
       _coordonnees: {x: 0, y: 0}
@@ -197,31 +224,6 @@ MonoBehaviour:
   _startPosition: {x: 0, y: 0}
   _isEnd: 0
   _delayBeforeReset: 1
-  _startPoint:
-    _coordonnees: {x: 0, y: 0}
-    _type: 0
-    _connecte: 0
-    _state: 0
-    _intID: 0
-  _endPoint:
-    _coordonnees: {x: 0, y: 0}
-    _type: 0
-    _connecte: 0
-    _state: 0
-    _intID: 0
-  _connextionCutPoint: {fileID: 1743878436677413421}
-  _connextionCutEndPoint: {fileID: 5885854745370331330}
-  _cutSpeed: 0.25
-  _diceMat: {fileID: 2100000, guid: 23194a54d31d0764584bb322dc4ee490, type: 2}
-  _GOPointA: {fileID: 0}
-  _GOPointB: {fileID: 0}
-  _tempSimpleBat:
-    _batiment: {fileID: 0}
-    _coDice: {fileID: 0}
-  _tempMainBat:
-    _mainBatiment: {fileID: 0}
-    _coDice: {fileID: 0}
-    _coBatiments: []
 --- !u!114 &5067112322798083188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,8 +271,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _appear: 0
-  _disappear: 0
 --- !u!114 &3919975446624409277
 MonoBehaviour:
   m_ObjectHideFlags: 0

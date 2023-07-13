@@ -6,7 +6,7 @@ public class TileID : MonoBehaviour
 {
     public Tile _tile;
     GameObject _levelManager;
-    int _id;
+    public int _id;
     void Start()
     {
         _levelManager = GameObject.FindGameObjectWithTag("LevelManager");

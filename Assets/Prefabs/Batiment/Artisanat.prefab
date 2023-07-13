@@ -402,9 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dicePoint: {fileID: 0}
   _batimentPoint: {fileID: 0}
-  _listPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  _listPoints: []
   _nbPointsConnectes: 0
   _centre: {fileID: 2626248841430001562}
   _diceCote: {fileID: 2626248842349580400}
