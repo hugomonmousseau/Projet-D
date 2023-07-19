@@ -45,15 +45,15 @@ public class CameraClick : MonoBehaviour
         {
             //Debug.Log(_worldPosition);
             //Debug.Log(_connexionPosition);
-            GameManager._instance._startSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
+            GameManager._instance._startSelectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
             GameManager._instance.NewConnexion();
         }
         if (Input.GetMouseButton(0))
         {
-            GameManager._instance._selectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
-            GameManager._instance._selectionWorldCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
+            GameManager._instance._selectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
+            GameManager._instance._selectionWorldCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
         }
-        GameManager._instance._actualSelectionConnexionCoordonnees = new Vector2(_connexionPosition.x, _connexionPosition.z);
+        GameManager._instance._actualSelectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
 
         //selection de batiments
         RaycastHit[] _results = new RaycastHit[1];
@@ -61,7 +61,11 @@ public class CameraClick : MonoBehaviour
         if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default)
             GameManager._instance.HexagoneSelection(_results[0]);
         if (_results[0].collider != null)
-            Debug.Log(_results[0].collider.name);
+        {
+            //Debug.Log(_results[0].collider.name);
+
+            _planeConnexion = new Plane(Vector3.down,_results[0].collider.transform.position.y + GameManager._instance._pointHeight);
+        }
         //if (_results[0].collider != null && Input.GetMouseButtonDown(0))
         if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default && !GameManager._instance._alreadyALine)
         {

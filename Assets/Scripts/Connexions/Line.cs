@@ -37,7 +37,7 @@ public class Line : MonoBehaviour
 
     public LigneCo _line;
     LineRenderer _lineRenderer;
-    [HideInInspector] public Vector2 _startPosition;
+    [HideInInspector] public Vector3 _startPosition;
     public bool _isEnd;
     bool _destruction;
     bool _destrucionBeginAtStart;
@@ -50,8 +50,8 @@ public class Line : MonoBehaviour
     void Start()
     {
         _lineRenderer = GetComponent<LineRenderer>();
-        _lineRenderer.SetPosition(0, new Vector3(_startPosition.x, GameManager._instance._pointHeight, _startPosition.y));
-        _lineRenderer.SetPosition(1, new Vector3(_startPosition.x, GameManager._instance._pointHeight, _startPosition.y));
+        _lineRenderer.SetPosition(0, new Vector3(_startPosition.x, _startPosition.y, _startPosition.z));
+        _lineRenderer.SetPosition(1, new Vector3(_startPosition.x, _startPosition.y, _startPosition.z));
         GameManager._instance.PrevisualisationPointDuringLine(_startPoint);
 
 
@@ -59,9 +59,9 @@ public class Line : MonoBehaviour
 
     void Update()
     {
-
+        //previsualisation
         if (!_isEnd && !_destruction)
-            _lineRenderer.SetPosition(1, new Vector3(GameManager._instance._selectionConnexionCoordonnees.x, GameManager._instance._pointHeight, GameManager._instance._selectionConnexionCoordonnees.y));
+            _lineRenderer.SetPosition(1, new Vector3(GameManager._instance._selectionConnexionCoordonnees.x, GameManager._instance._actualSelectionConnexionCoordonnees.y, GameManager._instance._selectionConnexionCoordonnees.z));
         //is end
         else if (_isEnd && !_destruction)
         {
@@ -111,9 +111,9 @@ public class Line : MonoBehaviour
         else if (_destruction)
         {
             if (_destrucionBeginAtStart)
-                _lineRenderer.SetPosition(0, new Vector3(_connextionCutPoint.position.x, GameManager._instance._pointHeight, _connextionCutPoint.position.z));
+                _lineRenderer.SetPosition(0, new Vector3(_connextionCutPoint.position.x, _connextionCutPoint.position.y, _connextionCutPoint.position.z));
             else
-                _lineRenderer.SetPosition(1, new Vector3(_connextionCutPoint.position.x, GameManager._instance._pointHeight, _connextionCutPoint.position.z));
+                _lineRenderer.SetPosition(1, new Vector3(_connextionCutPoint.position.x, _connextionCutPoint.position.y, _connextionCutPoint.position.z));
 
             _connextionCutPoint.position = Vector3.SmoothDamp(_connextionCutPoint.position, _connextionCutEndPoint.position, ref _velocity, _cutSpeed);
 
@@ -143,7 +143,7 @@ public class Line : MonoBehaviour
             if (_idPoint != -1 && GameManager._instance.BonneCombinaison(GameManager._instance._allPoints[_idPoint], _startPoint) && (GameManager._instance._allPoints[_idPoint]._intID != _startPoint._intID))
             {
                 _isEnd = true;
-                _lineRenderer.SetPosition(1, new Vector3(GameManager._instance._allPoints[_idPoint]._coordonnees.x, GameManager._instance._pointHeight, GameManager._instance._allPoints[_idPoint]._coordonnees.y));
+                _lineRenderer.SetPosition(1, new Vector3(GameManager._instance._allPoints[_idPoint]._coordonnees.x, GameManager._instance._allPoints[_idPoint]._coordonnees.y, GameManager._instance._allPoints[_idPoint]._coordonnees.z));
                 _endPoint = GameManager._instance._allPoints[_idPoint];
 
                 _startPoint._connecte = true;
@@ -216,13 +216,13 @@ public class Line : MonoBehaviour
         {
             //cad que la connexion se coupe par le debut
             _destrucionBeginAtStart = true;
-            _connextionCutPoint.position = new Vector3(_startPoint._coordonnees.x, GameManager._instance._pointHeight, _startPoint._coordonnees.y);
-            _connextionCutEndPoint.position = new Vector3(_endPoint._coordonnees.x, GameManager._instance._pointHeight, _endPoint._coordonnees.y);
+            _connextionCutPoint.position = new Vector3(_startPoint._coordonnees.x, _startPoint._coordonnees.y, _startPoint._coordonnees.z);
+            _connextionCutEndPoint.position = new Vector3(_endPoint._coordonnees.x, _endPoint._coordonnees.y, _endPoint._coordonnees.z);
         }
         else
         {
-            _connextionCutPoint.position = new Vector3(_endPoint._coordonnees.x, GameManager._instance._pointHeight, _endPoint._coordonnees.y);
-            _connextionCutEndPoint.position = new Vector3(_startPoint._coordonnees.x, GameManager._instance._pointHeight, _startPoint._coordonnees.y);
+            _connextionCutPoint.position = new Vector3(_endPoint._coordonnees.x, _endPoint._coordonnees.y, _endPoint._coordonnees.z);
+            _connextionCutEndPoint.position = new Vector3(_startPoint._coordonnees.x, _startPoint._coordonnees.y, _startPoint._coordonnees.z);
         }
     }
     IEnumerator LastActionBeforeDestruction(float _delay)

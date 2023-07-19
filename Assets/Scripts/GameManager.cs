@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
     [Space]
     [Header("Connexion")]
     //connexion
-    public Vector2 _selectionConnexionCoordonnees;
-    public Vector2 _startSelectionConnexionCoordonnees;
-    public Vector2 _actualSelectionConnexionCoordonnees;
+    public Vector3 _selectionConnexionCoordonnees;
+    public Vector3 _startSelectionConnexionCoordonnees;
+    public Vector3 _actualSelectionConnexionCoordonnees;
     public List<MainBatimentsGOList> _connexionList;
     public List<BatimentsGOList> _waitingCoBatiments;
     public BatimentsGOList _tempSimpleBat;
@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     [Space]
     [Header("World")]
     //world
-    public Vector2 _selectionWorldCoordonnees;
-    public Vector2 _startSelectionWorldCoordonnees;
+    public Vector3 _selectionWorldCoordonnees;
+    //public Vector3 _startSelectionWorldCoordonnees;
     public float _pointHeight;
 
 
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log(_loop);
             //si tu touches un point pas connecté
-            if(!_alreadyALine && _allPoints[_loop]._state == PointState.Visible && (_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _startSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _startSelectionConnexionCoordonnees.y + _taillePoint.y && (!_allPoints[_loop]._connecte || _allPoints[_loop]._type == Type.Tourelle)))
+            if(!_alreadyALine && _allPoints[_loop]._state == PointState.Visible && (_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.z > _startSelectionConnexionCoordonnees.z - _taillePoint.y && _allPoints[_loop]._coordonnees.z < _startSelectionConnexionCoordonnees.z + _taillePoint.y && (!_allPoints[_loop]._connecte || _allPoints[_loop]._type == Type.Tourelle)))
             {
 
                 GameObject _newLine = Instantiate(_line);
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
     {
         for (int _loop = 0; _loop < _allPoints.Count; _loop++)
         {
-            if (_allPoints[_loop]._coordonnees.x > _selectionConnexionCoordonnees.x - _taillePoint.x && _allPoints[_loop]._coordonnees.x < _selectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _selectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _selectionConnexionCoordonnees.y + _taillePoint.y && !_allPoints[_loop]._connecte)
+            if (_allPoints[_loop]._coordonnees.x > _selectionConnexionCoordonnees.x - _taillePoint.x && _allPoints[_loop]._coordonnees.x < _selectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.z > _selectionConnexionCoordonnees.z - _taillePoint.y && _allPoints[_loop]._coordonnees.z < _selectionConnexionCoordonnees.z + _taillePoint.y && !_allPoints[_loop]._connecte)
             {
                 //Debug.Log(_loop);
                 return _loop;
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
     {
         for (int _loop = 0; _loop < _allPoints.Count; _loop++)
         {
-            if (_allPoints[_loop]._coordonnees.x > _actualSelectionConnexionCoordonnees.x - _taillePoint.x && _allPoints[_loop]._coordonnees.x < _actualSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.y > _actualSelectionConnexionCoordonnees.y - _taillePoint.y && _allPoints[_loop]._coordonnees.y < _actualSelectionConnexionCoordonnees.y + _taillePoint.y)
+            if (_allPoints[_loop]._coordonnees.x > _actualSelectionConnexionCoordonnees.x - _taillePoint.x && _allPoints[_loop]._coordonnees.x < _actualSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.z > _actualSelectionConnexionCoordonnees.z - _taillePoint.y && _allPoints[_loop]._coordonnees.z < _actualSelectionConnexionCoordonnees.z + _taillePoint.y)
             {
                 return _loop;
             }

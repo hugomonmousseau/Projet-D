@@ -13,7 +13,7 @@ public class PointID : MonoBehaviour
     void Start()
     {
         //init point
-        _point._coordonnees = new Vector2(transform.position.x, transform.position.z);
+        _point._coordonnees = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
         _gameManager = GameObject.FindGameObjectWithTag("GameController");
         _intID = GameManager._instance._allPoints.Count;
@@ -24,7 +24,7 @@ public class PointID : MonoBehaviour
 
     public void PointUpdate()
     {
-        _point._coordonnees = new Vector2(transform.position.x, transform.position.z);
+        _point._coordonnees = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         //GameManager._instance._allPoints[_point._intID] = _point;
     }
 
