@@ -334,16 +334,16 @@ public class Line : MonoBehaviour
             _GOPointB.GetComponent<Colorisation>().Decolor();
             _GOPointB.GetComponent<Colorisation>()._color = Colors.None;
 
-            if (_GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._connecte)
+            if (_GOPointB.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._connecte)
             {
                 for (int _loop = 0; _loop < GameManager._instance._allLines.Count; _loop++)
                 {
-                    if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                    if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointB.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._intID)
                     {
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().Decolor();
                         _GOPointB.GetComponent<Colorisation>()._color = Colors.None;
                     }
-                    if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointB.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                    if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointB.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._intID)
                     {
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().Decolor();
                         _GOPointB.GetComponent<Colorisation>()._color = Colors.None;
@@ -359,16 +359,16 @@ public class Line : MonoBehaviour
             _GOPointA.GetComponent<Colorisation>().Decolor();
             _GOPointA.GetComponent<Colorisation>()._color = Colors.None;
 
-            if (_GOPointA.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._connecte)
+            if (_GOPointA.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._connecte)
             {
                 for (int _loop = 0; _loop < GameManager._instance._allLines.Count; _loop++)
                 {
-                    if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointA.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                    if (GameManager._instance._allLines[_loop]._pointA._intID == _GOPointA.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._intID)
                     {
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointB._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().Decolor();
                         _GOPointA.GetComponent<Colorisation>()._color = Colors.None;
                     }
-                    if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointA.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._point._intID)
+                    if (GameManager._instance._allLines[_loop]._pointB._intID == _GOPointA.GetComponent<PointsManager>()._listPoints[0].GetComponent<PointID>()._point._intID)
                     {
                         GameManager._instance._allPointsGO[GameManager._instance._allLines[_loop]._pointA._intID].GetComponent<PointToBat>()._bat.GetComponent<Colorisation>().Decolor();
                         _GOPointA.GetComponent<Colorisation>()._color = Colors.None;

@@ -7,17 +7,22 @@ public class UnitSpawner : MonoBehaviour
     public List<GameObject> _unitList;
     [SerializeField] float _spawnDelay;
     [SerializeField] float _boatSpeed;
+    [SerializeField] int _pathID;
     public GameObject _boat;
     [SerializeField] GameObject _spawnTile;
     [SerializeField] Transform _endPositon;
+    [SerializeField] GameObject _hex;
+
     Vector3 _ref = Vector3.zero;
     bool _inMovement = true;
+    Animator _anim;
 
     int _unitSpawned;
     void Start()
     {
         //Debug.Log(_unitList.Count);
         //Debug.Log((int)5 / 2);
+        _anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -44,12 +49,13 @@ public class UnitSpawner : MonoBehaviour
         _boat.transform.position = Vector3.SmoothDamp(_boat.transform.position, _endPositon.position, ref _ref, 1 / _boatSpeed * 10);
         //_rb.velocity = _boat.transform.forward * _boatSpeed;
         //_boatSpeed -= _boatSpeed / 5000;
-        SpawnUnits();
+        
     }
     public void EndOfMovement()
     {
         _inMovement = false;
-
+        SpawnUnits();
+        StartCoroutine(DissolveAnimation());
     }
 
     void UnitPrevisualisation()
@@ -63,12 +69,16 @@ public class UnitSpawner : MonoBehaviour
             
             _unitList[_loop].transform.position = _boat.GetComponent<Boat>()._boatPoints[0].position * _ratio + _boat.GetComponent<Boat>()._boatPoints[1].position * (1 - _ratio);
         }
-        for (int _loop = 0; _loop < _unitList.Count-_nbUnitsOnFirstSide; _loop++)
+        if(_unitList.Count > 1)
         {
-            float _ratio = (float)_loop / _nbUnitsOnFirstSide;
+            for (int _loop = 0; _loop < _unitList.Count - _nbUnitsOnFirstSide; _loop++)
+            {
+                float _ratio = (float)_loop / _nbUnitsOnFirstSide;
 
-            _unitList[_nbUnitsOnFirstSide + _loop].transform.position = _boat.GetComponent<Boat>()._boatPoints[2].position * _ratio + _boat.GetComponent<Boat>()._boatPoints[3].position * (1 - _ratio);
+                _unitList[_nbUnitsOnFirstSide + _loop].transform.position = _boat.GetComponent<Boat>()._boatPoints[2].position * _ratio + _boat.GetComponent<Boat>()._boatPoints[3].position * (1 - _ratio);
+            }
         }
+            
 
     }
     void SpawnUnits()
@@ -82,6 +92,17 @@ public class UnitSpawner : MonoBehaviour
     IEnumerator SpawningUnit(int _id)
     {
         yield return new WaitForSeconds(_id * _spawnDelay);
+
+        _unitList[_id].GetComponent<Unit>()._pathID = _pathID;
+        _unitList[_id].GetComponent<Unit>()._endTilePosition = new Vector2(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[0].transform.position.x, GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[0].transform.position.z);
+        _unitList[_id].GetComponent<Unit>().Spawn(_unitList[_id].transform.position,_unitList[_id].transform.localScale);
         //spawn
+    }
+
+    IEnumerator DissolveAnimation()
+    {
+        yield return new WaitForSeconds(_spawnDelay * (_unitList.Count));
+        _hex.transform.position = new Vector3( _boat.transform.position.x , _boat.transform.position.y + (3/4f) , _boat.transform.position.z);
+        _anim.SetBool("Sink",true);
     }
 }

@@ -131,12 +131,25 @@ public class MaterialAnimator : MonoBehaviour
 
     void SpriteRotation()
     {
-        transform.LookAt(new Vector3( Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z));
-        if (transform.localRotation.y > 0)
+        Vector3 _direction = transform.position - new Vector3(Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z);
+        Quaternion _rotation = Quaternion.LookRotation(_direction, Vector3.forward);
+
+        // Convertir la rotation en degrés
+        Vector3 _rotationEulerAngles = _rotation.eulerAngles;
+        float _rotationAngle = _rotationEulerAngles.y;
+
+        //Debug.Log("Rotation en degrés : " + _rotationAngle + " Add rotation : " + GetComponentInParent<Unit>().transform.localEulerAngles.y);
+        //Debug.Log("Rotation en degrés : " + (_rotationAngle - GetComponentInParent<Unit>().transform.localEulerAngles.y));
+        if ((_rotationAngle - GetComponentInParent<Unit>().transform.localEulerAngles.y < 0 && _rotationAngle - GetComponentInParent<Unit>().transform.localEulerAngles.y > -180) || _rotationAngle - GetComponentInParent<Unit>().transform.localEulerAngles.y > 180)
             transform.localScale = new Vector3(-1, 1, 1);
         else
             transform.localScale = new Vector3(1, 1, 1);
+
+        transform.LookAt(new Vector3( Camera.main.transform.position.x, transform.position.y, Camera.main.transform.position.z));
+
+        
     }
+
 
 }
 
