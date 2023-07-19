@@ -60,7 +60,8 @@ public class CameraClick : MonoBehaviour
         int _hits = Physics.RaycastNonAlloc(_ray, _results);
         if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default)
             GameManager._instance.HexagoneSelection(_results[0]);
-        //Debug.Log(_results[0].collider.tag);
+        if (_results[0].collider != null)
+            Debug.Log(_results[0].collider.name);
         //if (_results[0].collider != null && Input.GetMouseButtonDown(0))
         if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default && !GameManager._instance._alreadyALine)
         {

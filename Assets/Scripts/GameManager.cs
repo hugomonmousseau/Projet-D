@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     //world
     public Vector2 _selectionWorldCoordonnees;
     public Vector2 _startSelectionWorldCoordonnees;
-    public List<float> _pointHeight;
+    public float _pointHeight;
 
 
     [Space]
