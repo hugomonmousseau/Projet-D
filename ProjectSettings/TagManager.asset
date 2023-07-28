@@ -11,6 +11,7 @@ TagManager:
   - LevelManager
   - ColorManager
   - End
+  - Unit
   layers:
   - Default
   - TransparentFX

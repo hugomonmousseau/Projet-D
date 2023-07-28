@@ -5,23 +5,33 @@ using UnityEngine;
 public class TourelleManager : MonoBehaviour
 {
     //public TurretStats _stats;
-
+    [Header("Stats")]
     public int _damage;
     public int _range;
     public int _AOE;
     public int _ricochet;
-    public int _attackSpeed;
+    public float _attackSpeed;
     public int _dmgPourcentMaxHP;
+
+    [Space]
+    [Header("fx")]
+    public Transform _focus;
+    public Transform _pivot;
+    public Transform _muzzleSpawn;
+    public GameObject _muzzle;
+    public GameObject _bullet;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
     }
+
+
 }
 
 public enum TurretStats

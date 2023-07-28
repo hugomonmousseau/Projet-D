@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314eea4d48fdaf34999cc6cc18f4cc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxX: 65
+  _maxX: 85
   _minX: 10
   _roationSpeed: 70
   _maxZoom: 25
@@ -96,8 +96,8 @@ Camera:
   m_GameObject: {fileID: 3052314566844897888}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

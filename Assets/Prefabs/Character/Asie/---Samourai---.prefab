@@ -181,9 +181,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7965213554602685706}
   - component: {fileID: 1533277440068567193}
+  - component: {fileID: -5306625695895116058}
   m_Layer: 0
   m_Name: ---Samourai---
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,6 +218,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitSpeed: 0
+  _hp: 3
+  _distanceFromCrystal: 0
+  _size: 0.2
+  _spawnDuration: 0.5
   _curve:
     serializedVersion: 2
     m_Curve:
@@ -252,3 +257,19 @@ MonoBehaviour:
     m_RotationOrder: 4
   _startTilePosition: {x: 0, y: 0}
   _endTilePosition: {x: 0, y: 0}
+  _pathID: 0
+  _actualTile: 0
+--- !u!136 &-5306625695895116058
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965213554602685707}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075
+  m_Height: 0.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.125, z: 0}

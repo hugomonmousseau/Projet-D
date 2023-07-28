@@ -32,7 +32,7 @@ public class TirautomatiqueTourelle : MonoBehaviour
         //tir
         _newBullet.transform.LookAt(_focus);
         Rigidbody _rb = _newBullet.GetComponent<Rigidbody>();
-        _rb.velocity = _newBullet.transform.forward * _newBullet.GetComponent<BulletScipt>()._speed;
+        _rb.velocity = _newBullet.transform.forward * _newBullet.GetComponent<BulletScript>()._speed;
 
 
         StartCoroutine(Shoot());

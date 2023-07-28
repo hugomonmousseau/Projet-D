@@ -14,7 +14,7 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField] GameObject _hex;
 
     Vector3 _ref = Vector3.zero;
-    bool _inMovement = true;
+    public bool _inMovement;
     Animator _anim;
 
     int _unitSpawned;
@@ -23,7 +23,10 @@ public class UnitSpawner : MonoBehaviour
         //Debug.Log(_unitList.Count);
         //Debug.Log((int)5 / 2);
         _anim = GetComponent<Animator>();
+        _inMovement = false;
+
     }
+
 
     void Update()
     {
@@ -96,13 +99,21 @@ public class UnitSpawner : MonoBehaviour
         _unitList[_id].GetComponent<Unit>()._pathID = _pathID;
         _unitList[_id].GetComponent<Unit>()._endTilePosition = new Vector2(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[0].transform.position.x, GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[0].transform.position.z);
         _unitList[_id].GetComponent<Unit>().Spawn(_unitList[_id].transform.position,_unitList[_id].transform.localScale);
+        StartCoroutine(WaitBeforegettingAttack(_unitList[_id]));
         //spawn
+    }
+
+    IEnumerator WaitBeforegettingAttack(GameObject _unit)
+    {
+        yield return new WaitForSeconds(_unit.GetComponent<Unit>()._spawnDuration);
+        GameObject.FindGameObjectWithTag("LevelManager").GetComponent<WavesManager>()._unitsAlive.Add(_unit);
+
     }
 
     IEnumerator DissolveAnimation()
     {
         yield return new WaitForSeconds(_spawnDelay * (_unitList.Count));
-        _hex.transform.position = new Vector3( _boat.transform.position.x , _boat.transform.position.y + (3/4f) , _boat.transform.position.z);
+        //_hex.transform.position = new Vector3( _boat.transform.position.x , _boat.transform.position.y + (3/4f) , _boat.transform.position.z);
         _anim.SetBool("Sink",true);
     }
 }

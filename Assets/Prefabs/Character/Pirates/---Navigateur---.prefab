@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7712902913371581090}
   - component: {fileID: 5927268109070223982}
+  - component: {fileID: -2001827200628688654}
   m_Layer: 0
   m_Name: ---Navigateur---
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +47,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitSpeed: 13
+  _hp: 3
+  _distanceFromCrystal: 0
+  _size: 0.2
+  _spawnDuration: 0.5
   _curve:
     serializedVersion: 2
     m_Curve:
@@ -83,6 +88,20 @@ MonoBehaviour:
   _endTilePosition: {x: 0, y: 0}
   _pathID: 0
   _actualTile: 0
+--- !u!136 &-2001827200628688654
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712902913371581091}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075
+  m_Height: 0.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.125, z: 0}
 --- !u!1 &7712902913609126937
 GameObject:
   m_ObjectHideFlags: 0

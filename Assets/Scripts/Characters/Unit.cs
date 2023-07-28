@@ -5,13 +5,17 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     public int _unitSpeed;
-    float _spawnDuration = .5f;
-    [SerializeField] AnimationCurve _curve;
-    public Vector2 _startTilePosition;
-    public Vector2 _endTilePosition;
+    public int _hp = 3;
+    public float _distanceFromCrystal;
+    public float _size = .25f;
 
-    public int _pathID;
-    public int _actualTile;
+    [HideInInspector] public float _spawnDuration = .5f;
+    [SerializeField] AnimationCurve _curve;
+    [HideInInspector] public Vector2 _startTilePosition;
+    [HideInInspector] public Vector2 _endTilePosition;
+
+    [HideInInspector] public int _pathID;
+    [HideInInspector] public int _actualTile;
     void Start()
     {
         //StartCoroutine(NextStep());
@@ -21,7 +25,6 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     IEnumerator NextStep()
@@ -44,7 +47,6 @@ public class Unit : MonoBehaviour
 
         StartCoroutine(NextStep());
     }
-
     public void Spawn(Vector3 _origin, Vector3 _scale)
     {
         StartCoroutine(SpawnCoroutine(_origin,_scale));
@@ -63,6 +65,24 @@ public class Unit : MonoBehaviour
 
         StartCoroutine(NextStep());
 
+    }
+
+    [ContextMenu("Mort")]
+    public void Dead()
+    {
+        GameObject.FindGameObjectWithTag("LevelManager").GetComponent<WavesManager>()._unitsAlive.Remove(gameObject);
+    }
+    [ContextMenu("DistanceUpdate")]
+    public void DistanceUpdate()
+    {
+        _distanceFromCrystal = 0;
+        _distanceFromCrystal += Mathf.Sqrt(Mathf.Pow(transform.position.x - GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile].transform.position.x, 2) + Mathf.Pow(transform.position.z - GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile].transform.position.z, 2));
+        //Debug.Log(_distanceFromCrystal);
+        for (int _loop = 0; _loop < GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path.Count - _actualTile - 1; _loop++)
+        {
+            _distanceFromCrystal += Mathf.Sqrt(Mathf.Pow(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile + 1].transform.position.x - GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile].transform.position.x, 2) + Mathf.Pow(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile + 1].transform.position.z - GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile].transform.position.z, 2));
+        }
+        //Debug.Log(_distanceFromCrystal);
     }
 }
 

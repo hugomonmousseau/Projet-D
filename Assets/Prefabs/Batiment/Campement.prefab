@@ -5068,6 +5068,8 @@ GameObject:
   - component: {fileID: 4823162611695914226}
   - component: {fileID: 4823162611695914227}
   - component: {fileID: 1880890199275764602}
+  - component: {fileID: -4325097224974026495}
+  - component: {fileID: -5419731372437331349}
   m_Layer: 0
   m_Name: Campement
   m_TagString: Batiment
@@ -5220,6 +5222,39 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-4325097224974026495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4823162611695914234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b1a4e9ff4a747c489394c05b91399e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _focus: {fileID: 0}
+  _attackSpeed: 2
+  _dmg: 1
+--- !u!114 &-5419731372437331349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4823162611695914234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5298cf3b9bd2a94780af183dd757771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _range: 100
+  _AOE: 0
+  _ricochet: 0
+  _attackSpeed: 0.5
+  _dmgPourcentMaxHP: 0
 --- !u!1 &4823162611877112978
 GameObject:
   m_ObjectHideFlags: 0
