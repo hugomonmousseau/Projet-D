@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    public GameObject _focus;
+    [HideInInspector] public GameObject _focus;
+    [SerializeField] float _delay;
     float _cd;
 
     GameObject _actualFocus;
@@ -13,7 +14,7 @@ public class Shoot : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("LevelManager").GetComponent<WavesManager>()._unitsAlive.Count != 0 && _cd <= 0)
         {
             _focus = NewFocus();
-            NewShoot();
+            StartCoroutine(NewShoot());
         }
         else
         {
@@ -39,7 +40,7 @@ public class Shoot : MonoBehaviour
         return _actualFocus;
     }
 
-    public void NewShoot()
+    IEnumerator NewShoot()
     {
         //Debug.Log(name + " a tiré sur : " + _focus.name);
         _focus.GetComponent<Unit>()._hp -= GetComponent<TourelleManager>()._damage;
@@ -48,6 +49,8 @@ public class Shoot : MonoBehaviour
         _cd = (1 / GetComponent<TourelleManager>()._attackSpeed);
 
         Instantiate(GetComponent<TourelleManager>()._muzzle, GetComponent<TourelleManager>()._muzzleSpawn);
+
+        yield return new WaitForSeconds(_delay);
         GameObject _newBullet = Instantiate(GetComponent<TourelleManager>()._bullet, GetComponent<TourelleManager>()._muzzleSpawn.transform.position, Quaternion.identity);
 
         //tir

@@ -9,6 +9,7 @@ public class TirautomatiqueTourelle : MonoBehaviour
     [SerializeField] Transform _muzzleSpawn;
     [SerializeField] GameObject _muzzle;
     [SerializeField] GameObject _bullet;
+    [SerializeField] float _attackSpeed;
     [SerializeField] float _delay;
 
 
@@ -25,8 +26,10 @@ public class TirautomatiqueTourelle : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(_delay);
+        yield return new WaitForSeconds(_attackSpeed);
         Instantiate(_muzzle, _muzzleSpawn);
+
+        yield return new WaitForSeconds(_delay);
         GameObject _newBullet = Instantiate(_bullet, _muzzleSpawn.transform.position , Quaternion.identity);
 
         //tir

@@ -234,9 +234,9 @@ Material:
     m_Colors:
     - _BackFaceTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorGradingDark: {r: 0.10715558, g: 0.4738914, b: 0.5283019, a: 1}
-    - _ColorGradingLight: {r: 0.16785331, g: 0.8679245, b: 0.5324979, a: 1}
-    - _ColorGradingMiddle: {r: 0.20265219, g: 0.6226415, b: 0.52604765, a: 1}
+    - _ColorGradingDark: {r: 0.3571111, g: 0.6621203, b: 0.7075472, a: 1}
+    - _ColorGradingLight: {r: 0.3890174, g: 0.8867924, b: 0.6490909, a: 1}
+    - _ColorGradingMiddle: {r: 0.46306515, g: 0.8113208, b: 0.72995263, a: 1}
     - _DepthGlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
     - _FrontFaceTint: {r: 1, g: 1, b: 1, a: 1}

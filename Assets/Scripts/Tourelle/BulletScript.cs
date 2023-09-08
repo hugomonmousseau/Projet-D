@@ -5,10 +5,13 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     Rigidbody _rb;
+    public BulletType _type;
+
     public float _speed;
     public GameObject _focus;
     [SerializeField] GameObject _impact;
     [SerializeField] Material _smokeMat;
+    [SerializeField] ParticleSystem _particleSystem;
 
     bool _canImpact = true;
     private void Start()
@@ -17,7 +20,12 @@ public class BulletScript : MonoBehaviour
     }
     void Update()
     {
-        if (_canImpact)
+        if(_canImpact && _type == BulletType.Wind)
+        {
+            transform.LookAt(GetComponent<WindBullet>()._focus);
+            _rb.velocity = transform.forward * _speed;
+        }
+        else if (_canImpact) 
         {
             
             transform.LookAt(new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z));
@@ -36,10 +44,29 @@ public class BulletScript : MonoBehaviour
         {
             //Debug.Log("frappons " + _other.name);
             Instantiate(_impact, new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z), Quaternion.identity);
-            GetComponent<TrailRenderer>().material = _smokeMat;
+            if(_smokeMat != null)
+                GetComponent<TrailRenderer>().material = _smokeMat;
             _canImpact = false;
-            Destroy(gameObject,.1f);
+            if (_type == BulletType.Camp)
+            {
+                _rb.velocity = Vector3.zero;
+                var _main = _particleSystem.main;
+                _main.loop = false;
+                Destroy(gameObject, .85f);
+            }
+            else
+            {
+                Destroy(gameObject, .1f);
+            }
         }
     }
+}
+
+public enum BulletType
+{
+    Turret,
+    Wind,
+    Camp,
+    Cherry
 }
 

@@ -44,7 +44,7 @@ public class WavesManager : MonoBehaviour
 
     IEnumerator Delay(int _id)
     {
-        Debug.Log(_wavesList[_id]._maxDelay);
+        //Debug.Log(_wavesList[_id]._maxDelay);
         yield return new WaitForSeconds(_wavesList[_id]._maxDelay);
         _wavesList[_id]._boat.GetComponent<UnitSpawner>()._inMovement = true;
     }
