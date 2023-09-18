@@ -16,6 +16,10 @@ public class Unit : MonoBehaviour
 
     [HideInInspector] public int _pathID;
     [HideInInspector] public int _actualTile;
+
+    [Header("Visual")]
+    [SerializeField] Gradient _hitColor;
+    [SerializeField] float _hitDuration = 1;
     void Start()
     {
         //StartCoroutine(NextStep());
@@ -83,6 +87,21 @@ public class Unit : MonoBehaviour
             _distanceFromCrystal += Mathf.Sqrt(Mathf.Pow(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile + 1].transform.position.x - GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile].transform.position.x, 2) + Mathf.Pow(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile + 1].transform.position.z - GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[_actualTile].transform.position.z, 2));
         }
         //Debug.Log(_distanceFromCrystal);
+    }
+    public void HitEffect()
+    {
+        StartCoroutine(HitFeedback());
+    }
+    IEnumerator HitFeedback()
+    {
+        float _timer = 0;
+        while(_timer < _hitDuration)
+        {
+            _timer += Time.deltaTime;
+            Color _color = _hitColor.Evaluate(_timer/_hitDuration);
+            GetComponentInChildren<MeshRenderer>().material.color = _color;
+            yield return null;
+        }
     }
 }
 

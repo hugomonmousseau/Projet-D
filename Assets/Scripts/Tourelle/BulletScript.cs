@@ -42,6 +42,9 @@ public class BulletScript : MonoBehaviour
         //Debug.Log(_other.gameObject);
         if (_other.gameObject == _focus && _canImpact)
         {
+            //hit effect
+            _focus.GetComponent<Unit>().HitEffect();
+
             //Debug.Log("frappons " + _other.name);
             Instantiate(_impact, new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z), Quaternion.identity);
             if(_smokeMat != null)
