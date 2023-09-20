@@ -51,22 +51,25 @@ public class Unit : MonoBehaviour
 
         StartCoroutine(NextStep());
     }
-    public void Spawn(Vector3 _origin, Vector3 _scale)
+    public void Spawn(Vector3 _origin, Vector3 _tile, Vector3 _scale)
     {
-        StartCoroutine(SpawnCoroutine(_origin,_scale));
+        StartCoroutine(SpawnCoroutine(_origin,_tile,_scale));
     }
-    IEnumerator SpawnCoroutine(Vector3 _origin, Vector3 _scale)
+    IEnumerator SpawnCoroutine(Vector3 _origin, Vector3 _tile, Vector3 _scale)
     {
+        float _path = -0.02f;
         float _time = 0;
         while(_time < _spawnDuration)
         {
             float _ratio = _time / _spawnDuration;
-            transform.position = new Vector3(_origin.x * (1 - _ratio) + _endTilePosition.x * _ratio, _origin.y * (1 - _ratio) + _curve.Evaluate(_ratio) - .05f *(_ratio), _origin.z * (1 - _ratio) + _endTilePosition.y * _ratio);
+            transform.position = new Vector3(_origin.x * (1 - _ratio) +  _ratio * _tile.x, _origin.y * (1 - _ratio) + _curve.Evaluate(_ratio) + (_ratio) * _tile.y, _origin.z * (1 - _ratio) +  _ratio * _tile.z);
             transform.localScale = new Vector3(_scale.x * (1 - _ratio) + _ratio, _scale.y * (1 - _ratio) + _ratio, _scale.z * (1 - _ratio) + _ratio);
             _time += Time.deltaTime;
             yield return null;
         }
 
+        //Debug.Log("position : " + transform.position.y + " t : " + _time);
+        transform.position = new Vector3(transform.position.x, _tile.y + _path, transform.position.z);
         StartCoroutine(NextStep());
 
     }

@@ -25,7 +25,7 @@ public class BulletScript : MonoBehaviour
             transform.LookAt(GetComponent<WindBullet>()._focus);
             _rb.velocity = transform.forward * _speed;
         }
-        else if (_canImpact) 
+        else if (_canImpact && _focus != null) 
         {
             
             transform.LookAt(new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z));

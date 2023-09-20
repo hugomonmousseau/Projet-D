@@ -65,11 +65,15 @@ public class OnSelectedBatiment : MonoBehaviour
             //les batiments ici sont connectés à un main bat à un moment donné
 
             //main bat
-            GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._connexionList[_idGroup]._mainBatiment.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._intID);
+            if (GameManager._instance._connexionList[_idGroup]._mainBatiment.GetComponent<PointsManager>()._dicePoint != null)
+                GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._connexionList[_idGroup]._mainBatiment.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._intID);
             GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._connexionList[_idGroup]._mainBatiment.GetComponent<PointsManager>()._batimentPoint.GetComponent<PointID>()._intID);
+            
+            
             //si il a un dé on le rajoute
             if (GameManager._instance._connexionList[_idGroup]._coDice != null)
                 GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._connexionList[_idGroup]._coDice.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._intID);
+            
 
             //puis le reste
             for(int _loop = 0; _loop < GameManager._instance._connexionList[_idGroup]._coBatiments.Count; _loop++)
@@ -79,8 +83,10 @@ public class OnSelectedBatiment : MonoBehaviour
                     GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._connexionList[_idGroup]._coBatiments[_loop]._batiment.GetComponent<PointsManager>()._listPoints[_points].GetComponent<PointID>()._intID);
 
                 }
+                
                 if(GameManager._instance._connexionList[_idGroup]._coBatiments[_loop]._coDice != null)
                     GameManager._instance._visiblesPointsSelected.Add(GameManager._instance._connexionList[_idGroup]._coBatiments[_loop]._coDice.GetComponent<PointsManager>()._dicePoint.GetComponent<PointID>()._intID);
+                
             }
         }
         else

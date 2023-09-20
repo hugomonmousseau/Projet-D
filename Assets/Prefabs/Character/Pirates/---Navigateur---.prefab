@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4698e4158caedfb4cbe05b69af80c135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitSpeed: 13
+  _unitSpeed: 28
   _hp: 3
   _distanceFromCrystal: 0
   _size: 0.2

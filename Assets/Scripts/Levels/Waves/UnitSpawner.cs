@@ -17,7 +17,6 @@ public class UnitSpawner : MonoBehaviour
     public bool _inMovement;
     Animator _anim;
 
-    int _unitSpawned;
     void Start()
     {
         //Debug.Log(_unitList.Count);
@@ -98,7 +97,7 @@ public class UnitSpawner : MonoBehaviour
 
         _unitList[_id].GetComponent<Unit>()._pathID = _pathID;
         _unitList[_id].GetComponent<Unit>()._endTilePosition = new Vector2(GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[0].transform.position.x, GameObject.FindGameObjectWithTag("LevelManager").GetComponent<PathsManager>()._pathsList[_pathID]._path[0].transform.position.z);
-        _unitList[_id].GetComponent<Unit>().Spawn(_unitList[_id].transform.position,_unitList[_id].transform.localScale);
+        _unitList[_id].GetComponent<Unit>().Spawn(_unitList[_id].transform.position,_spawnTile.transform.position,_unitList[_id].transform.localScale);
         StartCoroutine(WaitBeforegettingAttack(_unitList[_id]));
         //spawn
     }

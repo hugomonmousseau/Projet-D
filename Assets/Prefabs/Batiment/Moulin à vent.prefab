@@ -94,6 +94,7 @@ Transform:
   - {fileID: 1965882193724003579}
   - {fileID: 1965882194082751009}
   - {fileID: 1965882194195431529}
+  - {fileID: 2932450110530358990}
   m_Father: {fileID: 1965882195565003636}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -180,6 +181,7 @@ GameObject:
   - component: {fileID: 5826637553000217821}
   - component: {fileID: 1081200772711222867}
   - component: {fileID: 5678326686811137419}
+  - component: {fileID: 7439681834793733428}
   m_Layer: 0
   m_Name: "Moulin \xE0 vent"
   m_TagString: Batiment
@@ -221,7 +223,6 @@ MonoBehaviour:
   _dicePoint: {fileID: 8757610461872812474}
   _batimentPoint: {fileID: 7201777538898799295}
   _listPoints:
-  - {fileID: 8757610461872812474}
   - {fileID: 7201777538898799295}
   _nbPointsConnectes: 0
   _centre: {fileID: 1965882195719430929}
@@ -372,6 +373,23 @@ MonoBehaviour:
   _muzzleSpawn: {fileID: 844822629787802813}
   _muzzle: {fileID: 2652312010972654757, guid: f543b7365bd183943954411385d8c9ba, type: 3}
   _bullet: {fileID: 8885110534824611452, guid: 9d1230502ca1a11428fce8bee31d8885, type: 3}
+--- !u!114 &7439681834793733428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965882195565003646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea9035b9b9b68d4cb71df1693e2dc5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mill: {fileID: 9110265322102131513}
+  _focus: {fileID: 0}
+  _oldFocus: {fileID: 0}
+  _realFocus: {fileID: 2932450110530358990}
+  _smoothTime: 0.3
 --- !u!1 &1965882195719430934
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +420,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1965882194094038430}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2988889096165480591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2932450110530358990}
+  m_Layer: 0
+  m_Name: focusTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2932450110530358990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2988889096165480591}
+  m_LocalRotation: {x: -0, y: -0.8333898, z: -0, w: 0.5526857}
+  m_LocalPosition: {x: -1.0344977, y: 0.9492565, z: -0.14503826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1965882194094038430}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3546105833194824561
 GameObject:

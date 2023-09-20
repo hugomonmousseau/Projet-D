@@ -5,21 +5,64 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     [HideInInspector] public GameObject _focus;
+    GameObject _oldFocus;
     [SerializeField] float _delay;
     float _cd;
 
     GameObject _actualFocus;
+
+
+    private void Start()
+    {
+        _oldFocus = GetComponent<WindMillShoot>()._realFocus.gameObject;
+    }
     private void Update()
     {
         if (GameObject.FindGameObjectWithTag("LevelManager").GetComponent<WavesManager>()._unitsAlive.Count != 0 && _cd <= 0)
         {
+            if (_focus != null)
+                _oldFocus = _focus;
             _focus = NewFocus();
+
+            
             StartCoroutine(NewShoot());
+
+            //windmill
+            if (GetComponent<BatimentManager>()._type == Batiment.Moulin)
+            {
+                WindMillFocus();
+                StartCoroutine(GetComponent<WindMillShoot>().BladeAnim());
+            }
+
         }
         else
         {
             _cd -= Time.deltaTime;
         }
+    }
+    private void WindMillFocus()
+    {
+        /*
+        if(_oldFocus != null)
+            Debug.Log("oldF : " +_oldFocus.GetComponent<Unit>().name);
+        if(_focus != null)
+            Debug.Log("F : " + _focus.GetComponent<Unit>().name);
+        if (_oldFocus != null && _focus != null)
+            Debug.Log(_oldFocus == _focus);
+
+        */
+        if (_oldFocus != null && _focus != null)
+        {
+            if (_oldFocus != _focus)
+            {
+                //Debug.Log("confirmation");
+                GetComponent<WindMillShoot>()._focus = _focus.transform;
+                GetComponent<WindMillShoot>()._realFocus.position = _oldFocus.transform.position;
+
+            }
+
+        }
+
     }
     [ContextMenu("new focus")]
     public GameObject NewFocus()
@@ -54,9 +97,21 @@ public class Shoot : MonoBehaviour
         GameObject _newBullet = Instantiate(GetComponent<TourelleManager>()._bullet, GetComponent<TourelleManager>()._muzzleSpawn.transform.position, Quaternion.identity);
 
         //tir
-        GetComponent<TourelleManager>()._pivot.LookAt( new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z));
+        //le moulin ne réagit pas pareil
+        if(GetComponent<BatimentManager>()._type == Batiment.Moulin)
+        {
+            GetComponent<TourelleManager>()._pivot.LookAt(new Vector3(_focus.transform.position.x, GetComponent<TourelleManager>()._pivot.position.y , _focus.transform.position.z));
+
+        }
+        else
+        {
+            GetComponent<TourelleManager>()._pivot.LookAt(new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z));
+        }
         _newBullet.transform.LookAt(new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z));
         _newBullet.GetComponent<BulletScript>()._focus = _focus;
+
+
+
         
     }
 
