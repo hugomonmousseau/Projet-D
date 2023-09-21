@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkullStone
+  m_Name: Pierre
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -30,7 +30,7 @@ AnimationClip:
     - time: 0.33333334
       value: {fileID: 21300000, guid: ba5a1e6b69215ff46b1a14a80bdb80a5, type: 3}
     attribute: m_Sprite
-    path: Visual
+    path: "Visuals/Ombre port\xE9e"
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
@@ -45,7 +45,7 @@ AnimationClip:
     - time: 0.33333334
       value: {fileID: 21300000, guid: ba5a1e6b69215ff46b1a14a80bdb80a5, type: 3}
     attribute: m_Sprite
-    path: "Ombre port\xE9e"
+    path: Visuals/Visual
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_SampleRate: 60
@@ -56,14 +56,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3966078249
+      path: 1434994759
       attribute: 2015549526
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 1
     - serializedVersion: 2
-      path: 2508447925
+      path: 2571791005
       attribute: 2015549526
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
