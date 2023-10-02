@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
             //si tu touches un point pas connecté
             if(!_alreadyALine && _allPoints[_loop]._state == PointState.Visible && (_allPoints[_loop]._coordonnees.x > _startSelectionConnexionCoordonnees.x -_taillePoint.x && _allPoints[_loop]._coordonnees.x < _startSelectionConnexionCoordonnees.x + _taillePoint.x && _allPoints[_loop]._coordonnees.z > _startSelectionConnexionCoordonnees.z - _taillePoint.y && _allPoints[_loop]._coordonnees.z < _startSelectionConnexionCoordonnees.z + _taillePoint.y && (!_allPoints[_loop]._connecte || _allPoints[_loop]._type == Type.Tourelle)))
             {
-
+                Debug.Log(_allPoints[_loop]._type);
                 GameObject _newLine = Instantiate(_line);
                 _newLine.GetComponent<Line>()._startPosition = _allPoints[_loop]._coordonnees;
                 _newLine.GetComponent<Line>()._startPoint = _allPoints[_loop];
@@ -135,6 +135,18 @@ public class GameManager : MonoBehaviour
     {
         if(_batiment != _lastSelection)
         {
+            if(_batiment.GetComponent<BatimentManager>()._type == Batiment.Dé)
+            {
+                _batiment.GetComponent<Animator>().SetBool("Selected", true);
+            }
+            if(_lastSelection != null)
+            {
+                if (_lastSelection.GetComponent<BatimentManager>()._type == Batiment.Dé)
+                {
+                    _lastSelection.GetComponent<Animator>().SetBool("Selected", false);
+                    _lastSelection.GetComponent<Animator>().SetBool("HUD", false);
+                }
+            }
             _lastSelection = _batiment;
             _lastSelection.GetComponent<OnSelectedBatiment>().ImSelected();
         }
@@ -313,7 +325,7 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Default,
-    InGame,
+    DiceHUD,
     Pause,
     IsBuying,
     MovingTheCamera,

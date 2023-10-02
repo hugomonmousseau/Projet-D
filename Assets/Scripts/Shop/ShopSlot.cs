@@ -6,7 +6,12 @@ public class ShopSlot : MonoBehaviour
 {
     public ShopBatiment _slot;
     public GameObject _buttonManager;
+    Animator _anim;
 
+    private void Start()
+    {
+        _anim = GetComponent<Animator>();
+    }
     void Update()
     {
         if (GameManager._instance._or >= _slot._prixEnOr && GetComponent<SelectableStateReader>()._state == ButtonState.Pressed)
@@ -26,7 +31,15 @@ public class ShopSlot : MonoBehaviour
 
         }
 
+        if (GetComponent<SelectableStateReader>()._state == ButtonState.Highlighted && !_anim.GetBool("Highlighted"))
+        {
+            _anim.SetBool("Highlighted", true);
+        }
 
+        if (GetComponent<SelectableStateReader>()._state != ButtonState.Highlighted && _anim.GetBool("Highlighted"))
+        {
+            _anim.SetBool("Highlighted", false);
+        }
     }
 
     //if(GameManager._instance._or >= _slot._prixEnOr && GameManager._instance._magie >= _slot._prixEnMagie && GameManager._instance._sciences >= _slot._prixEnSciences && GameManager._instance._gameState == GameState.InGame)

@@ -12,6 +12,7 @@ TagManager:
   - ColorManager
   - End
   - Unit
+  - DiceFace
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Water
   - UI
   - Line Mask
-  - 
-  - 
+  - Dice HUD
+  - Dice
   - 
   - 
   - 

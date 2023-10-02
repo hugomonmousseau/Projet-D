@@ -562,6 +562,14 @@ public class Line : MonoBehaviour
         {
             _bat.GetComponent<PointsManager>()._listPoints[_loop].GetComponent<ColorPointChanger>().Colorisation(Color.white);
             _bat.GetComponent<PointsManager>()._listPoints[_loop].GetComponent<ColorPointChanger>()._colorName = Colors.None;
+
+
+        }
+        if (_bat.GetComponent<BatimentManager>()._type == Batiment.Dé)
+        {
+            _bat.GetComponent<PointsManager>()._hud.GetComponent<ColorPointChanger>().Colorisation(Color.white);
+            _bat.GetComponent<PointsManager>()._hud.GetComponent<ColorPointChanger>()._colorName = Colors.None;
+            Debug.Log(_bat.name);
         }
     }
 }

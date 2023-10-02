@@ -77,6 +77,8 @@ public class Colorisation : MonoBehaviour
                 {
                     GetComponent<MaterialSwitcherColor>()._listRenderer[_loop].material.SetTexture("_coloredTexture", _colorManager.GetComponent<ColorManager>()._batColorList[_loopMat]._texture);
                     StartCoroutine(ColorTransition(_loop));
+
+
                 }
 
                 //on change aussi les points
@@ -95,6 +97,12 @@ public class Colorisation : MonoBehaviour
                                     GetComponent<PointsManager>()._dicePoint.GetComponent<ColorPointChanger>().Colorisation(_colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._PointColor);
                                     GetComponent<PointsManager>()._dicePoint.GetComponent<ColorPointChanger>()._colorName = _colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._color;
 
+                                    //si il s agit d un dé
+                                    if (GetComponent<BatimentManager>()._type == Batiment.Dé)
+                                    {
+                                        GetComponent<HUDColorisation>().ColorFaces(_colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._PointColor);
+                                        GetComponent<PointsManager>()._hud.GetComponent<ColorPointChanger>().Colorisation(_colorManager.GetComponent<ColorManager>()._tierList[_tier]._tier[_color]._PointColor);
+                                    }
                                 }
                             if (GetComponent<PointsManager>()._batimentPoint != null)
                                 if (GetComponent<Colorisation>()._color != GetComponent<PointsManager>()._batimentPoint.GetComponent<ColorPointChanger>()._colorName)
