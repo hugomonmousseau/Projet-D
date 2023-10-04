@@ -45,6 +45,12 @@ public class BulletScript : MonoBehaviour
             //hit effect
             _focus.GetComponent<Unit>().HitEffect();
 
+            //on envoie l'anim de mort si besoin
+            if(_focus.GetComponent<Unit>()._hp <= 0)
+            {
+                _focus.GetComponent<Unit>().DeadAnim();
+            }
+
             //Debug.Log("frappons " + _other.name);
             Instantiate(_impact, new Vector3(_focus.transform.position.x, _focus.transform.position.y + _focus.GetComponent<Unit>()._size, _focus.transform.position.z), Quaternion.identity);
             if(_smokeMat != null)

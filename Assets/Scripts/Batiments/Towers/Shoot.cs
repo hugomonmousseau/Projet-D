@@ -14,7 +14,8 @@ public class Shoot : MonoBehaviour
 
     private void Start()
     {
-        _oldFocus = GetComponent<WindMillShoot>()._realFocus.gameObject;
+        if(GetComponent<BatimentManager>()._type == Batiment.Moulin)
+            _oldFocus = GetComponent<WindMillShoot>()._realFocus.gameObject;
     }
     private void Update()
     {

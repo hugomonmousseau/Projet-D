@@ -29,9 +29,12 @@ public class MaterialAnimator : MonoBehaviour
 
     public float _animatedSpeed;
     int _frame;
-
+    [HideInInspector] public bool _canRotation = true;
     void Start()
     {
+        //
+        GetComponentInParent<Unit>()._children = gameObject.transform;
+
         // Obtenez le matériau de l'objet
         Renderer renderer = GetComponent<Renderer>();
         _material = renderer.material;
@@ -126,7 +129,8 @@ public class MaterialAnimator : MonoBehaviour
     private void Update()
     {
         NewState();
-        SpriteRotation();
+        if(_canRotation)
+            SpriteRotation();
     }
 
     void SpriteRotation()

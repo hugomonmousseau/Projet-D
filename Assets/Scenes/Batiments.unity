@@ -2649,6 +2649,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wavesList: []
+  _unitReference: []
+  _unitsAlive: []
 --- !u!4 &231064587
 Transform:
   m_ObjectHideFlags: 0
@@ -3077,6 +3079,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &264828048
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5482,65 +5485,85 @@ MonoBehaviour:
   - _tier:
     - _color: 7
       _appearance: {r: 0.11764707, g: 0.8078432, b: 0.42352945, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 12
       _appearance: {r: 0.17254902, g: 0.5921569, b: 0.86666673, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 1
       _appearance: {r: 0.6117647, g: 0.3372549, b: 0.7254902, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 16
       _appearance: {r: 0.95294124, g: 0.7725491, b: 0, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 14
       _appearance: {r: 0.83921576, g: 0.32941177, b: 0, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 0
       _appearance: {r: 0.9215687, g: 0.34117648, b: 0.25882354, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 5
       _appearance: {r: 0.9150943, g: 0.9150943, b: 0.9150943, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 2
       _appearance: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
   - _tier:
     - _color: 8
       _appearance: {r: 0, g: 0.7411765, b: 0.6156863, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 3
       _appearance: {r: 0.12941177, g: 0.49803925, b: 0.73333335, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 10
       _appearance: {r: 0.10196079, g: 0.6862745, b: 0.3647059, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 19
       _appearance: {r: 0.56078434, g: 0.24705884, b: 0.6901961, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 4
       _appearance: {r: 0.909804, g: 0.49411768, b: 0.015686275, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 13
       _appearance: {r: 0.7607844, g: 0.21960786, b: 0.14117648, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 6
       _appearance: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
   - _tier:
     - _color: 15
       _appearance: {r: 0.754717, g: 0.754717, b: 0.754717, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 17
       _appearance: {r: 0.003921569, g: 0.6313726, b: 0.52156866, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 18
       _appearance: {r: 0.16862746, g: 0.2392157, b: 0.31764707, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 11
       _appearance: {r: 0.96470594, g: 0.61960787, b: 0, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
     - _color: 14
       _appearance: {r: 0.83921576, g: 0.32941177, b: 0, a: 0}
+      _PointColor: {r: 0, g: 0, b: 0, a: 0}
       _isAlreadyTook: 0
 --- !u!1 &375562996
 GameObject:
@@ -5618,6 +5641,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &375563000
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6279,6 +6303,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &393833857
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9522,6 +9547,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &619331928
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12336,6 +12362,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &819320463
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14656,6 +14683,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &940406411
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15106,6 +15134,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &966533499
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15514,6 +15543,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &981129021
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16835,6 +16865,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &1043337802
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17657,19 +17688,22 @@ MonoBehaviour:
   _numberOfLine: 0
   _allLines: []
   _allLinesGO: []
-  _selectionConnexionCoordonnees: {x: 0, y: 0}
-  _startSelectionConnexionCoordonnees: {x: 0, y: 0}
-  _actualSelectionConnexionCoordonnees: {x: 0, y: 0}
-  _selectionWorldCoordonnees: {x: 0, y: 0}
-  _startSelectionWorldCoordonnees: {x: 0, y: 0}
-  _lineConnexionFromDice: {fileID: 8267538896376097337, guid: e2ea67317c30c9944a75e169e755b33a,
-    type: 3}
-  _lineConnexionFromBat: {fileID: 8267538896376097337, guid: 963787982717166438e97328d3185ab6,
-    type: 3}
-  _lineConnexionFromTower: {fileID: 8267538896376097337, guid: 0e64fdd35f1120d43b5b6f863691a363,
-    type: 3}
-  _lineConnexionForTower: {fileID: 8267538896376097337, guid: e3b89be1603ba2545a9f2d84821614ab,
-    type: 3}
+  _alreadyALine: 0
+  _selectionConnexionCoordonnees: {x: 0, y: 0, z: 0}
+  _startSelectionConnexionCoordonnees: {x: 0, y: 0, z: 0}
+  _actualSelectionConnexionCoordonnees: {x: 0, y: 0, z: 0}
+  _connexionList: []
+  _waitingCoBatiments: []
+  _tempSimpleBat:
+    _batiment: {fileID: 0}
+    _coDice: {fileID: 0}
+  _tempMainBat:
+    _mainBatiment: {fileID: 0}
+    _coDice: {fileID: 0}
+    _coBatiments: []
+  _selectionWorldCoordonnees: {x: 0, y: 0, z: 0}
+  _pointHeight: 0
+  _line: {fileID: 0}
   _taillePoint: {x: 0.25, y: 0.25}
   _or: 10
   _magie: 0
@@ -17679,6 +17713,12 @@ MonoBehaviour:
   _lastSelection: {fileID: 0}
   _visiblesPointsDuringLine: 
   _visiblesPointsSelected: 
+  _hexagonSelection: {fileID: 0}
+  _tileWeAreLooking:
+    _coordonnees: {x: 0, y: 0, z: 0}
+    _isEmpty: 0
+    _id: 0
+  _previsualisationPosition: {x: -100, y: 0, z: -100}
 --- !u!4 &1099012211
 Transform:
   m_ObjectHideFlags: 0
@@ -18996,6 +19036,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &1192985349
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22301,6 +22342,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &1426170117
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22636,6 +22678,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &1439229958
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22977,6 +23020,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &1464027762
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23905,6 +23949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 5
+  _hierarchy: 0
 --- !u!114 &1544770470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23932,6 +23977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dicePoint: {fileID: 1618392024}
   _batimentPoint: {fileID: 2999128433072931646}
+  _hud: {fileID: 0}
   _listPoints:
   - {fileID: 1618392024}
   - {fileID: 2999128433072931646}
@@ -24921,7 +24967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _point:
-    _coordonnees: {x: 0, y: 0}
+    _coordonnees: {x: 0, y: 0, z: 0}
     _type: 4
     _connecte: 0
     _state: 0
@@ -24940,6 +24986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!212 &1618392029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27070,6 +27117,7 @@ MonoBehaviour:
   _pastState: 0
   _loopedAnimation: 1
   _animatedSpeed: 10
+  _canRotation: 1
 --- !u!64 &1808084903
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31668,6 +31716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!4 &4945202961898051
 Transform:
   m_ObjectHideFlags: 0
@@ -32297,6 +32346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!1 &2250280911695798272
 GameObject:
   m_ObjectHideFlags: 0
@@ -32333,6 +32383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 5
+  _hierarchy: 0
 --- !u!114 &2250280911695798274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32360,6 +32411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dicePoint: {fileID: 2250280912159604860}
   _batimentPoint: {fileID: 3937713953064169626}
+  _hud: {fileID: 0}
   _listPoints:
   - {fileID: 2250280912159604860}
   - {fileID: 3937713953064169626}
@@ -32465,7 +32517,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _number: 0
-  _txt: {fileID: 2642014815707182920}
 --- !u!1 &2250280911755109316
 GameObject:
   m_ObjectHideFlags: 0
@@ -32547,6 +32598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!212 &2250280912159604857
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32669,7 +32721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _point:
-    _coordonnees: {x: 0, y: 0}
+    _coordonnees: {x: 0, y: 0, z: 0}
     _type: 0
     _connecte: 0
     _state: 0
@@ -32863,7 +32915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _number: 0
-  _txt: {fileID: 4292151358068393196}
 --- !u!1 &2604148099756419001
 GameObject:
   m_ObjectHideFlags: 0
@@ -33093,7 +33144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _point:
-    _coordonnees: {x: 0, y: 0}
+    _coordonnees: {x: 0, y: 0, z: 0}
     _type: 1
     _connecte: 0
     _state: 0
@@ -33179,6 +33230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!1 &2999128433072931646
 GameObject:
   m_ObjectHideFlags: 0
@@ -33327,6 +33379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!1 &3937713953064169626
 GameObject:
   m_ObjectHideFlags: 0
@@ -33380,7 +33433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _point:
-    _coordonnees: {x: 0, y: 0}
+    _coordonnees: {x: 0, y: 0, z: 0}
     _type: 1
     _connecte: 0
     _state: 0
@@ -33908,6 +33961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dicePoint: {fileID: 4977228959137527946}
   _batimentPoint: {fileID: 0}
+  _hud: {fileID: 0}
   _listPoints:
   - {fileID: 4977228959137527946}
   _nbPointsConnectes: 0
@@ -33956,6 +34010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
+  _hierarchy: 0
 --- !u!33 &4977228958803695864
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -34145,7 +34200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _point:
-    _coordonnees: {x: 0, y: 0}
+    _coordonnees: {x: 0, y: 0, z: 0}
     _type: 0
     _connecte: 0
     _state: 0
@@ -34199,6 +34254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!212 &4977228959137527951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35478,6 +35534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addRotation: 0
+  _onlyY: 0
 --- !u!1001 &9180469888924009106
 PrefabInstance:
   m_ObjectHideFlags: 0
