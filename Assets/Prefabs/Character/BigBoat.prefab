@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 343529785193191342}
   - component: {fileID: 351879151072011325}
   - component: {fileID: 351879151072011315}
-  - component: {fileID: 351879151072011324}
   m_Layer: 0
   m_Name: biggerBoat
   m_TagString: Untagged
@@ -117,29 +116,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &351879151072011324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329404995351633376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1a5d88f50159aa4f9dc18cbea5a856c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fx: {fileID: 330849045682130911}
-  _boatTrail: {fileID: 330849044756659778}
-  _sparkles:
-  - {fileID: 330849045562432554}
-  - {fileID: 330849045135111021}
-  _duration: 1
-  _boatPoints:
-  - {fileID: 330849044800853389}
-  - {fileID: 330849044764408638}
-  - {fileID: 330849044780904530}
-  - {fileID: 330849044643377613}
 --- !u!1 &330849044643377614
 GameObject:
   m_ObjectHideFlags: 0
@@ -10124,7 +10100,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 330849046241330011}
-  - component: {fileID: 330849046241330010}
   - component: {fileID: 2672642605119095476}
   m_Layer: 0
   m_Name: BigBoat
@@ -10150,27 +10125,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &330849046241330010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330849046241329988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe8e2f2ec480a44696a0b91f33d3f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitList: []
-  _spawnDelay: 1
-  _boatSpeed: 6
-  _pathID: 0
-  _boat: {fileID: 329404995351633376}
-  _spawnTile: {fileID: 0}
-  _endPositon: {fileID: 330849046342771010}
-  _hex: {fileID: 0}
-  _inMovement: 0
 --- !u!95 &2672642605119095476
 Animator:
   serializedVersion: 4

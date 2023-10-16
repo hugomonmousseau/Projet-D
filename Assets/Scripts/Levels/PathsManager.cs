@@ -6,7 +6,7 @@ public class PathsManager : MonoBehaviour
 {
     public List<Path> _pathsList;
 
-
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
@@ -21,5 +21,5 @@ public class PathsManager : MonoBehaviour
         }
     }
 
-
+    */
 }

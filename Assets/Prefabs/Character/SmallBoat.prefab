@@ -9829,7 +9829,6 @@ GameObject:
   - component: {fileID: 7788473894125850361}
   - component: {fileID: 7795837615700311402}
   - component: {fileID: 7795837615700311396}
-  - component: {fileID: 7795837615700311403}
   m_Layer: 0
   m_Name: smallBoat
   m_TagString: Untagged
@@ -9933,29 +9932,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7795837615700311403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7800244595414975671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1a5d88f50159aa4f9dc18cbea5a856c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fx: {fileID: 1151194155304977444}
-  _boatTrail: {fileID: 1151194155293983439}
-  _sparkles:
-  - {fileID: 1151194154717530020}
-  - {fileID: 1151194154730202848}
-  _duration: 1
-  _boatPoints:
-  - {fileID: 7801686239934106842}
-  - {fileID: 7801686239903949417}
-  - {fileID: 7801686239954069765}
-  - {fileID: 7801686240093038746}
 --- !u!1 &7801686238907300633
 GameObject:
   m_ObjectHideFlags: 0
@@ -10045,7 +10021,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7801686239501834764}
-  - component: {fileID: 7801686239501834765}
   - component: {fileID: 132437183770474019}
   m_Layer: 0
   m_Name: SmallBoat
@@ -10071,27 +10046,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7801686239501834765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7801686239501834771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe8e2f2ec480a44696a0b91f33d3f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitList: []
-  _spawnDelay: 1
-  _boatSpeed: 6
-  _pathID: 0
-  _boat: {fileID: 7800244595414975671}
-  _spawnTile: {fileID: 0}
-  _endPositon: {fileID: 7801686239332743189}
-  _hex: {fileID: 0}
-  _inMovement: 0
 --- !u!95 &132437183770474019
 Animator:
   serializedVersion: 4

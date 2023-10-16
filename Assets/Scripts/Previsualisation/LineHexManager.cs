@@ -46,6 +46,6 @@ public class LineHexManager : MonoBehaviour
             _curve.AddKey(_key);
         }
         _lineRenderer.widthCurve = _curve;
-        _focus = GameManager._instance._previsualisationPosition;
+        //_focus = GameManager._instance._previsualisationPosition;
     }
 }

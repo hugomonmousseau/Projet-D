@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class ShopBatiment
 {
-    public Batiment _batiment;
+    //public Batiment _batiment;
     public GameObject _batimentGO;
     public int _prixEnOr;
 }

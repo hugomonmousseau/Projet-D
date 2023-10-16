@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Inventaire
 {
-    public Batiment _batiment;
+    //public Batiment _batiment;
     public int _quantite;
 }
 

@@ -18,18 +18,17 @@ public class BackgroundGenerator : MonoBehaviour
         for (int _back = 0; _back < _backgroundNumber; _back++)
         {
             //on choisi le background à prendre
-            int _rng = Random.Range(0, _backgrounds.Count - 1);
+            int _rng = Random.Range(0, _backgrounds.Count);
             GameObject _background = Instantiate(_backgrounds[_rng]._background,_localisation);
 
             _background.transform.parent = _parent;
-            _background.transform.position = new Vector3(_background.transform.position.x, _backgrounds[_rng]._altitude, _background.transform.position.z);
+            _background.transform.position = new Vector3(_localisation.position.x, _localisation.position.y - _backgrounds[_rng]._altitude, _localisation.position.z);
 
             //on tourne le pivot
             _pivotLocalisation.localEulerAngles = new Vector3(0, (360f / _backgroundNumber) * _back, 0);
-            Debug.Log((360f / _backgroundNumber) * _back);
+            //Debug.Log((360f / _backgroundNumber) * _back + " " + _localisation.position);
         }
     }
-
 
 
     void Start()
