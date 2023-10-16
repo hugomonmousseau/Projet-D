@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Batiment
+  - Sol
+  - DiceBase
+  - Tile
+  - LevelManager
+  - ColorManager
+  - End
+  - Unit
+  - DiceFace
   layers:
   - Default
   - TransparentFX
@@ -11,9 +20,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Line Mask
+  - Dice HUD
+  - Dice
   - 
   - 
   - 

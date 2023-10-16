@@ -6,19 +6,21 @@ public class CameraClick : MonoBehaviour
 {
     //private
     Camera _mainCam;
-    Plane _plane;
-
+    Plane _planeLD;
+    Plane _planeConnexion;
     public Vector3 _worldPosition;
+    public Vector3 _connexionPosition;
 
     void Start()
     {
         _mainCam = GetComponent<Camera>();
 
         //coordonné Y de la map
-        _plane = new Plane(Vector3.down, 0f);
+        _planeLD = new Plane(Vector3.down, 0f);
+        _planeConnexion = new Plane(Vector3.down, GameManager._instance._pointHeight);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Vector3 _position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
@@ -29,15 +31,163 @@ public class CameraClick : MonoBehaviour
         //debug
         Debug.DrawRay(_ray.origin, _ray.direction * 100, Color.yellow);
 
-        if (_plane.Raycast(_ray, out float _distance))
+        if (_planeLD.Raycast(_ray, out float _worldDistance))
         {
-            _worldPosition = _ray.GetPoint(_distance);
+            _worldPosition = _ray.GetPoint(_worldDistance);
         }
 
+        if (_planeConnexion.Raycast(_ray, out float _connexionDistance))
+        {
+            _connexionPosition = _ray.GetPoint(_connexionDistance);
+        }
+
+        //selection de batiments
+        RaycastHit[] _results = new RaycastHit[1];
+        int _hits = Physics.RaycastNonAlloc(_ray, _results);
+
+        RaycastHit[] _resultDiceFace = new RaycastHit[1];
+        int _hitDiceFace = Physics.RaycastNonAlloc(_ray, _resultDiceFace, float.MaxValue, LayerMask.GetMask("Dice HUD"));
+
+
+
+
+        if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default)
+        {
+            if (_results[0].collider.tag == "Batiment")
+                GameManager._instance.HexagoneSelection(_results[0]);
+
+            if (_results[0].collider.tag == "DiceFace")
+            {
+                //Debug.Log(_results[0].collider.name);
+            }
+        }
+
+        
+
+
+           
+        //hud passe en prio
+            
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(_worldPosition);
+            //Debug.Log(_worldPosition);
+            //Debug.Log(_connexionPosition);
+            GameManager._instance._startSelectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
+
+            //on test l huden prio
+
+            if (_resultDiceFace[0].collider != null)
+            {
+                //Debug.Log(_results[0].collider.name);
+                if(_resultDiceFace[0].collider.tag == "DiceFace")
+                    _results[0].collider.GetComponent<DiceHUD>()._bat.GetComponent<Animator>().SetBool("HUD", !_results[0].collider.GetComponent<DiceHUD>()._bat.GetComponent<Animator>().GetBool("HUD"));
+            }
+
+            if (_results[0].collider != null)
+            {
+                //Debug.Log(_results[0].collider.tag);
+                if (_results[0].collider.tag != "DiceFace")
+                    GameManager._instance.NewConnexion();
+            }
+            else
+                    GameManager._instance.NewConnexion();
+
+
+
+
+        }
+        if (Input.GetMouseButton(0))
+        {
+            GameManager._instance._selectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
+            GameManager._instance._selectionWorldCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
+        }
+        GameManager._instance._actualSelectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
+
+
+
+            
+
+
+        if (_results[0].collider != null)
+        {
+            //Debug.Log(_results[0].collider.name);
+
+            _planeConnexion = new Plane(Vector3.down,_results[0].collider.transform.position.y + GameManager._instance._pointHeight);
         }
 
+
+        //if (_results[0].collider != null && Input.GetMouseButtonDown(0))
+        if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default && !GameManager._instance._alreadyALine)
+        {
+            //Debug.Log(_results[0].collider.tag);
+            if (_results[0].collider.tag == "Batiment")
+            {
+                //on clic sur un batiment
+                //_results[0].collider.GetComponent<OnSelectedBatiment>()._selected = true;
+
+                //on vérifie aussi que le batiment séléctionné ne l est pas deja
+                if (GameManager._instance._lastSelection != _results[0].collider.gameObject)
+                {
+                    if (GameManager._instance._lastSelection != null)
+                        GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
+                    //Debug.Log(_results[0].collider.gameObject.name);
+                    GameManager._instance.NewBatimentSelection(_results[0].collider.gameObject);
+                }
+
+                //si on veut afficher l hud d 'un dé
+
+                /*
+                if(_results[0].collider.GetComponent<BatimentManager>()._type == Batiment.Dé && Input.GetMouseButtonDown(0))
+                {
+                    _results[0].collider.GetComponent<Animator>().SetBool("HUD", true);
+                    GameManager._instance._gameState = GameState.DiceHUD;
+                }
+                */
+            }
+        }
+        //pour less tuiles
+
+        else if (_results[0].collider != null && GameManager._instance._gameState == GameState.IsBuying)
+        {
+            if (_results[0].collider.tag == "Tile")
+            {
+                GameManager._instance._tileWeAreLooking = _results[0].collider.GetComponent<TileID>()._tile;
+
+
+                /*
+                float _height = _results[0].collider.transform.position.y;
+                Plane _planePrevisualisation = new Plane(Vector3.down, _height);
+                
+                Vector3 _exactPrevPos = new Vector3();
+                if (_planePrevisualisation.Raycast(_ray, out float _previsualisationPosition))
+                {
+                     _exactPrevPos = _ray.GetPoint(_previsualisationPosition);
+                }
+                GameManager._instance._previsualisationPosition = _exactPrevPos;
+                */
+            }
+            //ca n arrive jamais
+
+            else if (_results[0].collider == null && Input.GetMouseButtonDown(0))
+            {
+                if (GameManager._instance._lastSelection != null)
+                    GameManager._instance._lastSelection.GetComponent<OnSelectedBatiment>().ImNotSelected();
+
+                //qd on clic le vide
+                GameManager._instance._lastSelection = null;
+                Debug.Log("Urgent venir corrigé");
+            }
+        }
+
+
+        //test
+        Plane _planePrevisualisation = new Plane(Vector3.down, GameManager._instance._pointHeight);
+
+        Vector3 _exactPrevPos = new Vector3();
+        if (_planePrevisualisation.Raycast(_ray, out float _previsualisationPosition))
+        {
+            _exactPrevPos = _ray.GetPoint(_previsualisationPosition);
+        }
+        GameManager._instance._previsualisationPosition = _exactPrevPos;
     }
 }

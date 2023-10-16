@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3352481093850016489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3352481093850016494}
+  - component: {fileID: 3352481093850016495}
+  - component: {fileID: 3352481093850016493}
+  - component: {fileID: 5452792749689623397}
+  m_Layer: 0
+  m_Name: Loading
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3352481093850016494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352481093850016489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3352481093850016495
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352481093850016489}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73232fe4e10968a4aaed3fe69466ee40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 95198605523f18049b29f9ef2bff0ad1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4.78, y: 4.78}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &3352481093850016493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352481093850016489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1364d0f99d94a499b08c0a95aeefc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: 21300000, guid: 95198605523f18049b29f9ef2bff0ad1, type: 3}
+  - {fileID: 21300000, guid: ff2233b4b1e869540bca14c364bac74e, type: 3}
+  - {fileID: 21300000, guid: b05700500c841f24a8734d77cdeb6cba, type: 3}
+  - {fileID: 21300000, guid: df77ef60b57639348b655312c8633cbd, type: 3}
+  - {fileID: 21300000, guid: ec6f6045a39ea7148ad2e5832376ddf1, type: 3}
+  - {fileID: 21300000, guid: a0cc469c65d3166468eabd613f593b56, type: 3}
+  - {fileID: 21300000, guid: 9b60bc7492ab9574283fbe8d7f90d15c, type: 3}
+  - {fileID: 21300000, guid: ea6bb30a69ffc2344b326343981a0d79, type: 3}
+  - {fileID: 21300000, guid: 2b9d4eead5b702f4fbfbf9258f0971ea, type: 3}
+  - {fileID: 21300000, guid: 2d05f97e8b9b84d43ad3e5b80030eb8f, type: 3}
+  - {fileID: 21300000, guid: eb2f10c425a3e8f48adfa567b0fb849c, type: 3}
+  - {fileID: 21300000, guid: c0863ba820ee17643a58cc7217de7fc1, type: 3}
+  - {fileID: 21300000, guid: 903a26eba827d6c44a41078b6b10188d, type: 3}
+  - {fileID: 21300000, guid: 156e1e0f850c80245afb6ecaf62db2d8, type: 3}
+  - {fileID: 21300000, guid: 81e767ba0703014449f56851f8352861, type: 3}
+  - {fileID: 21300000, guid: c1140074d978e2544918082317e5187a, type: 3}
+  - {fileID: 21300000, guid: afeb02bc65e91a54b84fcacca8f1c415, type: 3}
+  - {fileID: 21300000, guid: c7164610ee1bce64d877ce41c1f2a758, type: 3}
+  - {fileID: 21300000, guid: 74f91fbc4ebc02e4182d6b8d270dbadc, type: 3}
+  - {fileID: 21300000, guid: a906b90d6559c6a4fb96f6c6a71bc2b3, type: 3}
+  - {fileID: 21300000, guid: e8f5fda367756a3469f2130c77ef9121, type: 3}
+  - {fileID: 21300000, guid: b1e675f695dec60449e4989de94933e7, type: 3}
+  - {fileID: 21300000, guid: 20f3bfdf121c3b1449eb4b330c306c9a, type: 3}
+  - {fileID: 21300000, guid: bc1491e6a13906d46860d29f5f781bd4, type: 3}
+  - {fileID: 21300000, guid: f1eb48e0559f21c4a8a1f052d8195f30, type: 3}
+  - {fileID: 21300000, guid: 3693775dd1d7aec45bd03f24b1c01613, type: 3}
+  - {fileID: 21300000, guid: d72063dee14fd7e48b7cc2a77878d036, type: 3}
+  - {fileID: 21300000, guid: ea2a9c95f3297234ea6af4123e1a6416, type: 3}
+  - {fileID: 21300000, guid: 5f0c0d503142b61468c0d881505c175f, type: 3}
+  - {fileID: 21300000, guid: ed61989cc91847c439501b01697992fd, type: 3}
+  - {fileID: 21300000, guid: cde3618b17c94744b8bcb17c6ab60c97, type: 3}
+  - {fileID: 21300000, guid: 2222411cdb69e1848abb83242a1e83f1, type: 3}
+  - {fileID: 21300000, guid: bc70ed069dfb9384197762d24626d6a0, type: 3}
+  - {fileID: 21300000, guid: 52ad39559572d1d4dae78795ec696096, type: 3}
+  - {fileID: 21300000, guid: 497d0a032607f8e4da29421c2bc3ce4a, type: 3}
+  - {fileID: 21300000, guid: 7bea733b1bc0b2a478a78b36730ca3ee, type: 3}
+  - {fileID: 21300000, guid: d292a238d7755df499e4b65b7a450e50, type: 3}
+  - {fileID: 21300000, guid: d292a238d7755df499e4b65b7a450e50, type: 3}
+  _time: 0
+  _duration: 1
+--- !u!114 &5452792749689623397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352481093850016489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c201d6f6609a44984e0d4faaa370c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _addRotation: 0
