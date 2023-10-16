@@ -8,13 +8,15 @@ public class TileID : MonoBehaviour
     public TileType _type;
     public List<GameObject> _tilesPossible;
 
-    [Header("Textures")]
+    [Header("Visuals")]
     [SerializeField] Material _sandMaterial;
     [SerializeField] Material _grassMaterial;
+    [SerializeField] GameObject _column;
 
     [ContextMenu("Devient du sable")]
     void SandTile()
     {
+        _type = TileType.Sand;
         for (int _loop = 0; _loop < _tilesPossible.Count; _loop++)
         {
             _tilesPossible[_loop].GetComponent<MeshRenderer>().material = _sandMaterial;
@@ -23,10 +25,16 @@ public class TileID : MonoBehaviour
     [ContextMenu("Devient de l'herbe")]
     void GrassTile()
     {
+        _type = TileType.Grass;
         for (int _loop = 0; _loop < _tilesPossible.Count; _loop++)
         {
             _tilesPossible[_loop].GetComponent<MeshRenderer>().material = _grassMaterial;
         }
+    }
+    [ContextMenu("Pose une colonne")]
+    void Column()
+    {
+        Instantiate(_column, transform);
     }
 }
 
