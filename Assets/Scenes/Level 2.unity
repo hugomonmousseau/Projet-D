@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3851182, g: 0.55222327, b: 0.6014659, a: 1}
+  m_IndirectSpecularColor: {r: 0.38510647, g: 0.55182564, b: 0.60158914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24383,7 +24383,7 @@ PrefabInstance:
     - target: {fileID: 8932521369605698023, guid: 0690f96610f5c7f458eb4921db820e21,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8932521369605698023, guid: 0690f96610f5c7f458eb4921db820e21,
         type: 3}
@@ -51028,7 +51028,7 @@ PrefabInstance:
     - target: {fileID: 6225721523639608538, guid: 25c32e4b2a38080468d9db8d79809185,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6225721523639608538, guid: 25c32e4b2a38080468d9db8d79809185,
         type: 3}
@@ -65109,7 +65109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1945778869}
   m_Layer: 0
-  m_Name: Tour
+  m_Name: Royaume_Tour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72260,7 +72260,7 @@ PrefabInstance:
     - target: {fileID: 8932521369605698023, guid: 0690f96610f5c7f458eb4921db820e21,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8932521369605698023, guid: 0690f96610f5c7f458eb4921db820e21,
         type: 3}
