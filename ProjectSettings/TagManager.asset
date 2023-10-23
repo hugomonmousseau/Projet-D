@@ -17,12 +17,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - No Culling Mask
   - Water
   - UI
-  - Line Mask
-  - Dice HUD
-  - Dice
+  - Light
+  - 
+  - 
   - 
   - 
   - 
