@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38510647, g: 0.55182564, b: 0.60158914, a: 1}
+  m_IndirectSpecularColor: {r: 0.3851182, g: 0.55222327, b: 0.6014659, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24522,6 +24522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 622426958}
   - component: {fileID: 622426959}
+  - component: {fileID: 622426960}
   m_Layer: 7
   m_Name: RotationHitBox
   m_TagString: Untagged
@@ -24557,6 +24558,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14, y: 0.15, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &622426960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622426957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae180e7e061bb548987ce6d91c73d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 2
 --- !u!1 &622663866
 GameObject:
   m_ObjectHideFlags: 0
@@ -47999,6 +48013,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254573418}
   - component: {fileID: 1254573419}
+  - component: {fileID: 1254573420}
   m_Layer: 7
   m_Name: CrossHitBox
   m_TagString: Untagged
@@ -48034,6 +48049,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14, y: 0.15, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1254573420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254573417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae180e7e061bb548987ce6d91c73d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1
 --- !u!1 &1255768468
 GameObject:
   m_ObjectHideFlags: 0
@@ -77453,6 +77481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1993809283}
   - component: {fileID: 1993809284}
+  - component: {fileID: 1993809285}
   m_Layer: 7
   m_Name: BarreHitBox
   m_TagString: Untagged
@@ -77488,6 +77517,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.15, y: 0.15, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1993809285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993809282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae180e7e061bb548987ce6d91c73d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
 --- !u!1 &1994896533
 GameObject:
   m_ObjectHideFlags: 0

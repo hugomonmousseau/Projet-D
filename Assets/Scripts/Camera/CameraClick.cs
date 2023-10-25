@@ -36,79 +36,32 @@ public class CameraClick : MonoBehaviour
             _worldPosition = _ray.GetPoint(_worldDistance);
         }
 
-        if (_planeConnexion.Raycast(_ray, out float _connexionDistance))
-        {
-            _connexionPosition = _ray.GetPoint(_connexionDistance);
-        }
+
+        //hud prio
+        RaycastHit[] _resultsHUD = new RaycastHit[1];
+        int _hitHUD = Physics.RaycastNonAlloc(_ray, _resultsHUD, float.MaxValue, LayerMask.GetMask("HUD"));
 
         //selection de batiments
         RaycastHit[] _results = new RaycastHit[1];
         int _hits = Physics.RaycastNonAlloc(_ray, _results);
 
-        RaycastHit[] _resultDiceFace = new RaycastHit[1];
-        int _hitDiceFace = Physics.RaycastNonAlloc(_ray, _resultDiceFace, float.MaxValue, LayerMask.GetMask("Dice HUD"));
 
-
-
-
-        if (_results[0].collider != null && GameManager._instance._gameState == GameState.Default)
+        
+        if (_resultsHUD != null)
         {
-            if (_results[0].collider.tag == "Batiment")
-                //GameManager._instance.HexagoneSelection(_results[0]);
+            if (Input.GetMouseButtonDown(0))
+                _results[0].collider.GetComponent<RotationSlotManager>().ButtonIsPress();
 
-                if (_results[0].collider.tag == "DiceFace")
-                {
-                    //Debug.Log(_results[0].collider.name);
-                }
-        }
-
-
-
-
-
-        //hud passe en prio
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            //Debug.Log(_worldPosition);
-            //Debug.Log(_connexionPosition);
-            //GameManager._instance._startSelectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
-
-            //on test l huden prio
-
-            if (_resultDiceFace[0].collider != null)
-            {
-                //Debug.Log(_results[0].collider.name);
-                //if (_resultDiceFace[0].collider.tag == "DiceFace")
-                   // _results[0].collider.GetComponent<DiceHUD>()._bat.GetComponent<Animator>().SetBool("HUD", !_results[0].collider.GetComponent<DiceHUD>()._bat.GetComponent<Animator>().GetBool("HUD"));
-            }
-
-            if (_results[0].collider != null)
-            {
-                //Debug.Log(_results[0].collider.tag);
-                //if (_results[0].collider.tag != "DiceFace")
-                    //GameManager._instance.NewConnexion();
-            }
-            else
-            {
-                //GameManager._instance.NewConnexion();
-
-            }
-
-
-
+            if (Input.GetMouseButtonUp(0))
+                _results[0].collider.GetComponent<RotationSlotManager>().ButtonIsRelease();
 
         }
+        
 
-        /*
-        if (Input.GetMouseButton(0))
-        {
-            GameManager._instance._selectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
-            GameManager._instance._selectionWorldCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
-        }
-        GameManager._instance._actualSelectionConnexionCoordonnees = new Vector3(_connexionPosition.x, _connexionPosition.y, _connexionPosition.z);
 
-        */
+
+
+
 
 
 
@@ -117,7 +70,7 @@ public class CameraClick : MonoBehaviour
         {
             //Debug.Log(_results[0].collider.name);
 
-            //_planeConnexion = new Plane(Vector3.down,_results[0].collider.transform.position.y + GameManager._instance._pointHeight);
+            //_planeLD = new Plane(Vector3.down,_results[0].collider.transform.position.y + GameManager._instance._pointHeight);
         }
 
     }

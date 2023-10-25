@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class RotationSlotManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> _pivotsList;
     bool _isRotating = false;
+    public HUDtype _type;
 
-    public void SwitchViewRotate()
+    Vector2 _origin;
+    bool _isActive;
+    public void ButtonIsPress()
+    {
+        Debug.Log(_type);
+        if(_type == HUDtype.barre)
+        {
+
+        }
+    }
+
+    public void ButtonIsRelease()
     {
 
     }
+}
+
+public enum HUDtype
+{
+    barre,
+    croix,
+    rotation
 }
