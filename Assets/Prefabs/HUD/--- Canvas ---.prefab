@@ -976,7 +976,6 @@ GameObject:
   - component: {fileID: 8867746381501705874}
   - component: {fileID: 350599067640432913}
   - component: {fileID: 5767837936644518207}
-  - component: {fileID: 4603859790454085816}
   m_Layer: 5
   m_Name: Royaume Scroll View Shoping
   m_TagString: Untagged
@@ -1075,16 +1074,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _previsualisation: {fileID: 0}
   _speed: 0.15
---- !u!114 &4603859790454085816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8799436575999471620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6955b11c92419349bb09460a9b7aa2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _board: {fileID: 5824359935251995402}
