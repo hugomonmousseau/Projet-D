@@ -18,8 +18,8 @@ public class PivotManager : MonoBehaviour
 
         Quaternion _rotationPivot = Quaternion.Euler(new Vector3(
             _holderRotation.x * _holderRatio + _classicCameraRotation.x * (1 - _holderRatio),
-            0,
-            0));
-        transform.rotation = _rotationPivot;
+            _holderRotation.y * _holderRatio,
+            _holderRotation.z * _holderRatio));
+        transform.rotation = _rotationPivot;Z
     }
 }

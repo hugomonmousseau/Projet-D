@@ -14,7 +14,7 @@ public class RotationSlotManager : MonoBehaviour
         Debug.Log(_type);
         if(_type == HUDtype.barre)
         {
-
+            Debug.Log(transform.position);
         }
     }
 
