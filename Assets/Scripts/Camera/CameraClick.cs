@@ -7,13 +7,8 @@ public class CameraClick : MonoBehaviour
     //private
     Camera _mainCam;
     Plane _planeLD;
-    Plane _planeConnexion;
     public Plane _HUDPlane;
-    [SerializeField] GameObject _planeHUDgo;
     public Vector3 _worldPosition;
-    public Vector3 _HUDposition;
-
-    [SerializeField] GameObject _t;
 
     void Start()
     {
@@ -41,15 +36,6 @@ public class CameraClick : MonoBehaviour
         }
 
 
-        Vector3 normal = _planeHUDgo.transform.up;
-        // Calcule la distance du plane par rapport à l'origine en utilisant le produit scalaire
-        //float distance = Vector3.Dot(normal, _planeHUDgo.transform.position);
-        // Crée le plane avec la normale et la distance calculées
-        _HUDPlane = new Plane(normal, -31.6f);
-
-
-        if (_HUDPlane.Raycast(_ray, out float _HUDdistance))
-            _HUDposition = _ray.GetPoint(_HUDdistance);
         //hud prio
         RaycastHit[] _resultsHUD = new RaycastHit[1];
         int _hitHUD = Physics.RaycastNonAlloc(_ray, _resultsHUD, float.MaxValue, LayerMask.GetMask("HUD"));
@@ -68,8 +54,6 @@ public class CameraClick : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
                 _results[0].collider.GetComponent<RotationSlotManager>().ButtonIsRelease();
         }
-
-        _t.transform.position = _HUDposition;
 
 
 

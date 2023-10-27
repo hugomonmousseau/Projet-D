@@ -17,9 +17,9 @@ public class PivotManager : MonoBehaviour
         Vector3 _holderRotation = _cameraHolder.transform.rotation.eulerAngles;
 
         Quaternion _rotationPivot = Quaternion.Euler(new Vector3(
-            _holderRotation.x * _holderRatio + _classicCameraRotation.x * (1 - _holderRatio),
+            _classicCameraRotation.x,
             _holderRotation.y * _holderRatio,
             _holderRotation.z * _holderRatio));
-        transform.rotation = _rotationPivot;Z
+        transform.rotation = _rotationPivot;
     }
 }
