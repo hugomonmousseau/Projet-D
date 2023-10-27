@@ -7,6 +7,7 @@ public class PivotManager : MonoBehaviour
     [SerializeField] Transform _cameraHolder;
     public float _holderRatio;
     [SerializeField] Vector3 _classicCameraRotation;
+    public float _holderYSetOff;
 
     private void Start()
     {
@@ -18,8 +19,8 @@ public class PivotManager : MonoBehaviour
 
         Quaternion _rotationPivot = Quaternion.Euler(new Vector3(
             _holderRotation.x * _holderRatio + _classicCameraRotation.x * (1 - _holderRatio),
-            _holderRotation.y * _holderRatio,
+            _holderYSetOff,
             _holderRotation.z * _holderRatio));
-        transform.rotation = _rotationPivot;Z
+        transform.rotation = _rotationPivot;
     }
 }

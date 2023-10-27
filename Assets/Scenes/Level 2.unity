@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.8867924, g: 0.8867924, b: 0.8867924, a: 1}
   m_AmbientGroundColor: {r: 0.6697223, g: 0.6906139, b: 0.8113208, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 1
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 35d18b4351dd4e545aaae10a94ec4a02, type: 2}
   m_HaloStrength: 0.361
@@ -4715,8 +4715,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraHolder: {fileID: 2041823685}
-  _holderRatio: 1
+  _holderRatio: 0
   _classicCameraRotation: {x: 0, y: 0, z: 0}
+  _holderYSetOff: 0
 --- !u!4 &123991584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7823705647016898995, guid: f6ba0b8f1a38c3d46b197ee1b2060745,
@@ -16570,7 +16571,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.35
+  m_Intensity: 0.4
   m_Range: 50
   m_SpotAngle: 62.267822
   m_InnerSpotAngle: 62.267822
@@ -23780,7 +23781,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-  m_Intensity: 0.15
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -24571,6 +24572,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 2
+  _pivotList:
+  - {fileID: 123193865}
+  - {fileID: 1714209798}
+  - {fileID: 1283909076}
+  - {fileID: 1885540666}
+  - {fileID: 841710290}
+  - {fileID: 1112257289}
+  _rotationDuration: 1
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &622663866
 GameObject:
   m_ObjectHideFlags: 0
@@ -33504,8 +33537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraHolder: {fileID: 2041823685}
-  _holderRatio: 1
+  _holderRatio: 0
   _classicCameraRotation: {x: 0, y: 0, z: 0}
+  _holderYSetOff: 0
 --- !u!1 &844349810
 GameObject:
   m_ObjectHideFlags: 0
@@ -39216,7 +39250,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.9647059, g: 1, b: 1, a: 1}
-  m_Intensity: 0.15
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -43859,8 +43893,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraHolder: {fileID: 2041823685}
-  _holderRatio: 1
+  _holderRatio: 0
   _classicCameraRotation: {x: 0, y: 0, z: 0}
+  _holderYSetOff: 0
 --- !u!1 &1117175357
 GameObject:
   m_ObjectHideFlags: 0
@@ -44549,103 +44584,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1131082649}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1132267189
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1132267190}
-  - component: {fileID: 1132267193}
-  - component: {fileID: 1132267192}
-  - component: {fileID: 1132267191}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1132267190
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132267189}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1645740729}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1132267191
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132267189}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1132267192
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132267189}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 23194a54d31d0764584bb322dc4ee490, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1132267193
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132267189}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1133926376
 GameObject:
   m_ObjectHideFlags: 0
@@ -48159,6 +48097,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
+  _pivotList: []
+  _rotationDuration: 0
+  _curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1255768468
 GameObject:
   m_ObjectHideFlags: 0
@@ -50551,8 +50497,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraHolder: {fileID: 2041823685}
-  _holderRatio: 1
+  _holderRatio: 0
   _classicCameraRotation: {x: 0, y: 0, z: 0}
+  _holderYSetOff: 0
 --- !u!1 &1285851222
 GameObject:
   m_ObjectHideFlags: 0
@@ -61998,8 +61945,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9575472, b: 0.9575472, a: 1}
-  m_Intensity: 0.15
+  m_Color: {r: 1, g: 0.9009434, b: 0.9009434, a: 1}
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -64256,7 +64203,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _t
       value: 
-      objectReference: {fileID: 1132267189}
+      objectReference: {fileID: 0}
     - target: {fileID: 2816662259190675788, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
         type: 3}
       propertyPath: _planeHUDgo
@@ -64266,6 +64213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _maxX
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052314566001039597, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
+        type: 3}
+      propertyPath: _roationSpeed
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3052314566001039598, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
         type: 3}
@@ -64300,17 +64252,17 @@ PrefabInstance:
     - target: {fileID: 3052314566001039598, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0.8660254
       objectReference: {fileID: 0}
     - target: {fileID: 3052314566001039598, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3052314566001039598, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3052314566001039598, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
         type: 3}
@@ -67056,8 +67008,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraHolder: {fileID: 2041823685}
-  _holderRatio: 1
+  _holderRatio: 0
   _classicCameraRotation: {x: 0, y: 0, z: 0}
+  _holderYSetOff: 0
 --- !u!1 &1716708726
 GameObject:
   m_ObjectHideFlags: 0
@@ -73252,7 +73205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1645740729}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1866845542
 MeshFilter:
@@ -73828,8 +73781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraHolder: {fileID: 2041823685}
-  _holderRatio: 1
+  _holderRatio: 0
   _classicCameraRotation: {x: 0, y: 0, z: 0}
+  _holderYSetOff: 0
 --- !u!4 &1886805903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4883902316656590479, guid: c114a350dee38894f839509b2ecb6d10,
@@ -74111,7 +74065,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900759583}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.20177978, y: 0.1, z: 0.4}
+  m_LocalPosition: {x: -0.2, y: 0.1, z: 0.4}
   m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -74126,7 +74080,7 @@ Transform:
   - {fileID: 1254573418}
   - {fileID: 622426958}
   m_Father: {fileID: 1645740729}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1900759586
 SpriteRenderer:
@@ -77677,6 +77631,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
+  _pivotList: []
+  _rotationDuration: 0
+  _curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1994896533
 GameObject:
   m_ObjectHideFlags: 0

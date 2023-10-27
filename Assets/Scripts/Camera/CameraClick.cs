@@ -13,7 +13,6 @@ public class CameraClick : MonoBehaviour
     public Vector3 _worldPosition;
     public Vector3 _HUDposition;
 
-    [SerializeField] GameObject _t;
 
     void Start()
     {
@@ -63,13 +62,21 @@ public class CameraClick : MonoBehaviour
         if (_resultsHUD[0].collider != null)
         {
             if (Input.GetMouseButtonDown(0))
-                _results[0].collider.GetComponent<RotationSlotManager>().ButtonIsPress();
+            {
+                _results[0].collider.GetComponent<HUDManager>().ButtonIsPress();
+            }
 
             if (Input.GetMouseButtonUp(0))
-                _results[0].collider.GetComponent<RotationSlotManager>().ButtonIsRelease();
+            {
+                _results[0].collider.GetComponent<HUDManager>().ButtonIsRelease();
+            }
+            if (Input.GetMouseButton(0))
+            {
+                _results[0].collider.GetComponent<HUDManager>().ButtonIsSelected();
+
+            }
         }
 
-        _t.transform.position = _HUDposition;
 
 
 
