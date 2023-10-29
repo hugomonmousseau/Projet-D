@@ -7,11 +7,16 @@ public class GameManager : MonoBehaviour
 
     public static GameManager _instance;
     public GameState _gameState;
+
+    [Header("Shop")]
+    public GameObject _line;
     private void Awake()
     {
         _instance = this;
 
     }
+
+
 
 }
 
@@ -25,5 +30,10 @@ public enum GameState
     MovingTheCamera,
 }
 
+public enum Camp
+{
+    Attaquant,
+    Defenseur
+}
 
 
