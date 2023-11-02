@@ -16,10 +16,6 @@ public class HUDManager : MonoBehaviour
     public void NotEventHighlight()
     {
         _selected = false;
-        if (_type == HUDType.Add && GameManager._instance._gameState != GameState.IsBuying)
-        {
-
-        }
 
     }
 

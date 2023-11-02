@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager _instance;
-    public GameState _gameState;
+    //public GameState _gameState;
+    [Header("Players")]
+    public GameObject _host;
+    public GameObject _client;
 
     [Header("Shop")]
     public GameObject _line;
