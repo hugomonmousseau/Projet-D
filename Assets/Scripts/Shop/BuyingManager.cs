@@ -6,23 +6,22 @@ public class BuyingManager : MonoBehaviour
 {
     public GameObject _previsualisation;
     [SerializeField] int _prix;
-    bool _onlyOneGO;
-    private Vector3 _velocity = Vector3.zero;
-    [SerializeField] float _speed = .15f;
-    void Start()
+    ButtonState _lastState;
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
+        if(GetComponent<SelectableStateReader>()._state != _lastState)
+        {
+            _lastState = GetComponent<SelectableStateReader>()._state;
+            if (_lastState == ButtonState.Pressed)
+                PrevisualisationAchat();
+        }
     }
 
     public void PrevisualisationAchat()
     {
-        GetComponentInParent<PlayerScript>()._state = GameState.IsBuying;
+        if(_prix >= GetComponentInParent<PlayerScript>()._golds)
+        {
+            GetComponentInParent<PlayerScript>().NowShopping(_previsualisation);
+        }
     }
 }

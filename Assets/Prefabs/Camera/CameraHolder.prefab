@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314eea4d48fdaf34999cc6cc18f4cc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxX: 90
-  _minX: 0
+  _maxX: 80
+  _minX: 10
   _roationSpeed: 25
   _maxZoom: 25
   _minZoom: 10
@@ -183,6 +183,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702ddee694ea6b546835273edf967b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _planeHUDgo: {fileID: 0}
   _worldPosition: {x: 0, y: 0, z: 0}
-  _t: {fileID: 0}

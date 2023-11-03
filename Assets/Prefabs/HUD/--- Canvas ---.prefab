@@ -58,7 +58,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -207,6 +207,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Artillery
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 8837784177297621153, guid: 98c2d1853a234eb488ae209bf6b98552,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -343,6 +349,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Market
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 1469424140235542159, guid: 84a1bb6072cbdf54a805255db641af31,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -479,6 +491,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Market
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 3149759481841942825, guid: 2cc43d349fb793d4e9fe4452be9a95f2,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -620,6 +638,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tents
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 8521614031554117607, guid: 090f0015eee75a04b838f7be5e4c4ad4,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -756,6 +780,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dwellings
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 2843850672026056209, guid: 57efc0c7ddb0a8e48919cb1162df3669,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -897,6 +927,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 8055742696690668284, guid: ff84a723ac57eb744908ed0f0242593e,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1027,6 +1063,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 2105892972792996409, guid: c1701d99ab8a4234a8381188df3c3ae3,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1163,6 +1205,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camp
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 5630011216898530519, guid: 3b38672c84ff8934b8cdeb018a4889f3,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1304,6 +1352,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Well
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 175170629904684313, guid: 6c212a15b1830d043ba7783f45e692d7,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1440,6 +1494,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 1690531891308265587, guid: d54f17707a377664ea4e587fb9c7d260,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1581,6 +1641,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dock
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 8217171453179119573, guid: fac1203b5b784454aa60ffd568928bc2,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1717,6 +1783,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camp
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 5630011216898530519, guid: 7b24f9a8f49bd394f90a998f88151605,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1858,6 +1930,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Workshop
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 8837784177297621153, guid: 98c2d1853a234eb488ae209bf6b98552,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1999,6 +2077,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Habitats
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 8211556183734608319, guid: cd19244bea3c14142ae9e012890d2d4e,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2140,6 +2224,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Skull
       objectReference: {fileID: 0}
+    - target: {fileID: 6934130798711669083, guid: d9d5b103d6872b5439c95a53864fb137,
+        type: 3}
+      propertyPath: _previsualisation
+      value: 
+      objectReference: {fileID: 4266989969507951032, guid: a2e74190440880a41890bad8b428f67f,
+        type: 3}
     - target: {fileID: 8486180885718261037, guid: d9d5b103d6872b5439c95a53864fb137,
         type: 3}
       propertyPath: m_Pivot.x

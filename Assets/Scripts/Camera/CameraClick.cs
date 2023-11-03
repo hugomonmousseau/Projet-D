@@ -11,6 +11,7 @@ public class CameraClick : MonoBehaviour
     public Vector3 _worldPosition;
 
     [Header("tiles")]
+    public GameObject _actualTile;
     GameObject _lastTile;
 
     [Header("HUD")]
@@ -30,8 +31,6 @@ public class CameraClick : MonoBehaviour
     void Update()
     {
         Vector3 _position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
-
-
         Ray _ray = _mainCam.ScreenPointToRay(_position);
 
         //debug
@@ -43,6 +42,17 @@ public class CameraClick : MonoBehaviour
 
 
         //hud prio
+        RaycastHUD(_ray);
+
+        //tile 2nd
+        RaycastTile(_ray);
+
+        //selection de batiments
+        RaycastOther(_ray);
+    }
+
+    void RaycastHUD(Ray _ray)
+    {
         RaycastHit[] _resultsHUD = new RaycastHit[1];
         int _hitHUD = Physics.RaycastNonAlloc(_ray, _resultsHUD, float.MaxValue, LayerMask.GetMask("HUD"));
 
@@ -61,51 +71,51 @@ public class CameraClick : MonoBehaviour
             _lastHUD.GetComponent<HUDManager>().NotEventHighlight();
             _lastHUD = null;
         }
+    }
 
-
-
+    void RaycastTile(Ray _ray)
+    {
 
         RaycastHit[] _resultsTile = new RaycastHit[1];
         int _hitTile = Physics.RaycastNonAlloc(_ray, _resultsTile, float.MaxValue, LayerMask.GetMask("Tile"));
 
-        if(_resultsTile[0].collider != null)
+        if (_resultsTile[0].collider != null)
         {
-            _planeLD = new Plane(Vector3.down, _resultsTile[0].collider.transform.position.y);
-
-
-            if (_lastTile == null)
+            _actualTile = _resultsTile[0].collider.gameObject;
+            // on verifie que la tuile et le joueur sont dans la meme équipe
+            if (_resultsTile[0].collider.gameObject.GetComponent<TileInteraction>()._camp == GetComponentInParent<PlayerScript>()._camp)
             {
-                _lastTile = _resultsTile[0].collider.gameObject;
-                _resultsTile[0].collider.GetComponent<TileInteraction>().Highlight();
-            }
-            if(_lastTile != _resultsTile[0].collider.gameObject)
-            {
-                _lastTile.GetComponent<TileInteraction>().NotEventHighlight();
-                _lastTile = _resultsTile[0].collider.gameObject;
-                _resultsTile[0].collider.GetComponent<TileInteraction>().Highlight();
+                _planeLD = new Plane(Vector3.down, _resultsTile[0].collider.transform.position.y);
 
+
+                if (_lastTile == null)
+                {
+                    _lastTile = _resultsTile[0].collider.gameObject;
+                    _resultsTile[0].collider.GetComponent<TileInteraction>().Highlight();
+                }
+                if (_lastTile != _resultsTile[0].collider.gameObject)
+                {
+                    _lastTile.GetComponent<TileInteraction>().NotEventHighlight();
+                    _lastTile = _resultsTile[0].collider.gameObject;
+                    _resultsTile[0].collider.GetComponent<TileInteraction>().Highlight();
+                }
             }
         }
+        else if(_actualTile != null)
+        {
+            _actualTile = null;
+        }
+    }
 
-        //selection de batiments
+    void RaycastOther(Ray _ray)
+    {
+
         RaycastHit[] _results = new RaycastHit[1];
         int _hits = Physics.RaycastNonAlloc(_ray, _results);
 
 
-
-
-
-
-
-
-
         if (_results[0].collider != null)
         {
-            //Debug.Log(_results[0].collider.name);
-
-            //_planeLD = new Plane(Vector3.down,_results[0].collider.transform.position.y + GameManager._instance._pointHeight);
         }
-
     }
-
 }

@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
 public enum GameState
 {
     Default,
-    DiceHUD,
     Pause,
     IsBuying,
     MovingTheCamera,

@@ -27,10 +27,7 @@ public class HUDManager : MonoBehaviour
 
     void Pressed()
     {
-        if (_type == HUDType.Add)
-        {
 
-        }
         
 
     }
@@ -38,13 +35,7 @@ public class HUDManager : MonoBehaviour
 }
 public enum HUDType
 {
-    Add,
-    Tour,
-    Marché,
-    Camps,
-    Artisanat,
-    Habitations,
-    Puits
+
 }
 
 
