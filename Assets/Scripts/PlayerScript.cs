@@ -37,8 +37,14 @@ public class PlayerScript : MonoBehaviour
     public void NotShoppingAnymore()
     {
         _state = GameState.Default;
-        _actualPrev.transform.position = GetComponentInChildren<CameraClick>()._actualTile.transform.position;
-        _actualPrev = null;
+        if(_actualPrev != null)
+        {
+            _actualPrev.transform.position = GetComponentInChildren<CameraClick>()._actualTile.transform.position;
+            _actualPrev.GetComponent<Previsualisations>().Deathrattle(GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._type);
+            _actualPrev = null;
+
+        }
+
     }
 
     public void Shopping()
@@ -47,7 +53,7 @@ public class PlayerScript : MonoBehaviour
         if(GetComponentInChildren<CameraClick>()._actualTile != null)
         {
             if (_actualPrev == null)
-                _actualPrev = Instantiate(_inHand, GetComponentInChildren<CameraClick>()._actualTile.transform.position, GetComponentInChildren<CameraClick>()._actualTile.transform.rotation);
+                _actualPrev = Instantiate(_inHand, GetComponentInChildren<CameraClick>()._actualTile.transform.position, Quaternion.Euler(0,60 * Random.Range(0,6),0));
             else
                 _actualPrev.transform.position = Vector3.SmoothDamp(_actualPrev.transform.position, GetComponentInChildren<CameraClick>()._actualTile.transform.position, ref _velocity, _previsualisationSpeed);
         }

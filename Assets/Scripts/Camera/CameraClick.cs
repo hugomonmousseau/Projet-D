@@ -81,10 +81,11 @@ public class CameraClick : MonoBehaviour
 
         if (_resultsTile[0].collider != null)
         {
-            _actualTile = _resultsTile[0].collider.gameObject;
             // on verifie que la tuile et le joueur sont dans la meme équipe
+            //Debug.Log(_resultsTile[0].collider.gameObject.GetComponent<TileInteraction>()._camp == GetComponentInParent<PlayerScript>()._camp);
             if (_resultsTile[0].collider.gameObject.GetComponent<TileInteraction>()._camp == GetComponentInParent<PlayerScript>()._camp)
             {
+                _actualTile = _resultsTile[0].collider.gameObject;
                 _planeLD = new Plane(Vector3.down, _resultsTile[0].collider.transform.position.y);
 
 

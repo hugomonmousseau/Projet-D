@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1244854172233194237}
+  - component: {fileID: 1901063329975543395}
+  - component: {fileID: -818205969862598291}
   m_Layer: 0
   m_Name: Pirate_Campement
   m_TagString: Untagged
@@ -43,6 +45,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1901063329975543395
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091756258577565695}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebf2419445088e742bb305985ee1bfbb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-818205969862598291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091756258577565695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c649c3d20cefa94da040b5e18235a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tileType: 0
 --- !u!1001 &163811837906003250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,7 +88,7 @@ PrefabInstance:
     - target: {fileID: 6498446290190777824, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
       propertyPath: m_Name
-      value: Pierre
+      value: Pierre5
       objectReference: {fileID: 0}
     - target: {fileID: 6501515700444558044, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
@@ -128,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 6498446290190777824, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
       propertyPath: m_Name
-      value: Pierre
+      value: Pierre2
       objectReference: {fileID: 0}
     - target: {fileID: 6501515700444558044, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
@@ -288,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 6498446290190777824, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
       propertyPath: m_Name
-      value: Pierre
+      value: Pierre4
       objectReference: {fileID: 0}
     - target: {fileID: 6501515700444558044, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
@@ -373,7 +408,7 @@ PrefabInstance:
     - target: {fileID: 6498446290190777824, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
       propertyPath: m_Name
-      value: Pierre
+      value: Pierre6
       objectReference: {fileID: 0}
     - target: {fileID: 6501515700444558044, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
@@ -533,7 +568,7 @@ PrefabInstance:
     - target: {fileID: 6498446290190777824, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
       propertyPath: m_Name
-      value: Pierre
+      value: Pierre3
       objectReference: {fileID: 0}
     - target: {fileID: 6501515700444558044, guid: 251d485f6aa83b243ad2fabd2786666a,
         type: 3}
@@ -975,6 +1010,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1459370036621366579, guid: 12efad7e88e4bea4c84dd8b50d138ace,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43230aefc287cc04e8995516d505f725, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12efad7e88e4bea4c84dd8b50d138ace, type: 3}
 --- !u!4 &7906601670177216576 stripped
