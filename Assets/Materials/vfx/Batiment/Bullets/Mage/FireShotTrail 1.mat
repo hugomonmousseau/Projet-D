@@ -1,52 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!28 &-4801819744690233712
-Texture2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: _TrailWidthGradientTex{"mode":0,"colorKeys":[{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.08529793471097946},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.5000076293945313},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 2
-  m_Width: 64
-  m_Height: 1
-  m_CompleteImageSize: 256
-  m_MipsStripped: 0
-  m_TextureFormat: 4
-  m_MipCount: 1
-  m_IsReadable: 1
-  m_IsPreProcessed: 0
-  m_IgnoreMasterTextureLimit: 0
-  m_StreamingMipmaps: 0
-  m_StreamingMipmapsPriority: 0
-  m_VTOnly: 0
-  m_AlphaIsTransparency: 0
-  m_ImageCount: 1
-  m_TextureDimension: 2
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_LightmapFormat: 0
-  m_ColorSpace: 1
-  m_PlatformBlob: 
-  image data: 256
-  _typelessdata: 000000ff2f2f2fff5f5f5fff8e8e8effbebebeffedededfff9f9f9ffefefefffe5e5e5ffdcdcdcffd2d2d2ffc8c8c8ffbebebeffb5b5b5ffabababffa1a1a1ff979797ff8e8e8eff848484ff7a7a7aff707070ff666666ff5d5d5dff535353ff494949ff3f3f3fff363636ff2c2c2cff222222ff181818ff0f0f0fff050505ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff000000ff
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -54,26 +7,21 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueFireTrail
-  m_Shader: {fileID: 4800000, guid: b430983578466934c944e7171b4c372c, type: 3}
+  m_Name: FireShotTrail 1
+  m_Shader: {fileID: 4800000, guid: 6eb86e4931b506a408fd1477edec61ea, type: 3}
   m_ValidKeywords:
-  - ADDITIVECONFIG_ON
-  - COLORRAMPGRAD_ON
-  - COLORRAMP_ON
+  - ALPHAFADETRANSPARENCYTOO_ON
   - GLOW_ON
   - HSV_ON
-  - MASK_ON
-  - SHAPE1DISTORT_ON
+  - SHAPE2CONTRAST_ON
   - SHAPE2DISTORT_ON
   - SHAPE2_ON
-  - SHAPE3_ON
-  - SHAPEADD_ON
   - TRAILWIDTH_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -84,7 +32,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ColorRampTexGradient:
-        m_Texture: {fileID: 28745898969709326}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DistNormalMap:
@@ -92,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DistortTex:
-        m_Texture: {fileID: 2800000, guid: 48da24d771916524899d36e4bfe7f762, type: 3}
+        m_Texture: {fileID: 2800000, guid: fcb027caad6963b4a80539bbce0d10e9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeBurnTex:
@@ -100,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FadeTex:
-        m_Texture: {fileID: 2800000, guid: 48da24d771916524899d36e4bfe7f762, type: 3}
+        m_Texture: {fileID: 2800000, guid: 854b25bc08516364da5a786b1cad247e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlowTex:
@@ -108,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0187b90e7c889854085642814a9ae3f8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: d22e31910361fe541aa0e63d460366e1, type: 3}
+        m_Scale: {x: 3, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
-        m_Texture: {fileID: 2800000, guid: b176ab68027b2414185413f764776159, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2f6642b43dc405d498acba7e288c068c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape1MaskTex:
@@ -120,27 +68,27 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape2DistortTex:
-        m_Texture: {fileID: 2800000, guid: 960f967e6ecdf2948b33c81e69622ac0, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 681f874d59abb334c965fe5f72a606f3, type: 3}
+        m_Scale: {x: 0.3, y: 0.3}
         m_Offset: {x: 0, y: 0}
     - _Shape2Tex:
-        m_Texture: {fileID: 2800000, guid: bf4824a0ff9cccb40b7859ed1b73ed1c, type: 3}
-        m_Scale: {x: 0.15, y: 1.04}
-        m_Offset: {x: 0.1, y: 0}
+        m_Texture: {fileID: 2800000, guid: e4fe2219612aa4d4ba987bd61ef901c0, type: 3}
+        m_Scale: {x: 0.77, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Shape3DistortTex:
-        m_Texture: {fileID: 2800000, guid: 48da24d771916524899d36e4bfe7f762, type: 3}
+        m_Texture: {fileID: 2800000, guid: fcb027caad6963b4a80539bbce0d10e9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Shape3Tex:
-        m_Texture: {fileID: 2800000, guid: 0187b90e7c889854085642814a9ae3f8, type: 3}
-        m_Scale: {x: 2, y: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ShapeDistortTex:
-        m_Texture: {fileID: 2800000, guid: 195835bdb1ccbbb47ae71aae5a30c376, type: 3}
-        m_Scale: {x: 2, y: 1}
+        m_Texture: {fileID: 2800000, guid: ead4bb59fa3716842879d18a0d632106, type: 3}
+        m_Scale: {x: 0.2, y: 0.2}
         m_Offset: {x: 0, y: 0}
     - _TrailWidthGradient:
-        m_Texture: {fileID: -4801819744690233712}
+        m_Texture: {fileID: 28598554931539810}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _VertOffsetTex:
@@ -149,25 +97,25 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.668
+    - _Alpha: 1
     - _AlphaBrightness: 0
     - _AlphaContrast: 1
     - _AlphaCutoffValue: 0.25
-    - _AlphaFadeAmount: 0
-    - _AlphaFadePow: 1
-    - _AlphaFadeSmooth: 0
+    - _AlphaFadeAmount: -0.1
+    - _AlphaFadePow: 1.02
+    - _AlphaFadeSmooth: 0.975
     - _AlphaStepMax: 0.075
     - _AlphaStepMin: 0
     - _BlurIntensity: 4.5
     - _CamDistFadeStepMax: 100
     - _CamDistFadeStepMin: 0
     - _CamDistProximityFade: 0
-    - _ColorGradingMidPoint: 0.5
+    - _ColorGradingMidPoint: 0.231
     - _ColorMask: 15
     - _ColorRampBlend: 1
     - _ColorRampLuminosity: 0
     - _CullingOption: 0
-    - _DebugShape: 1
+    - _DebugShape: 2
     - _DepthGlow: 0
     - _DepthGlowDist: 0.5
     - _DepthGlowGlobal: 1
@@ -179,8 +127,8 @@ Material:
     - _DistortionPower: 5
     - _DistortionScrollXSpeed: 0
     - _DistortionScrollYSpeed: 0
-    - _DstMode: 1
-    - _EditorDrawers: 62
+    - _DstMode: 10
+    - _EditorDrawers: 61
     - _FadeAmount: -0.1
     - _FadeBurnGlow: 5
     - _FadeBurnWidth: 0.01
@@ -189,26 +137,26 @@ Material:
     - _FadeScrollYSpeed: 0
     - _FadeTransition: 0.075
     - _FishEyeUvAmount: 0.35
-    - _Glow: 0
-    - _GlowGlobal: 2.41
+    - _Glow: 1
+    - _GlowGlobal: 2
     - _HandDrawnAmount: 10
     - _HandDrawnSpeed: 5
     - _HsvBright: 1
-    - _HsvSaturation: 1.56
-    - _HsvShift: 201
+    - _HsvSaturation: 1.143
+    - _HsvShift: 0
     - _LightAmount: 0
     - _MaskPow: 1
     - _OffsetSh1: 1
     - _OffsetSh2: 1
     - _OffsetSh3: 1
     - _PinchUvAmount: 0.35
-    - _PixelateSize: 32
+    - _PixelateSize: 15
     - _PosterizeGamma: 0.75
     - _PosterizeNumColors: 8
     - _RandomSh1Mult: 1
     - _RandomSh2Mult: 1
     - _RandomSh3Mult: 1
-    - _RenderingMode: 2
+    - _RenderingMode: 0
     - _RimAddAmount: 1
     - _RimBias: 0
     - _RimErodesAlpha: 0
@@ -231,20 +179,20 @@ Material:
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
     - _Shape1MaskPow: 1
-    - _Shape2AlphaWeight: 0.56
+    - _Shape2AlphaWeight: 0.62
     - _Shape2Brightness: 0
-    - _Shape2ColorWeight: 0.56
-    - _Shape2Contrast: 1
-    - _Shape2DistortAmount: 3.67
-    - _Shape2DistortXSpeed: -2.4
+    - _Shape2ColorWeight: 2
+    - _Shape2Contrast: 1.54
+    - _Shape2DistortAmount: 2
+    - _Shape2DistortXSpeed: -3
     - _Shape2DistortYSpeed: 0.1
     - _Shape2RotationOffset: 0
     - _Shape2RotationSpeed: 0
-    - _Shape2XSpeed: -0.1
+    - _Shape2XSpeed: -3
     - _Shape2YSpeed: 0
-    - _Shape3AlphaWeight: 1
+    - _Shape3AlphaWeight: 2
     - _Shape3Brightness: 0
-    - _Shape3ColorWeight: 1
+    - _Shape3ColorWeight: 2
     - _Shape3Contrast: 1
     - _Shape3DistortAmount: 0.5
     - _Shape3DistortXSpeed: 0.1
@@ -253,19 +201,19 @@ Material:
     - _Shape3RotationSpeed: 0
     - _Shape3XSpeed: 0
     - _Shape3YSpeed: 0
-    - _ShapeAlphaWeight: 0.7
+    - _ShapeAlphaWeight: 2.07
     - _ShapeBrightness: 0
-    - _ShapeColorWeight: 0.7
-    - _ShapeContrast: 1
-    - _ShapeDistortAmount: 0.82
-    - _ShapeDistortXSpeed: -2.69
-    - _ShapeDistortYSpeed: 0.7
+    - _ShapeColorWeight: 1
+    - _ShapeContrast: 1.51
+    - _ShapeDistortAmount: 1
+    - _ShapeDistortXSpeed: -3.2
+    - _ShapeDistortYSpeed: -0.88
     - _ShapeRotationOffset: 0
     - _ShapeRotationSpeed: 0
-    - _ShapeXSpeed: 0
+    - _ShapeXSpeed: -6
     - _ShapeYSpeed: 0
     - _SoftFactor: 0.5
-    - _SrcMode: 4
+    - _SrcMode: 5
     - _TextureScrollXSpeed: 1
     - _TextureScrollYSpeed: 0
     - _TimingSeed: 0
@@ -278,9 +226,9 @@ Material:
     - _VertOffsetPower: 1
     - _VertOffsetTexXSpeed: 0.1
     - _VertOffsetTexYSpeed: 0.1
-    - _WaveAmount: 18.2
-    - _WaveSpeed: 13.8
-    - _WaveStrength: 4.6
+    - _WaveAmount: 12.9
+    - _WaveSpeed: 5.9
+    - _WaveStrength: 25
     - _WaveX: 0
     - _WaveY: 0.5
     - _ZTestMode: 4
@@ -289,26 +237,26 @@ Material:
     m_Colors:
     - _BackFaceTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorGradingDark: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorGradingLight: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorGradingMiddle: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorGradingDark: {r: 1024, g: 0, b: 0, a: 1}
+    - _ColorGradingLight: {r: 1, g: 0.9825753, b: 0, a: 1}
+    - _ColorGradingMiddle: {r: 1024, g: 373.45883, b: 0, a: 1}
     - _DepthGlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
     - _FrontFaceTint: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GlowColor: {r: 0.85882354, g: 0.70419675, b: 0.69411767, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _Shape2Color: {r: 1, g: 1, b: 1, a: 1}
     - _Shape3Color: {r: 1, g: 1, b: 1, a: 1}
     - _ShapeColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!28 &28745898969709326
+--- !u!28 &28598554931539810
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _ColorRampTexGradientTex{"mode":0,"colorKeys":[{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":0.6301735639572144,"g":1.0,"b":0.0,"a":1.0},"time":0.3176470696926117},{"color":{"r":0.6301735639572144,"g":1.0,"b":0.0,"a":1.0},"time":0.5411764979362488}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
+  m_Name: _TrailWidthGradientTex{"mode":0,"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.28000304102897646},{"color":{"r":0.6132075786590576,"g":0.6132075786590576,"b":0.6132075786590576,"a":1.0},"time":0.6625009775161743},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":1.0}]}
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -343,7 +291,7 @@ Texture2D:
   m_ColorSpace: 1
   m_PlatformBlob: 
   image data: 256
-  _typelessdata: 000000ff080d00ff101900ff182600ff203300ff284000ff304c00ff385900ff406600ff487300ff507f00ff588c00ff609900ff68a600ff70b200ff78bf00ff80cc00ff89d900ff91e500ff99f200ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ffa1ff00ff
+  _typelessdata: fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffefefefff9f9f9fff5f5f5fff1f1f1ffedededffe9e9e9ffe5e5e5ffe1e1e1ffddddddffd9d9d9ffd5d5d5ffd1d1d1ffccccccffc8c8c8ffc4c4c4ffc0c0c0ffbcbcbcffb8b8b8ffb4b4b4ffb0b0b0ffacacacffa8a8a8ffa3a3a3ff9f9f9fff9a9a9aff939393ff8c8c8cff848484ff7d7d7dff767676ff6e6e6eff676767ff606060ff585858ff515151ff4a4a4aff424242ff3b3b3bff333333ff2c2c2cff252525ff1d1d1dff161616ff0f0f0fff070707ff000000ff
   m_StreamData:
     serializedVersion: 2
     offset: 0
