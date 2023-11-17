@@ -12,7 +12,7 @@ public class CameraClick : MonoBehaviour
 
     [Header("tiles")]
     public GameObject _actualTile;
-    GameObject _lastTile;
+    public GameObject _lastTile;
 
     [Header("HUD")]
     GameObject _lastHUD;

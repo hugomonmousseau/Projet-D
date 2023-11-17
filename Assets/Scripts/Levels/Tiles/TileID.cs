@@ -6,6 +6,7 @@ public class TileID : MonoBehaviour
 {
     public Tile _tile;
     public TileType _type;
+    public bool _isNextToWater;
     public List<GameObject> _tilesPossible;
 
     [Header("Visuals")]

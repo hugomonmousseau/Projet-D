@@ -39,7 +39,10 @@ public class PlayerScript : MonoBehaviour
         _state = GameState.Default;
         if(_actualPrev != null)
         {
-            _actualPrev.transform.position = GetComponentInChildren<CameraClick>()._actualTile.transform.position;
+            if(GetComponentInChildren<CameraClick>()._actualTile)
+                _actualPrev.transform.position = GetComponentInChildren<CameraClick>()._lastTile.transform.position;
+            else
+                _actualPrev.transform.position = GetComponentInChildren<CameraClick>()._actualTile.transform.position;
             _actualPrev.GetComponent<Previsualisations>().Deathrattle(GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._type);
             _actualPrev = null;
 

@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 5767054023008913081}
   - component: {fileID: 7232106242300961842}
   - component: {fileID: -2885841115552169216}
+  - component: {fileID: 7121092891817680499}
   m_Layer: 0
   m_Name: Previsualisation_Pirate_Artisanat
   m_TagString: Untagged
@@ -217,6 +218,7 @@ Transform:
   - {fileID: 159647705589316143}
   - {fileID: 834486120806356442}
   - {fileID: 32111938726421754}
+  - {fileID: 3086905791677590389}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
@@ -253,6 +255,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bat: {fileID: 6788204022987006020, guid: 085309c335f0b5f44948b5eeda80c29d, type: 3}
+--- !u!114 &7121092891817680499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6908770021802223662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caafeef22e2577448a5a2d932f204e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waterChecker: {fileID: 3086905791677590389}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!1 &9174682025758512582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3086905791677590389}
+  m_Layer: 0
+  m_Name: WaterChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3086905791677590389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174682025758512582}
+  m_LocalRotation: {x: -0, y: 0.5, z: -0, w: 0.8660254}
+  m_LocalPosition: {x: 1.219, y: 1, z: 0.704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5767054023008913081}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &170597262188605424
 PrefabInstance:
   m_ObjectHideFlags: 0
