@@ -7,91 +7,116 @@ public class CameraClick : MonoBehaviour
     //private
     Camera _mainCam;
     Plane _planeLD;
-    Plane _planeConnexion;
     public Plane _HUDPlane;
-    [SerializeField] GameObject _planeHUDgo;
     public Vector3 _worldPosition;
-    public Vector3 _HUDposition;
 
+    [Header("tiles")]
+    public GameObject _actualTile;
+    GameObject _lastTile;
+
+    [Header("HUD")]
+    GameObject _lastHUD;
 
     void Start()
     {
         _mainCam = GetComponent<Camera>();
 
-        //coordonné Y de la map
+        //coordonnï¿½ Y de la map
         _planeLD = new Plane(Vector3.down, 0f);
-        //_planeConnexion = new Plane(Vector3.down, GameManager._instance._pointHeight);
+
+        
     }
 
 
     void Update()
     {
         Vector3 _position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
-
-
         Ray _ray = _mainCam.ScreenPointToRay(_position);
 
         //debug
         Debug.DrawRay(_ray.origin, _ray.direction * 100, Color.yellow);
 
+
         if (_planeLD.Raycast(_ray, out float _worldDistance))
-        {
             _worldPosition = _ray.GetPoint(_worldDistance);
-        }
 
 
-        Vector3 normal = _planeHUDgo.transform.up;
-        // Calcule la distance du plane par rapport à l'origine en utilisant le produit scalaire
-        //float distance = Vector3.Dot(normal, _planeHUDgo.transform.position);
-        // Crée le plane avec la normale et la distance calculées
-        _HUDPlane = new Plane(normal, -31.6f);
-
-
-        if (_HUDPlane.Raycast(_ray, out float _HUDdistance))
-            _HUDposition = _ray.GetPoint(_HUDdistance);
         //hud prio
+        RaycastHUD(_ray);
+
+        //tile 2nd
+        RaycastTile(_ray);
+
+        //selection de batiments
+        RaycastOther(_ray);
+    }
+
+    void RaycastHUD(Ray _ray)
+    {
         RaycastHit[] _resultsHUD = new RaycastHit[1];
         int _hitHUD = Physics.RaycastNonAlloc(_ray, _resultsHUD, float.MaxValue, LayerMask.GetMask("HUD"));
 
-        //selection de batiments
+        if (_resultsHUD[0].collider != null)
+        {
+            if (_lastHUD != _resultsHUD[0].collider.gameObject)
+            {
+                if (_lastHUD != null)
+                    _lastHUD.GetComponent<HUDManager>().NotEventHighlight();
+                _lastHUD = _resultsHUD[0].collider.gameObject;
+                _resultsHUD[0].collider.GetComponent<HUDManager>().Highlight();
+            }
+        }
+        else if (_lastHUD != null)
+        {
+            _lastHUD.GetComponent<HUDManager>().NotEventHighlight();
+            _lastHUD = null;
+        }
+    }
+
+    void RaycastTile(Ray _ray)
+    {
+
+        RaycastHit[] _resultsTile = new RaycastHit[1];
+        int _hitTile = Physics.RaycastNonAlloc(_ray, _resultsTile, float.MaxValue, LayerMask.GetMask("Tile"));
+
+        if (_resultsTile[0].collider != null)
+        {
+            // on verifie que la tuile et le joueur sont dans la meme ï¿½quipe
+            //Debug.Log(_resultsTile[0].collider.gameObject.GetComponent<TileInteraction>()._camp == GetComponentInParent<PlayerScript>()._camp);
+            if (_resultsTile[0].collider.gameObject.GetComponent<TileInteraction>()._camp == GetComponentInParent<PlayerScript>()._camp)
+            {
+                _actualTile = _resultsTile[0].collider.gameObject;
+                _planeLD = new Plane(Vector3.down, _resultsTile[0].collider.transform.position.y);
+
+
+                if (_lastTile == null)
+                {
+                    _lastTile = _resultsTile[0].collider.gameObject;
+                    _resultsTile[0].collider.GetComponent<TileInteraction>().Highlight();
+                }
+                if (_lastTile != _resultsTile[0].collider.gameObject)
+                {
+                    _lastTile.GetComponent<TileInteraction>().NotEventHighlight();
+                    _lastTile = _resultsTile[0].collider.gameObject;
+                    _resultsTile[0].collider.GetComponent<TileInteraction>().Highlight();
+                }
+            }
+        }
+        else if(_actualTile != null)
+        {
+            _actualTile = null;
+        }
+    }
+
+    void RaycastOther(Ray _ray)
+    {
+
         RaycastHit[] _results = new RaycastHit[1];
         int _hits = Physics.RaycastNonAlloc(_ray, _results);
 
 
-        
-        if (_resultsHUD[0].collider != null)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                _results[0].collider.GetComponent<HUDManager>().ButtonIsPress();
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                _results[0].collider.GetComponent<HUDManager>().ButtonIsRelease();
-            }
-            if (Input.GetMouseButton(0))
-            {
-                _results[0].collider.GetComponent<HUDManager>().ButtonIsSelected();
-
-            }
-        }
-
-
-
-
-
-
-
-
-
         if (_results[0].collider != null)
         {
-            //Debug.Log(_results[0].collider.name);
-
-            //_planeLD = new Plane(Vector3.down,_results[0].collider.transform.position.y + GameManager._instance._pointHeight);
         }
-
     }
-
 }

@@ -4,55 +4,38 @@ using UnityEngine;
 
 public class HUDManager : MonoBehaviour
 {
-    bool _isRotating = false;
-    public HUDtype _type;
+    [SerializeField] GameObject _tile;
+    public HUDType _type;
+    bool _selected;
 
-    public List<GameObject> _pivotList;
-    [SerializeField] float _rotationDuration;
-    [SerializeField] AnimationCurve _curve;
-    bool _isActive;
-    public void ButtonIsPress()
+    public void Highlight()
     {
-        //Debug.Log(_type);
-        if(_type == HUDtype.rotation)
-        {
-            _isActive = !_isActive;
-
-            foreach (GameObject _pivot in _pivotList)
-            {
-                StartCoroutine(SwitchRotationMode(_pivot));
-            }
-        }
+        _selected = true;
     }
 
-    public void ButtonIsRelease()
+    public void NotEventHighlight()
     {
-    }
-
-    public void ButtonIsSelected()
-    {
+        _selected = false;
 
     }
 
-    private IEnumerator SwitchRotationMode(GameObject _pivot)
+    private void Update()
     {
-        float _duration = 0;
-        while (_rotationDuration > _duration)
-        {
-            if(_isActive)
-                _pivot.GetComponent<PivotManager>()._holderRatio = _curve.Evaluate(_duration / _rotationDuration);
-            else
-                _pivot.GetComponent<PivotManager>()._holderRatio = _curve.Evaluate(1 - (_duration / _rotationDuration));
-            _duration += Time.deltaTime;
-            yield return null;
-        }
+        if (_selected && Input.GetMouseButtonDown(0))
+            Pressed();
+    }
+
+    void Pressed()
+    {
+
+        
+
     }
 
 }
-
-public enum HUDtype
+public enum HUDType
 {
-    barre,
-    croix,
-    rotation
+
 }
+
+

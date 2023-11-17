@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4561334276534070691}
+  - component: {fileID: 2580609501989275403}
+  - component: {fileID: -2827454232363056305}
   m_Layer: 0
   m_Name: "Royaume_March\xE9"
   m_TagString: Untagged
@@ -49,6 +51,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2580609501989275403
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288505625790129241}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b46443c99a304704c861a3d1f6e42a39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2827454232363056305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288505625790129241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c649c3d20cefa94da040b5e18235a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tileType: 0
 --- !u!1001 &1520157966968438766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,6 +95,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Caisse (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261306958170092530, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
+        type: 3}
+      propertyPath: _pourcentSpawn
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469045446051470436, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
         type: 3}
@@ -211,6 +251,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caisse (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5261306958170092530, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
+        type: 3}
+      propertyPath: _pourcentSpawn
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6469045446051470436, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
         type: 3}
       propertyPath: m_RootOrder
@@ -285,6 +330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Caisse (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261306958170092530, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
+        type: 3}
+      propertyPath: _pourcentSpawn
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469045446051470436, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
         type: 3}
@@ -516,6 +566,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caisse (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5261306958170092530, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
+        type: 3}
+      propertyPath: _pourcentSpawn
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6469045446051470436, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
         type: 3}
       propertyPath: m_RootOrder
@@ -721,6 +776,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Barri\xE8re"
       objectReference: {fileID: 0}
+    - target: {fileID: 7304734592713785384, guid: 0e9ed211b16d74c4287d16b2e0b1b143,
+        type: 3}
+      propertyPath: _rotationMax
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304734592713785384, guid: 0e9ed211b16d74c4287d16b2e0b1b143,
+        type: 3}
+      propertyPath: _rotationMin
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9ed211b16d74c4287d16b2e0b1b143, type: 3}
 --- !u!4 &1905604762486499320 stripped
@@ -740,6 +805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Caisse (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261306958170092530, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
+        type: 3}
+      propertyPath: _pourcentSpawn
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6469045446051470436, guid: 7e46db5bc58bad54aa5e1ac03999e8a1,
         type: 3}
@@ -1038,6 +1108,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 838b5ce46aa335e4a896549422264327, type: 3}
+--- !u!1 &5225883949308851385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3259363701853769891, guid: 838b5ce46aa335e4a896549422264327,
+    type: 3}
+  m_PrefabInstance: {fileID: 7331165057351672858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &409455665833743516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5225883949308851385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7307d04e76dafa342951c12438744ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationMin: 0
+  _rotationMax: 360
+  _pourcentSpawn: 1
 --- !u!4 &5229223107759880391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3255092573130808541, guid: 838b5ce46aa335e4a896549422264327,

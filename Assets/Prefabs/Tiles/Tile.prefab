@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4839731256374636602}
   - component: {fileID: 4839731256374636605}
   - component: {fileID: 4839731256374636604}
-  m_Layer: 0
+  - component: {fileID: 8476404551999392610}
+  m_Layer: 8
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tile:
     _coordonnees: {x: 0, y: 0, z: 0}
-    _isEmpty: 0
+    _isEmpty: 1
     _id: 0
   _type: 0
   _tilesPossible:
@@ -82,6 +83,20 @@ MonoBehaviour:
   _sandMaterial: {fileID: 2100000, guid: 1d5b630eab09e7a4699dcf4b7d083a57, type: 2}
   _grassMaterial: {fileID: 2100000, guid: c4911d8ded58d724f969cd0815aa0080, type: 2}
   _column: {fileID: 8856849699256080467, guid: bb1135cb1a4cefc419dcc9839dd49ea6, type: 3}
+--- !u!114 &8476404551999392610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839731256374636607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d89275cbae0447b398aa65aac9eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hud: {fileID: 0}
+  _camp: 0
 --- !u!1 &5499434361695498485
 GameObject:
   m_ObjectHideFlags: 0
