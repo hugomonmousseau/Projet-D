@@ -39,11 +39,18 @@ public class PlayerScript : MonoBehaviour
         _state = GameState.Default;
         if(_actualPrev != null)
         {
-            if(GetComponentInChildren<CameraClick>()._actualTile)
+            if (GetComponentInChildren<CameraClick>()._actualTile == null)
+            {
                 _actualPrev.transform.position = GetComponentInChildren<CameraClick>()._lastTile.transform.position;
+                GetComponentInChildren<CameraClick>()._lastTile.GetComponent<TileID>()._tile._isEmpty = false;
+                _actualPrev.GetComponent<Previsualisations>().Deathrattle(GetComponentInChildren<CameraClick>()._lastTile.GetComponent<TileID>()._type);
+            }
             else
+            {
                 _actualPrev.transform.position = GetComponentInChildren<CameraClick>()._actualTile.transform.position;
-            _actualPrev.GetComponent<Previsualisations>().Deathrattle(GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._type);
+                GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._tile._isEmpty = false;
+                _actualPrev.GetComponent<Previsualisations>().Deathrattle(GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._type);
+            }
             _actualPrev = null;
 
         }
@@ -60,6 +67,15 @@ public class PlayerScript : MonoBehaviour
             else
                 _actualPrev.transform.position = Vector3.SmoothDamp(_actualPrev.transform.position, GetComponentInChildren<CameraClick>()._actualTile.transform.position, ref _velocity, _previsualisationSpeed);
         }
+        if(_actualPrev != null && GetComponentInChildren<CameraClick>()._actualTile != null)
+        {
+            if (_actualPrev.GetComponent<Previsualisations>()._wrong && GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._tile._isEmpty && ((_actualPrev.GetComponent<Previsualisations>()._bat.GetComponent<BuildingManager>()._building == Building.PirateArtisanat && GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._isNextToWater)|| _actualPrev.GetComponent<Previsualisations>()._bat.GetComponent<BuildingManager>()._building != Building.PirateArtisanat))
+                _actualPrev.GetComponent<Previsualisations>().NowPrev();
+            else if (!_actualPrev.GetComponent<Previsualisations>()._wrong && (!GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._tile._isEmpty || (_actualPrev.GetComponent<Previsualisations>()._bat.GetComponent<BuildingManager>()._building == Building.PirateArtisanat && !GetComponentInChildren<CameraClick>()._actualTile.GetComponent<TileID>()._isNextToWater)))
+                _actualPrev.GetComponent<Previsualisations>().NowWrongPrev();
+
+        }
+
         if (Input.GetMouseButtonUp(0))
             NotShoppingAnymore();
     }

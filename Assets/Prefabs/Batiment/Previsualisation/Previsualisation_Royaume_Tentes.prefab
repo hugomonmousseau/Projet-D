@@ -187,6 +187,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bat: {fileID: 7434648890340490256, guid: e474c027d19bed941bac1901b12c3046, type: 3}
+  _wrong: 0
+  _list: []
+  _cross: {fileID: 0}
+  _prev: {fileID: 2100000, guid: 032a4b14da16cfd4ca2020aa4d96bba6, type: 2}
+  _wrongPrev: {fileID: 2100000, guid: fdad4e734b8bdd84892c2952d1ac699d, type: 2}
 --- !u!1001 &1667627844789080279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,6 +199,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5083099727657533372}
     m_Modifications:
+    - target: {fileID: 1035474872635422572, guid: 3d5072cc058643f4799d8578442da5ac,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1383419880111807685, guid: 3d5072cc058643f4799d8578442da5ac,
         type: 3}
       propertyPath: m_Name
