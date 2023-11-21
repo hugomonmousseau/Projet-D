@@ -208,8 +208,8 @@ Material:
     - _ShapeColorWeight: 2.07
     - _ShapeContrast: 1
     - _ShapeDistortAmount: 0.3
-    - _ShapeDistortXSpeed: 0.1
-    - _ShapeDistortYSpeed: 1.2
+    - _ShapeDistortXSpeed: 0.5
+    - _ShapeDistortYSpeed: 4
     - _ShapeRotationOffset: 0
     - _ShapeRotationSpeed: 0
     - _ShapeXSpeed: 0
