@@ -20,7 +20,7 @@ TagManager:
   - No Culling Mask
   - Water
   - UI
-  - Light
+  - HUDInteractable
   - HUD
   - Tile
   - 
