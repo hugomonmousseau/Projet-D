@@ -13,10 +13,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Shop")]
     public GameObject _line;
+
+    [Header("Level")]
+    public List<GameObject> _tiles;
     private void Awake()
     {
         _instance = this;
-
     }
 
 
