@@ -52,6 +52,9 @@ MonoBehaviour:
   _golds: 0
   _actualPrev: {fileID: 0}
   _previsualisationSpeed: 0.15
+  _line: {fileID: 0}
+  _actualsLines: []
+  _groupes: []
 --- !u!1001 &6257065675172122727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,7 +321,8 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 811000134720090596, guid: 30ba38b545b45a2498e9d7fe2f0b693a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30ba38b545b45a2498e9d7fe2f0b693a, type: 3}
 --- !u!4 &6234010657309650517 stripped
 Transform:

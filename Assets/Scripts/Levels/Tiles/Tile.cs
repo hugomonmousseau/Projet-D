@@ -8,7 +8,3 @@ public class Tile
     public bool _isEmpty;
     public int _id;
 }
-
-
-
-

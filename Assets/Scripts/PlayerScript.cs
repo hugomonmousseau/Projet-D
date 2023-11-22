@@ -14,6 +14,15 @@ public class PlayerScript : MonoBehaviour
     public GameObject _actualPrev;
     private Vector3 _velocity = Vector3.zero;
     [SerializeField] float _previsualisationSpeed = .15f;
+
+    [Header("Line")]
+    [SerializeField] GameObject _line;
+    List<GameObject> _usingTiles = new List<GameObject>();
+    List<GameObject> _usedTiles = new List<GameObject>();
+    List<GameObject> _waitingTiles = new List<GameObject>();
+    public List<GameObject> _actualsLines = new List<GameObject>();
+    public List<TilesGroupe> _groupes = new List<TilesGroupe>();
+
     void Start()
     {
         if (GameManager._instance._host == null)
@@ -78,5 +87,68 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
             NotShoppingAnymore();
+    }
+
+    [ContextMenu("SpawnLinePrev")]
+    public void SpawnLinePrevisualisation()
+    {
+        DefineTilesGroupes();
+    }
+
+    private void DefineTilesGroupes()
+    {
+        //reset
+        
+        _usingTiles = new List<GameObject>();
+        _usedTiles = new List<GameObject>();
+        _waitingTiles = new List<GameObject>();
+        _actualsLines = new List<GameObject>();
+        _groupes = new List<TilesGroupe>();
+        
+        foreach(GameObject _tile in GameManager._instance._tiles)
+        {
+            //si on l utilise pas deja et que la tuile est vide et qu elles sont dans notre équipe
+            if(_tile.GetComponent<TileID>()._tile._isEmpty && !_usingTiles.Contains(_tile) && _tile.GetComponent<TileInteraction>()._camp == _camp)
+            {
+                //on le rajoute
+                _usingTiles.Add(_tile);
+            }
+        }
+        //on prend les tuiles qui seront utilisées une par une
+        foreach(GameObject _usingTile in _usingTiles)
+        {
+            //si la tuile utilisable n ai pas deja utilisée
+            if (!_usedTiles.Contains(_usingTile))
+            {
+
+                TilesGroupe _actualGroup = new TilesGroupe();
+
+                TileChecker(_usingTile, _actualGroup);
+
+                while (_waitingTiles.Count > 0)
+                {
+                    TileChecker(_waitingTiles[0], _actualGroup);
+                    _waitingTiles.Remove(_waitingTiles[0]);
+                }
+                _groupes.Add(_actualGroup);
+
+            }
+        }
+
+    }
+
+    private void TileChecker(GameObject _tile, TilesGroupe _actualGroup)
+    {
+        for(int _checker = 0; _checker < _tile.GetComponentInChildren<TileChecker>()._checkers.Count; _checker++)
+        {
+            //si l objet est nouveau
+            if(_tile.GetComponentInChildren<TileChecker>().Checker(_checker) != null && !_waitingTiles.Contains(_tile.GetComponentInChildren<TileChecker>().Checker(_checker)) && _tile.GetComponentInChildren<TileChecker>().Checker(_checker).GetComponent<TileID>()._tile._isEmpty && !_usedTiles.Contains(_tile.GetComponentInChildren<TileChecker>().Checker(_checker)))
+            {
+                _waitingTiles.Add(_tile.GetComponentInChildren<TileChecker>().Checker(_checker));
+            }
+        }
+
+        _usedTiles.Add(_tile);
+        _actualGroup._tiles.Add(_tile);
     }
 }

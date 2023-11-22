@@ -14,6 +14,11 @@ public class TileID : MonoBehaviour
     [SerializeField] Material _grassMaterial;
     [SerializeField] GameObject _column;
 
+
+    private void Start()
+    {
+        GameManager._instance._tiles.Add(gameObject);
+    }
     [ContextMenu("Devient du sable")]
     void SandTile()
     {
