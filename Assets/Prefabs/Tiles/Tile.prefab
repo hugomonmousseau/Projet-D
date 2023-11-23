@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: TileChecker (0)
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -129,12 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkers:
-  - {fileID: 5618334787940728704}
-  - {fileID: 7792529650172695315}
-  - {fileID: 4045388980625859905}
-  - {fileID: 2254087193163322013}
-  - {fileID: 4792793533495713903}
-  - {fileID: 1843609717677171736}
+  - {fileID: 159441168247252804}
+  - {fileID: 3689745510661786980}
+  - {fileID: 3933025856299587828}
+  - {fileID: 4716097898806586037}
+  - {fileID: 2638981287651858789}
+  - {fileID: 7834201646465422086}
   _layer:
     serializedVersion: 2
     m_Bits: 256
@@ -151,7 +151,7 @@ GameObject:
   m_Layer: 0
   m_Name: TileChecker (4)
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -198,7 +198,7 @@ GameObject:
   m_Layer: 0
   m_Name: TileChecker (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -245,7 +245,7 @@ GameObject:
   m_Layer: 0
   m_Name: TileChecker (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -365,7 +365,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4681389362223056751}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -391,7 +391,7 @@ GameObject:
   m_Layer: 0
   m_Name: TileChecker (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1014,7 +1014,7 @@ GameObject:
   m_Layer: 0
   m_Name: TileChecker (5)
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

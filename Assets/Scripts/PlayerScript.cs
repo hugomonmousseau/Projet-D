@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
     List<GameObject> _waitingTiles = new List<GameObject>();
     public List<GameObject> _actualsLines = new List<GameObject>();
     public List<TilesGroupe> _groupes = new List<TilesGroupe>();
+    public List<Transform> _pointsList = new List<Transform>();
 
     void Start()
     {
@@ -93,7 +94,7 @@ public class PlayerScript : MonoBehaviour
     public void SpawnLinePrevisualisation()
     {
         DefineTilesGroupes();
-        InstantiateLines();
+        ListPointPrevisualisation();
     }
 
     private void DefineTilesGroupes()
@@ -143,9 +144,9 @@ public class PlayerScript : MonoBehaviour
         for(int _checker = 0; _checker < _tile.GetComponentInChildren<TileChecker>()._checkers.Count; _checker++)
         {
             //si l objet est nouveau
-            if(_tile.GetComponentInChildren<TileChecker>().Checker(_checker) != null && !_waitingTiles.Contains(_tile.GetComponentInChildren<TileChecker>().Checker(_checker)) && _tile.GetComponentInChildren<TileChecker>().Checker(_checker).GetComponent<TileID>()._tile._isEmpty && !_usedTiles.Contains(_tile.GetComponentInChildren<TileChecker>().Checker(_checker)))
+            if (_tile.GetComponentInChildren<TileChecker>().CheckerInt(_checker) != null && !_waitingTiles.Contains(_tile.GetComponentInChildren<TileChecker>().CheckerInt(_checker)) && _tile.GetComponentInChildren<TileChecker>().CheckerInt(_checker).GetComponent<TileID>()._tile._isEmpty && !_usedTiles.Contains(_tile.GetComponentInChildren<TileChecker>().CheckerInt(_checker)))
             {
-                _waitingTiles.Add(_tile.GetComponentInChildren<TileChecker>().Checker(_checker));
+                _waitingTiles.Add(_tile.GetComponentInChildren<TileChecker>().CheckerInt(_checker));
             }
         }
 
@@ -154,13 +155,75 @@ public class PlayerScript : MonoBehaviour
             _actualGroup._tiles.Add(_tile);
     }
 
-    private void InstantiateLines()
+    private void ListPointPrevisualisation()
     {
-        foreach(TilesGroupe _groupes in _groupes)
+
+        foreach (TilesGroupe _tileGroupe in _groupes)
         {
-            GameObject _newLine = Instantiate(_line);
-            _actualsLines.Add(_newLine);
+            _pointsList = new List<Transform>();
+            foreach (GameObject _tile in _tileGroupe._tiles)
+            {
+                for(int _checker = 0; _checker < _tile.GetComponentInChildren<TileChecker>()._checkers.Count; _checker ++)
+                {
+                    if (!_tile.GetComponentInChildren<TileChecker>().CheckerBool(_checker))
+                    {
+                        foreach (Transform _point in _tile.GetComponentInChildren<TileChecker>()._checkers[_checker].GetComponent<CheckerScript>()._points)
+                        {
+                            if (!_pointsList.Contains(_point))
+                            {
+                                _pointsList.Add(_point);
+                            }
+                        }
+                    }
+                }
+            }
+            _pointsList = SortTransforms(_pointsList);
+            NewLine();
         }
+    }
+
+    public List<Transform> SortTransforms(List<Transform> _originalList)
+    {
+        if (_originalList == null || _originalList.Count == 0) return null;
+
+        List<Transform> _sortedList = new List<Transform>();
+        Transform _currentTransform = _originalList[0]; // Commencer avec le premier élément
+        _sortedList.Add(_currentTransform);
+        _originalList.RemoveAt(0);
+
+        while (_originalList.Count > 0)
+        {
+            Transform _closestTransform = FindClosestTransform(_currentTransform, _originalList);
+            _sortedList.Add(_closestTransform);
+            _originalList.Remove(_closestTransform);
+            _currentTransform = _closestTransform;
+        }
+
+        return _sortedList;
+    }
+
+    private Transform FindClosestTransform(Transform _currentTransform, List<Transform> _transforms)
+    {
+        Transform _closest = null;
+        float _minDistance = float.MaxValue;
+
+        foreach (Transform _trans in _transforms)
+        {
+            float distance = Vector3.Distance(_currentTransform.position, _trans.position);
+            if (distance < _minDistance)
+            {
+                _minDistance = distance;
+                _closest = _trans;
+            }
+        }
+
+        return _closest;
+    }
+
+    private void NewLine()
+    {
+        GameObject _newLine = Instantiate(_line);
+        _newLine.GetComponent<LinePrevisualisationManager>().RenderLine(_pointsList);
     }
 
 }
