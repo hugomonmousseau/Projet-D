@@ -52,7 +52,7 @@ MonoBehaviour:
   _golds: 0
   _actualPrev: {fileID: 0}
   _previsualisationSpeed: 0.15
-  _line: {fileID: 0}
+  _line: {fileID: 2255001268088884407, guid: a4fad905cd7af5a4dbfdd83801e89706, type: 3}
   _actualsLines: []
   _groupes: []
 --- !u!1001 &6257065675172122727
@@ -310,11 +310,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 3052314566844897902, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
-        type: 3}
-      propertyPath: orthographic
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3052314566844897902, guid: 30ba38b545b45a2498e9d7fe2f0b693a,
         type: 3}

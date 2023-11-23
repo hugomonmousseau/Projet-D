@@ -29,4 +29,22 @@ public class TileChecker : MonoBehaviour
 
         return null;
     }
+
+    public bool Checkers()
+    {
+        int nb = 0;
+
+        RaycastHit _ray = new RaycastHit();
+        for (int _checker = 0; _checker < _checkers.Count; _checker++)
+        {
+            if (Physics.Raycast(_checkers[_checker].position, _checkers[_checker].TransformDirection(-Vector3.up), out _ray, Mathf.Infinity, _layer))
+                if (_ray.collider != null)
+                    if(_ray.collider.GetComponent<TileID>()._tile._isEmpty)
+                        nb++;
+
+        }
+        if (nb == _checkers.Count)
+            return true;
+        return false;
+    }
 }

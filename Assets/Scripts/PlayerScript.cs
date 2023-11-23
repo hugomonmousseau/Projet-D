@@ -93,6 +93,7 @@ public class PlayerScript : MonoBehaviour
     public void SpawnLinePrevisualisation()
     {
         DefineTilesGroupes();
+        InstantiateLines();
     }
 
     private void DefineTilesGroupes()
@@ -149,6 +150,17 @@ public class PlayerScript : MonoBehaviour
         }
 
         _usedTiles.Add(_tile);
-        _actualGroup._tiles.Add(_tile);
+        if(!_tile.GetComponentInChildren<TileChecker>().Checkers())
+            _actualGroup._tiles.Add(_tile);
     }
+
+    private void InstantiateLines()
+    {
+        foreach(TilesGroupe _groupes in _groupes)
+        {
+            GameObject _newLine = Instantiate(_line);
+            _actualsLines.Add(_newLine);
+        }
+    }
+
 }
