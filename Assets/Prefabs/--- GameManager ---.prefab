@@ -113,5 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1838e8dda538a45878062ee59d8456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameState: 0
-  _line: {fileID: 1883905683707139577, guid: 03facc482328aab44be81255dcc517a1, type: 3}
+  _host: {fileID: 0}
+  _client: {fileID: 0}
+  _line: {fileID: 2255001268088884407, guid: a4fad905cd7af5a4dbfdd83801e89706, type: 3}
+  _tiles: []

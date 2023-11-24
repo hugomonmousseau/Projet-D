@@ -224,6 +224,16 @@ public class PlayerScript : MonoBehaviour
     {
         GameObject _newLine = Instantiate(_line);
         _newLine.GetComponent<LinePrevisualisationManager>().RenderLine(_pointsList);
+        _actualsLines.Add(_newLine);
     }
 
+    [ContextMenu("Destroy Lines")]
+    public void DestroyLines()
+    {
+        foreach(GameObject _line in _actualsLines)
+        {
+            _line.GetComponent<LinePrevisualisationManager>().DeathRattle();
+        }
+        _actualsLines = new List<GameObject>();
+    }
 }

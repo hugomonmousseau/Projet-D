@@ -10,13 +10,22 @@ public class LinePrevisualisationManager : MonoBehaviour
     public void RenderLine(List<Transform> _list)
     {
         _points = _list;
-        _line.positionCount = _points.Count + 1;
+        _line.positionCount = _points.Count + 2;
 
-        for(int _position = 0; _position < _points.Count - 1; _position++)
+        for(int _position = 0; _position < _points.Count ; _position++)
         {
             _line.SetPosition(_position,_points[_position].position);
         }
-        _line.SetPosition(_line.positionCount, _points[_points.Count + 1].position);
         
+        //on copie les 2 dernieres pour bien boucler la ligne
+        _line.SetPosition(_line.positionCount - 2, _points[0].position);
+        _line.SetPosition(_line.positionCount - 1, _points[1].position);
+        
+    }
+
+    public void DeathRattle()
+    {
+        Debug.Log("Destroy " + gameObject.name);
+        Destroy(gameObject);
     }
 }

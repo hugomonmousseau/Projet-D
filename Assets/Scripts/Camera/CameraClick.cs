@@ -54,7 +54,7 @@ public class CameraClick : MonoBehaviour
     void RaycastHUD(Ray _ray)
     {
         RaycastHit[] _resultsHUD = new RaycastHit[1];
-        int _hitHUD = Physics.RaycastNonAlloc(_ray, _resultsHUD, float.MaxValue, LayerMask.GetMask("HUD"));
+        int _hitHUD = Physics.RaycastNonAlloc(_ray, _resultsHUD, float.MaxValue, LayerMask.GetMask("HUDInteractable"));
 
         if (_resultsHUD[0].collider != null)
         {
