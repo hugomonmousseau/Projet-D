@@ -13,6 +13,7 @@ public class TileID : MonoBehaviour
     [SerializeField] Material _sandMaterial;
     [SerializeField] Material _grassMaterial;
     [SerializeField] GameObject _column;
+    [SerializeField] GameObject _masks;
 
 
     private void Start()
@@ -41,6 +42,18 @@ public class TileID : MonoBehaviour
     void Column()
     {
         Instantiate(_column, transform);
+    }
+
+    [ContextMenu("Mask Appear")]
+    public void MaskAppear()
+    {
+        _masks.SetActive(true);
+    }
+
+    [ContextMenu("Mask Disappear")]
+    public void MaskDisappear()
+    {
+        _masks.SetActive(false);
     }
 }
 
