@@ -13,12 +13,15 @@ public class TileID : MonoBehaviour
     [SerializeField] Material _sandMaterial;
     [SerializeField] Material _grassMaterial;
     [SerializeField] GameObject _column;
-    [SerializeField] GameObject _masks;
 
+    int _defaultLayer;
+    int _postProcessLayer;
 
     private void Start()
     {
         GameManager._instance._tiles.Add(gameObject);
+        _defaultLayer = LayerMask.NameToLayer("Default");
+        _postProcessLayer = LayerMask.NameToLayer("PostProcess");
     }
     [ContextMenu("Devient du sable")]
     void SandTile()
@@ -44,16 +47,22 @@ public class TileID : MonoBehaviour
         Instantiate(_column, transform);
     }
 
-    [ContextMenu("Mask Appear")]
-    public void MaskAppear()
+    [ContextMenu("PostProcess Appear")]
+    public void SetPostProcessLayer()
     {
-        _masks.SetActive(true);
+        foreach(GameObject _tile in _tilesPossible)
+        {
+            _tile.layer = _postProcessLayer;
+        }
     }
 
-    [ContextMenu("Mask Disappear")]
-    public void MaskDisappear()
+    [ContextMenu("PostProcess Disappear")]
+    public void SetDefaultLayer()
     {
-        _masks.SetActive(false);
+        foreach (GameObject _tile in _tilesPossible)
+        {
+            _tile.layer = _defaultLayer;
+        }
     }
 }
 

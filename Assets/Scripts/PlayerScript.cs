@@ -20,6 +20,7 @@ public class PlayerScript : MonoBehaviour
     List<GameObject> _usingTiles = new List<GameObject>();
     List<GameObject> _usedTiles = new List<GameObject>();
     List<GameObject> _waitingTiles = new List<GameObject>();
+    List<GameObject> _ppTiles = new List<GameObject>();
     public List<GameObject> _actualsLines = new List<GameObject>();
     public List<TilesGroupe> _groupes = new List<TilesGroupe>();
     public List<Transform> _pointsList = new List<Transform>();
@@ -106,6 +107,7 @@ public class PlayerScript : MonoBehaviour
         _waitingTiles = new List<GameObject>();
         _actualsLines = new List<GameObject>();
         _groupes = new List<TilesGroupe>();
+        _ppTiles = new List<GameObject>();
         
         foreach(GameObject _tile in GameManager._instance._tiles)
         {
@@ -114,6 +116,9 @@ public class PlayerScript : MonoBehaviour
             {
                 //on le rajoute
                 _usingTiles.Add(_tile);
+                SetTilesPostProcessLayer(_tile);
+                _ppTiles.Add(_tile);
+
             }
         }
         //on prend les tuiles qui seront utilisées une par une
@@ -235,5 +240,19 @@ public class PlayerScript : MonoBehaviour
             _line.GetComponent<LinePrevisualisationManager>().DeathRattle();
         }
         _actualsLines = new List<GameObject>();
+
+        foreach(GameObject _tile in _ppTiles)
+        {
+            SetTilesDefaultLayer(_tile);
+        }
+    }
+
+    public void SetTilesPostProcessLayer(GameObject _tile)
+    {
+        //_tile.GetComponent<TileID>().SetPostProcessLayer();
+    }
+    public void SetTilesDefaultLayer(GameObject _tile)
+    {
+        //_tile.GetComponent<TileID>().SetDefaultLayer();
     }
 }
