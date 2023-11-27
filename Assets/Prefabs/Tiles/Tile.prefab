@@ -641,12 +641,6 @@ MonoBehaviour:
   _sandMaterial: {fileID: 2100000, guid: 1d5b630eab09e7a4699dcf4b7d083a57, type: 2}
   _grassMaterial: {fileID: 2100000, guid: c4911d8ded58d724f969cd0815aa0080, type: 2}
   _column: {fileID: 8856849699256080467, guid: bb1135cb1a4cefc419dcc9839dd49ea6, type: 3}
-  _defaultLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  _postProcessLayer:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!114 &8476404551999392610
 MonoBehaviour:
   m_ObjectHideFlags: 0
