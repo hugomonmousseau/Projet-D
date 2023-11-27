@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3851182, g: 0.55222327, b: 0.6014659, a: 1}
+  m_IndirectSpecularColor: {r: 0.38510647, g: 0.55182564, b: 0.60158914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -62717,16 +62717,26 @@ PrefabInstance:
     - target: {fileID: 2386092456554462317, guid: 181d08c8c5c6aa549986c3895f180505,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3625618742028532898, guid: 181d08c8c5c6aa549986c3895f180505,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3979905949136006511, guid: 181d08c8c5c6aa549986c3895f180505,
         type: 3}
       propertyPath: _camp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4032583390799006810, guid: 181d08c8c5c6aa549986c3895f180505,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5334766230014912722, guid: 181d08c8c5c6aa549986c3895f180505,
+        type: 3}
+      propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5334766230014912733, guid: 181d08c8c5c6aa549986c3895f180505,
@@ -62736,13 +62746,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6234010656996371669, guid: 181d08c8c5c6aa549986c3895f180505,
         type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234010656996371669, guid: 181d08c8c5c6aa549986c3895f180505,
+        type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 383
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6234010656996371671, guid: 181d08c8c5c6aa549986c3895f180505,
         type: 3}
       propertyPath: m_CameraType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234010656996371671, guid: 181d08c8c5c6aa549986c3895f180505,
+        type: 3}
+      propertyPath: m_AllowXRRendering
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6234010656996371675, guid: 181d08c8c5c6aa549986c3895f180505,
         type: 3}
@@ -62758,6 +62778,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871400099380881783, guid: 181d08c8c5c6aa549986c3895f180505,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8871400099380881783, guid: 181d08c8c5c6aa549986c3895f180505,
         type: 3}
